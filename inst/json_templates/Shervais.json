@@ -1,0 +1,128 @@
+{
+    "name": "Shervais",
+    "fullName": "Shervais (1982)",
+    "details": "",
+    "reference": "Shervais J W (1982) Ti-V plots and the petrogenesis of modern and ophiolitic lavas. Earth Planet Sci Lett 59: 101-118",
+    "url": "https://doi.org/10.1016/0012-821X(82)90120-006",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+	"styleDefaults": {"pltcol2": "gray8",
+					  "linedashed":"dashed"},
+					  
+    "diagramType": "binary",
+    "dataTransform": null,
+    "axesDefinition": {
+        "X": "Ti/1000",
+        "Y": "V"
+    },
+    "axesName": {
+        "X": "Ti (ppm)/1000",
+        "Y": "V (ppm)"
+    },
+    "limits": {
+        "X": [
+            0,
+            25
+        ],
+        "Y": [
+            0,
+            600
+        ]
+    },
+    "template": {
+        "lines1": {
+            "plotFun": "abline",
+            "a": 0,
+            "b": 100,
+            "lty": "linedashed",
+            "col": "pltcol2"
+        },
+        "lines2": {
+            "plotFun": "abline",
+            "a": 0,
+            "b": 20,
+            "lty": "linedashed",
+            "col": "pltcol2"
+        },
+        "lines3": {
+            "plotFun": "abline",
+            "a": 0,
+            "b": 50,
+            "col": "pltcol2"
+        },
+        "lines4": {
+            "plotFun": "abline",
+            "a": 0,
+            "b": 10,
+            "lty": "linedashed",
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 209,
+            "plot.name": "Shervais (1982)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 10,
+            "y": 570,
+            "text": "ARC",
+            "cex": 1,
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 15,
+            "y": 570,
+            "text": "OFB",
+            "cex": 1,
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 3,
+            "y": 540,
+            "text": "Ti/V=10",
+            "cex": 0.7,
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 13.2,
+            "y": 540,
+            "text": "Ti/V=20",
+            "cex": 0.7,
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 23.5,
+            "y": 290,
+            "text": "Ti/V=100",
+            "cex": 0.7,
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 23.5,
+            "y": 540,
+            "text": "Ti/V=50",
+            "cex": 0.7,
+            "col": "pltcol2",
+            "switch": "showText"
+        }
+    }
+}
+

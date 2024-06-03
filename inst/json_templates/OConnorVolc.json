@@ -1,0 +1,280 @@
+{
+    "name": "OConnorVolc",
+    "fullName": "CIPW-normative feldspar triangle (O'Connor 1965)",
+    "details": "",
+    "reference": "O'Connor JT (1965) A classification for Quartz-rich igneous rocks based on feldspar ratios. U.S. Geol. Survey Prof Paper 525-B: B79-B84",
+    "url": "",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>, J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+      
+    "RDialect": "GCDkit",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+	
+    "styleDefaults": {"pltcol2": "gray8",
+					  "linedashed":"dashed"},
+
+    "diagramType": "ternary",
+	"ternaryRotation":0,
+	"ternaryScale":1,
+	
+    "diagramType": "ternary",
+    "dataTransform": "CIPW",
+    "axesDefinition": {
+        "A": "Ab",
+        "B": "An",
+        "C": "Or"
+    },
+    "suppressAxes":true,
+    "limits": {
+        "X": [
+            -0.03,
+            1.03
+        ],
+        "Y": [
+            -0.10,
+            1.03
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "rcname": [
+                "quartz keratophyre",
+                "rhyolite",
+                "quartz latite",
+                "rhyodacite",
+                "dacite"
+            ]
+        },
+        "polygon1": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                0.30,
+                0.3875,
+                0.125
+            ],
+            "y": [
+                0,
+                0,
+                0.151554,
+                0.216506
+            ],
+            "lwd": 3,
+            "col": "pltcol2"
+        },
+        "polygon2": {
+            "plotFun": "NULL",
+            "x": [
+                0.30,
+                1.00,
+                0.3875
+            ],
+            "y": [
+                0,
+                0,
+                0.151554
+            ],
+            "lwd": 3,
+            "col": "pltcol2"
+        },
+        "polygon3": {
+            "plotFun": "NULL",
+            "x": [
+                0.43125,
+                0.5625,
+                0.6375,
+                0.52875
+            ],
+            "y": [
+                0.140729,
+                0.108253,
+                0.238157,
+                0.309604
+            ],
+            "lwd": 3,
+            "col": "pltcol2"
+        },
+        "polygon4": {
+            "plotFun": "NULL",
+            "x": [
+                0.30,
+                0.43125,
+                0.52875,
+                0.42
+            ],
+            "y": [
+                0.173205,
+                0.140729,
+                0.309604,
+                0.381051
+            ],
+            "lwd": 3,
+            "col": "pltcol2"
+        },
+        "polygon5": {
+            "plotFun": "NULL",
+            "x": [
+                0.125,
+                0.30,
+                0.42,
+                0.275
+            ],
+            "y": [
+                0.216506,
+                0.173205,
+                0.381051,
+                0.476314
+            ],
+            "lwd": 3,
+            "col": "pltcol2"
+        },
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                0.30,
+                0.3875
+            ],
+            "y": [
+                0,
+                0.151554
+            ],
+            "col": "pltcol2"
+        },
+        "lines1.1": {
+            "plotFun": "lines",
+            "x": [
+                0.30,
+                0.42
+            ],
+            "y": [
+                0.173205,
+                0.381051
+            ],
+            "col": "pltcol2"
+        },
+        "lines1.2": {
+            "plotFun": "lines",
+            "x": [
+                0.43125,
+                0.52875
+            ],
+            "y": [
+                0.140729,
+                0.309604
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines1.3": {
+            "plotFun": "lines",
+            "x": [
+                0.5625,
+                0.6375
+            ],
+            "y": [
+                0.108253,
+                0.238157
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines1.4": {
+            "plotFun": "lines",
+            "x": [
+                0.125,
+                0.5625
+            ],
+            "y": [
+                0.216506,
+                0.108253
+            ],
+            "col": "pltcol2"
+        },
+        "lines1.5": {
+            "plotFun": "lines",
+            "x": [
+                0.5625,
+                0.9125
+            ],
+            "y": [
+                0.108253,
+                0.021651
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines1.6": {
+            "plotFun": "lines",
+            "x": [
+                0.9125,
+                0.9275
+            ],
+            "y": [
+                0.021651,
+                0.047631
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "ternary",
+            "plot.position": 29.5,
+            "plot.name": "CIPW-normative feldspar triangle (O'Connor 1965)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 0.20,
+            "y": 0.086603,
+            "text": "Quartz\nkeratophyre",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 0.435,
+            "y": 0.060622,
+            "text": "Rhyolite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 0.545,
+            "y": 0.216506,
+            "text": "Quartz\nlatite",
+            "col": "pltcol2",
+            "srt": 60,
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 0.42,
+            "y": 0.259808,
+            "text": "Rhyodacite",
+            "col": "pltcol2",
+            "srt": 60,
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 0.30,
+            "y": 0.34641,
+            "text": "Dacite",
+            "col": "pltcol2",
+            "switch": "showText"
+        }
+    }
+}
+

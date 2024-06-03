@@ -1,0 +1,136 @@
+{
+    "name": "Harris",
+    "fullName": "Harris et al. (1986)",
+    "details": "",
+    "reference": "Harris NBW, Pearce JA, Tindle AG (1986) Geochemical characteristics of collision-zone magmatism. In: Coward MP, Ries AC (eds) Collision Tectonics. Geological Society London Special Publication 19, pp 67-81",
+    "url": "https://doi.org/10.1144/GSL.SP.1986.019.01.04",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+    "diagramType": "ternary",
+    "dataTransform": null,
+    "axesDefinition": {
+        "A": "Hf",
+        "B": "Rb/30",
+        "C": "Ta*3"
+    },
+    "suppressAxes":true,
+    "limits": {
+        "X": [
+            -0.03,
+            1.03
+        ],
+        "Y": [
+            -0.05,
+            1.03
+        ]
+    },
+    "template": {
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                0,
+                1,
+                0.5,
+                0
+            ],
+            "y": [
+                0,
+                0,
+                0.866,
+                0
+            ],
+            "col": "black"
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                0.617,
+                0.5,
+                0.479,
+                0.453,
+                0.904
+            ],
+            "y": [
+                0.664,
+                0.624,
+                0.44,
+                0.194,
+                0.169
+            ],
+            "col": "pltcol2"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                0.479,
+                0.85
+            ],
+            "y": [
+                0.44,
+                0.261
+            ],
+            "col": "pltcol2"
+        },
+        "lines4": {
+            "plotFun": "lines",
+            "x": [
+                0.255,
+                0.322,
+                0.391,
+                0.456
+            ],
+            "y": [
+                0.054,
+                0.136,
+                0.194,
+                0.227
+            ],
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "ternary",
+            "plot.position": 106,
+            "plot.name": "Harris et al. (1986)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 0.323,
+            "y": 0.314,
+            "text": "VA",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 0.6,
+            "y": 0.087,
+            "text": "WP",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text36": {
+            "plotFun": "text",
+            "x": 0.6,
+            "y": 0.477,
+            "text": "Group 2",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 0.6,
+            "y": 0.268,
+            "text": "Group 3",
+            "col": "pltcol2",
+            "switch": "showText"
+        }
+    }
+}
+

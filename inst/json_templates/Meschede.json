@@ -1,0 +1,171 @@
+{
+    "name": "Meschede",
+    "fullName": "Meschede (1986) Zr/4-2Nb-Y",
+    "details": "Coordinates from Rollison 1993",
+    "reference": "Meschede M (1986) A method of discriminating between different types of mid-ocean ridge basalts and continental tholeiites with the Nb-Zr-Y diagram. Chem Geol 56: 207-218",
+    "url": "https://doi.org/10.1016/0009-2541(86)90004-5",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+    "styleDefaults": {"pltcol2": "gray8",
+					  "linedashed":"dashed"},
+
+    "diagramType": "ternary",
+	"ternaryRotation":0,
+	"ternaryScale":1,
+	
+    "dataTransform": null,
+    "axesDefinition": {
+        "A": "Zr/4",
+        "B": "2*Nb",
+        "C": "Y"
+    },
+    "suppressAxes":true,
+    "limits": {
+        "X": [
+            -0.03,
+            1.03
+        ],
+        "Y": [
+            -0.08,
+            1.03
+        ]
+    },
+    "template": {
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                0.5,
+                0.34,
+                0.305,
+                0.465,
+                0.77
+            ],
+            "y": [
+                0,
+                0.1039,
+                0.2944,
+                0.6842,
+                0
+            ],
+            "col": "pltcol2"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                0.34,
+                0.42,
+                0.5525
+            ],
+            "y": [
+                0.1039,
+                0.433,
+                0.4893
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines4": {
+            "plotFun": "lines",
+            "x": [
+                0.34,
+                0.45,
+                0.58
+            ],
+            "y": [
+                0.1039,
+                0.3031,
+                0.433
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines5": {
+            "plotFun": "lines",
+            "x": [
+                0.45,
+                0.485,
+                0.52,
+                0.455
+            ],
+            "y": [
+                0.3031,
+                0.2685,
+                0.1905,
+                0.026
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines6": {
+            "plotFun": "lines",
+            "x": [
+                0.545,
+                0.68
+            ],
+            "y": [
+                0.2078,
+                0.1905
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "ternary",
+            "plot.position": 203,
+            "plot.name": "Meschede (1986) Zr/4-2Nb-Y"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 0.46,
+            "y": 0.543,
+            "text": "AI",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 0.456,
+            "y": 0.387,
+            "text": "AII",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 0.566,
+            "y": 0.302,
+            "text": "B",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "switch": "showText"
+        },
+        "text7": {
+            "plotFun": "text",
+            "x": 0.431,
+            "y": 0.163,
+            "text": "C",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "switch": "showText"
+        },
+        "text8": {
+            "plotFun": "text",
+            "x": 0.605,
+            "y": 0.092,
+            "text": "D",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "switch": "showText"
+        }
+    }
+}
+

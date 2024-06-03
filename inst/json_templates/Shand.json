@@ -1,0 +1,176 @@
+{
+    "name": "Shand",
+    "fullName": "A/CNK - A/NK (Shand 1943)",
+    "details": "",
+    "reference": "Shand (1943) Eruptive Rocks. John Wiley & Sons",
+    "url": "",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "GCDkit",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+	"styleDefaults": {"pltcol2": "gray8",
+					  "linedashed":"dashed"},
+					  
+    "diagramType": "binary",
+    "dataTransform": null,
+    "axesDefinition": {
+        "X": "A/CNK",
+        "Y": "A/NK"
+    },
+    "limits": {
+        "X": [
+            0.5,
+            1.5
+        ],
+        "Y": [
+            0,
+            7
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3,
+                4,
+                5
+            ],
+            "rcname": [
+                "metaluminous",
+                "peraluminous",
+                "peralkaline",
+                "undefined"
+            ]
+        },
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                1,
+                1,
+                0.5,
+                0.5,
+                1
+            ],
+            "y": [
+                1,
+                7,
+                7,
+                1,
+                1
+            ]
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                1,
+                2,
+                2,
+                1,
+                1
+            ],
+            "y": [
+                1,
+                1,
+                7,
+                7,
+                1
+            ]
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                1,
+                1,
+                0.5,
+                0.5,
+                1
+            ],
+            "y": [
+                1,
+                0,
+                0,
+                1,
+                1
+            ]
+        },
+        "lines4": {
+            "plotFun": "lines",
+            "x": [
+                1,
+                2,
+                2,
+                1,
+                1
+            ],
+            "y": [
+                1,
+                1,
+                0,
+                0,
+                1
+            ]
+        },
+        "lines11": {
+            "plotFun": "abline",
+            "h": 1,
+            "col": "pltcol2"
+        },
+        "lines12": {
+            "plotFun": "abline",
+            "v": 1,
+            "col": "pltcol2"
+        },
+        "lines13": {
+            "plotFun": "lines",
+            "x": [
+                0,
+                7
+            ],
+            "y": [
+                0,
+                7
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 14,
+            "plot.name": "A/CNK - A/NK (Shand 1943)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 0.55,
+            "y": 6,
+            "text": "Metaluminous",
+            "col": "pltcol2",
+            "adj": 0,
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 1.05,
+            "y": 6,
+            "text": "Peraluminous",
+            "col": "pltcol2",
+            "adj": 0,
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 0.55,
+            "y": 0.5,
+            "text": "Peralkaline",
+            "col": "pltcol2",
+            "adj": 0,
+            "switch": "showText"
+        }
+    }
+}
+

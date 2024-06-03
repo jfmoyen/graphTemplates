@@ -1,0 +1,276 @@
+{
+    "name": "NaAlK",
+    "fullName": "Molar Na2O-Al2O3-K2O plot",
+    "details": "",
+    "reference": "Foley SF, Venturelli G, Green DH, Toscani L (1987) Ultrapotassic rocks: characteristics, classification and constraints for petrogenetic models. Earth Sci Rev 24: 81-134",
+    "url": "https://doi.org/10.1016/0012-8252(87)90001-8",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "GCDkit",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+	
+    "styleDefaults": {"pltcol2": "gray8",
+					  "linedashed":"dashed"},
+
+    "diagramType": "ternary",
+	"ternaryRotation":0,
+	"ternaryScale":1,
+    
+    "dataTransform": "millications",
+	"dataTransformParams": {"print":false, "save":false},
+	
+    "axesDefinition": {
+        "A": "Na2O",
+        "B": "Al2O3",
+        "C": "K2O"
+    },
+    "suppressAxes":true,
+    "limits": {
+        "X": [
+            -0.03,
+            1.03
+        ],
+        "Y": [
+            -0.08,
+            1.03
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            ],
+            "rcname": [
+                "metaluminous/peraluminous",
+                "sodic",
+                "peralkaline",
+                "potassic",
+                "perpotassic",
+                "peralkaline",
+                "ultrapotassic"
+            ]
+        },
+        "lines1": {
+            "plotFun": "NULL",
+            "x": [
+                0.25,
+                0.5,
+                0.5,
+                0.25
+            ],
+            "y": [
+                0.433,
+                0.433,
+                0.866,
+                0.433
+            ],
+            "col": "red"
+        },
+        "lines2": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                0.5,
+                0.5,
+                0.25,
+                0
+            ],
+            "y": [
+                0,
+                0,
+                0.433,
+                0.433,
+                0
+            ],
+            "col": "blue"
+        },
+        "lines3": {
+            "plotFun": "NULL",
+            "x": [
+                0.5,
+                0.625,
+                0.5,
+                0.5
+            ],
+            "y": [
+                0.433,
+                0.433,
+                0.866,
+                0.433
+            ],
+            "col": "orange"
+        },
+        "lines4": {
+            "plotFun": "NULL",
+            "x": [
+                0.5,
+                0.75,
+                0.625,
+                0.5,
+                0.5
+            ],
+            "y": [
+                0,
+                0,
+                0.433,
+                0.433,
+                0
+            ],
+            "col": "green"
+        },
+        "lines5": {
+            "plotFun": "NULL",
+            "x": [
+                0.625,
+                0.75,
+                0.5,
+                0.625
+            ],
+            "y": [
+                0.433,
+                0.433,
+                0.866,
+                0.433
+            ],
+            "col": "blue"
+        },
+        "lines6": {
+            "plotFun": "NULL",
+            "x": [
+                0.75,
+                1,
+                0.75,
+                0.625,
+                0.75
+            ],
+            "y": [
+                0,
+                0,
+                0.433,
+                0.433,
+                0
+            ],
+            "col": "black"
+        },
+
+        "lines22": {
+            "plotFun": "lines",
+            "x": [
+                0.5,
+                0.5
+            ],
+            "y": [
+                0,
+                0.866
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines23": {
+            "plotFun": "lines",
+            "x": [
+                0,
+                0.75
+            ],
+            "y": [
+                0.433,
+                0.433
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines24": {
+            "plotFun": "lines",
+            "x": [
+                0.75,
+                0.5
+            ],
+            "y": [
+                0,
+                0.866
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines25": {
+            "plotFun": "lines",
+            "x": [
+                0.5,
+                0.75
+            ],
+            "y": [
+                0,
+                0.433
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "ternary",
+            "plot.position": 13.5,
+            "plot.name": "Molar Na2O-Al2O3-K2O plot"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 0.45,
+            "y": 0.05,
+            "text": "Sodic",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 0.58,
+            "y": 0.05,
+            "text": "Potassic",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 0.85,
+            "y": 0.05,
+            "text": "Ultrapotassic",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 0,
+            "y": 0.5,
+            "text": "Metaluminous\nPeraluminous",
+            "col": "pltcol2",
+            "adj": 0,
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 0,
+            "y": 0.4,
+            "text": "Peralkaline",
+            "col": "pltcol2",
+            "adj": 0,
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 0.7,
+            "y": 0.3,
+            "text": "Perpotassic",
+            "col": "pltcol2",
+            "srt": 60,
+            "switch": "showText"
+        }
+    }
+}
+

@@ -1,0 +1,121 @@
+{
+    "name": "LaYb",
+    "fullName": "YbN vs LaN/YbN (Martin 1986) TTG/adakite",
+    "details": "",
+    "reference": "Martin H (1986) Effect of steeper Archean geothermal gradient on geochemistry of subduction-zone magmas. Geology 14: 753-756",
+    "url": "https://doi.org/10.1130/0091-7613(1986)14<753:EOSAGG>2.0.CO;2",
+    "templateAuthor": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+	
+	"styleDefaults": {"pltcol2": "gray8"},
+	
+    "diagramType": "binary",
+    "dataTransform": null,
+    "axesDefinition": {
+      "X": "Yb/0.22",
+      "Y": "(La/0.33)/(Yb/0.22)"
+    },
+    "axesName": {
+      "X": "Yb[N]",
+      "Y": "(La/Yb)[N]"
+    },
+    "limits": {
+        "X": [
+            0,
+            24
+        ],
+        "Y": [
+            0,
+            175
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3
+            ],
+            "rcname": [
+                "TTG/adakite",
+                "ordinary"
+            ]
+        },
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                0.28,
+                1.55,
+                2.55,
+                5.3,
+                8.6,
+                8.6,
+                3,
+                1,
+                0.28,
+                0.28
+            ],
+            "y": [
+                150,
+                150,
+                70,
+                40,
+                25,
+                5,
+                5,
+                15,
+                35,
+                150
+            ],
+            "col": "pltcol2"
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                4.5,
+                4.5,
+                20,
+                20,
+                4.5
+            ],
+            "y": [
+                2,
+                30,
+                10,
+                2,
+                2
+            ],
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 109,
+            "plot.name": "YbN vs LaN/YbN (Martin 1986) TTG/adakite"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 2.5,
+            "y": 100,
+            "text": "TTG/adakite",
+            "col": "pltcol2",
+            "adj": 0,
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 14,
+            "y": 22,
+            "text": "ordinary",
+            "col": "pltcol2",
+            "adj": 0,
+            "switch": "showText"
+        }
+    }
+}
+

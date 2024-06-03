@@ -1,0 +1,44 @@
+{
+"name":"test",
+"fullName":"Test diagram template",
+"details":"This is just a test",
+"reference":"Me, Myself and I (2023)",
+"url":"http://www.google.com",
+"templateAuthor": "J.-F. Moyen [jfmoyen@gmail.com]",
+"templateHistory": "Brand new template for demo purpose",
+
+"optionSwitches": {"plotthis": "Plot the word Tholeitic",
+                    "plotthat": "Plot the diagonal line"
+                  },
+"optionDefaults": {"plotthis": false,
+                   "plotthat": true},
+
+"diagramType":"binary",
+"dataTransform":"demoTrans",
+
+"axesDefinition": {  "X": "AA",
+                     "Y": "BB"
+                      },
+
+"limits": { "X": [50,100] ,
+            "Y": [0,20]
+            },
+
+"template":  {"lines0": {
+                "plotFun":"lines",
+                "x":[50,60],
+                "y":[0,10.0],
+                "col":"pltcol1",
+                "switch":"plotthat",
+                "_notes":"Arbitrary boundary line"
+                        },
+             "text0": {
+              "plotFun":"text",
+               "x":70,
+               "y":12,
+               "text":"Tholeiite Series",
+               "col":"pltcol3",
+               "switch":"plotthis"
+                      }
+              }
+}

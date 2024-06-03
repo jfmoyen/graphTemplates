@@ -1,0 +1,556 @@
+{
+    "name": "TASMiddlemostVolc",
+    "fullName": "TAS (Middlemost 1994)",
+    "details": "",
+    "reference": "Middlemost EAK (1994) Naming materials in the magma/igneous rock system. Earth Sci Rev 37: 215-224",
+    "url": "https://doi.org/10.1016/0012-8252(94)90029-9",
+    "templateAuthor": "V. Erban <erban@sopky.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+	"styleDefaults": {"pltcol2": "gray8"},
+
+    "diagramType": "binary",
+    "dataTransform": "recastAnhydrous",
+    "axesDefinition": {
+        "X": "SiO2",
+        "Y": "Na2O+K2O"
+    },
+    "limits": {
+        "X": [
+            34,
+            90
+        ],
+        "Y": [
+            0,
+            19
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+            ],
+            "rcname": [
+                "foidite",
+                "picrobasalt",
+                "basalt",
+                "basaltic andesite",
+                "andesite",
+                "dacite",
+                "rhyolite",
+                "trachybasalt",
+                "basaltic trachyandesite",
+                "trachyandesite",
+                "trachydacite",
+                "trachyte",
+                "tephrite",
+                "phonotephrite",
+                "tephriphonolite",
+                "phonolite",
+                "sodalitite/nephelinolith/leucitolith",
+                "silexite"
+            ]
+        },
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                37,
+                41,
+                41,
+                45,
+                48.4,
+                52.5,
+                52.5,
+                37,
+                35,
+                37
+            ],
+            "y": [
+                3,
+                3,
+                7,
+                9.4,
+                11.5,
+                14,
+                18,
+                14,
+                9,
+                3
+            ],
+            "col": "pltcol2"
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                45,
+                45,
+                41,
+                41
+            ],
+            "y": [
+                0,
+                3,
+                3,
+                0
+            ],
+            "col": "pltcol2"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                45,
+                52,
+                52,
+                45
+            ],
+            "y": [
+                0,
+                0,
+                5,
+                5
+            ],
+            "col": "pltcol2"
+        },
+        "lines4": {
+            "plotFun": "lines",
+            "x": [
+                52,
+                57,
+                57,
+                52
+            ],
+            "y": [
+                0,
+                0,
+                5.9,
+                5
+            ],
+            "col": "pltcol2"
+        },
+        "lines5": {
+            "plotFun": "lines",
+            "x": [
+                57,
+                63,
+                63,
+                57
+            ],
+            "y": [
+                0,
+                0,
+                7,
+                5.9
+            ],
+            "col": "pltcol2"
+        },
+        "lines6": {
+            "plotFun": "lines",
+            "x": [
+                63,
+                77.3,
+                69,
+                63
+            ],
+            "y": [
+                0,
+                0,
+                8,
+                7
+            ],
+            "col": "pltcol2"
+        },
+        "lines7": {
+            "plotFun": "lines",
+            "x": [
+                77.3,
+                87.5,
+                85.9,
+                71.8,
+                69
+            ],
+            "y": [
+                0,
+                4.7,
+                6.8,
+                13.5,
+                8
+            ],
+            "col": "pltcol2"
+        },
+        "lines8": {
+            "plotFun": "lines",
+            "x": [
+                45,
+                52,
+                49.4
+            ],
+            "y": [
+                5,
+                5,
+                7.3
+            ],
+            "col": "pltcol2"
+        },
+        "lines9": {
+            "plotFun": "lines",
+            "x": [
+                52,
+                57,
+                53,
+                49.4
+            ],
+            "y": [
+                5,
+                5.9,
+                9.3,
+                7.3
+            ],
+            "col": "pltcol2"
+        },
+        "lines10": {
+            "plotFun": "lines",
+            "x": [
+                57,
+                63,
+                57.6,
+                53
+            ],
+            "y": [
+                5.9,
+                7,
+                11.7,
+                9.3
+            ],
+            "col": "pltcol2"
+        },
+        "lines12": {
+            "plotFun": "lines",
+            "x": [
+                63,
+                69,
+                71.8,
+                61
+            ],
+            "y": [
+                7,
+                8,
+                13.5,
+                8.6
+            ],
+            "col": "pltcol2"
+        },
+        "lines13": {
+            "plotFun": "lines",
+            "x": [
+                61,
+                71.8,
+                63,
+                61,
+                57.6
+            ],
+            "y": [
+                8.6,
+                13.5,
+                16.2,
+                13.5,
+                11.7
+            ],
+            "col": "pltcol2"
+        },
+        "lines14": {
+            "plotFun": "lines",
+            "x": [
+                41,
+                45,
+                45,
+                49.4,
+                45,
+                41
+            ],
+            "y": [
+                3,
+                3,
+                5,
+                7.3,
+                9.4,
+                7
+            ],
+            "col": "pltcol2"
+        },
+        "lines15": {
+            "plotFun": "lines",
+            "x": [
+                49.4,
+                53,
+                48.4,
+                45
+            ],
+            "y": [
+                7.3,
+                9.3,
+                11.5,
+                9.4
+            ],
+            "col": "pltcol2"
+        },
+        "lines16": {
+            "plotFun": "lines",
+            "x": [
+                53,
+                57.6,
+                52.5,
+                48.4
+            ],
+            "y": [
+                9.3,
+                11.7,
+                14,
+                11.5
+            ],
+            "col": "pltcol2"
+        },
+        "lines17": {
+            "plotFun": "lines",
+            "x": [
+                57.6,
+                61,
+                63,
+                57,
+                52.5,
+                52.5
+            ],
+            "y": [
+                11.7,
+                13.5,
+                16.2,
+                18,
+                18,
+                14
+            ],
+            "col": "pltcol2"
+        },
+        "lines15.1": {
+            "plotFun": "NULL",
+            "x": [
+                37,
+                52.5,
+                57,
+                71.8,
+                37.99
+            ],
+            "y": [
+                14,
+                18,
+                18,
+                13.5,
+                29.78
+            ],
+            "col": "pltcol2"
+        },
+        "lines15.2": {
+            "plotFun": "NULL",
+            "x": [
+                77.3,
+                87.5,
+                85.9,
+                100
+            ],
+            "y": [
+                0,
+                4.7,
+                6.8,
+                0
+            ],
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 23,
+            "plot.name": "TAS (Middlemost 1994)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 43,
+            "y": 1.4,
+            "text": "Picro-\nbasalt",
+            "col": "pltcol2",
+            "srt": 90,
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 48.5,
+            "y": 2.8,
+            "text": "Basalt",
+            "col": "pltcol2",
+            "srt": 90,
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 54.8,
+            "y": 3,
+            "text": "Basaltic\nandesite",
+            "col": "pltcol2",
+            "srt": 90,
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 59.9,
+            "y": 3,
+            "text": "Andesite",
+            "col": "pltcol2",
+            "srt": 90,
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 67,
+            "y": 3,
+            "text": "Dacite",
+            "col": "pltcol2",
+            "srt": 90,
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 80,
+            "y": 6,
+            "text": "Rhyolite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text7": {
+            "plotFun": "text",
+            "x": 63.5,
+            "y": 11.5,
+            "text": "Trachyte",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text22": {
+            "plotFun": "text",
+            "x": 66,
+            "y": 9,
+            "text": "Trachy-\ndacite",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "srt": 50,
+            "switch": "showText"
+        },
+        "text8": {
+            "plotFun": "text",
+            "x": 57.8,
+            "y": 8.5,
+            "text": "Trachy-\nandesite",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "switch": "showText"
+        },
+        "text9": {
+            "plotFun": "text",
+            "x": 52.95,
+            "y": 7,
+            "text": "Basaltic\ntrachy-\nandesite",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "switch": "showText"
+        },
+        "text10": {
+            "plotFun": "text",
+            "x": 49.2,
+            "y": 5.65,
+            "text": "Trachy-\nbasalt",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "switch": "showText"
+        },
+        "text11": {
+            "plotFun": "text",
+            "x": 45,
+            "y": 7,
+            "text": "Tephrite",
+            "col": "pltcol2",
+            "srt": 50,
+            "switch": "showText"
+        },
+        "text12": {
+            "plotFun": "text",
+            "x": 49.2,
+            "y": 9.3,
+            "text": "Phono-\ntephrite",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "srt": 50,
+            "switch": "showText"
+        },
+        "text13": {
+            "plotFun": "text",
+            "x": 53,
+            "y": 11.5,
+            "text": "Tephri-\nphonolite",
+            "col": "pltcol2",
+            "cex": 0.8,
+            "srt": 50,
+            "switch": "showText"
+        },
+        "text14": {
+            "plotFun": "text",
+            "x": 57,
+            "y": 15,
+            "text": "Phonolite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text15": {
+            "plotFun": "text",
+            "x": 44,
+            "y": 12,
+            "text": "Foidite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text22.1": {
+            "plotFun": "text",
+            "x": 55,
+            "y": 18.5,
+            "text": "Sodalitite/Nephelinolith/Leucitolith",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text23": {
+            "plotFun": "text",
+            "x": 85,
+            "y": 1,
+            "text": "Silexite",
+            "col": "pltcol2",
+            "switch": "showText"
+        }
+    }
+}
+

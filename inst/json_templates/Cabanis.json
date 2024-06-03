@@ -1,0 +1,241 @@
+{
+    "name": "Cabanis",
+    "fullName": "Cabanis + Lecolle (1989) La/10-Y/15-Nb/8",
+    "details": "based on K. Hollocher <hollochk@union.edu>",
+    "reference": "Cabanis B, Lecolle M (1989) Le diagramme La/10-Y/15-Nb/8: un outil pour la discrimination des séries volcaniques et la mise en évidence des processus de mélange et/ou de contamination crustale. CR Acad Sci IIA 309: 2023-2029",
+    "url": "",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+    
+    "styleDefaults": {"pltcol2": "gray8",
+					  "pltcol3": "darkblue",
+					  "colgray": "gray70",
+					  "linesolid": "solid",
+					  "arrowwidth": 1},
+					  
+    "diagramType": "ternary",
+	"ternaryRotation":0,
+	"ternaryScale":1,
+	
+    "dataTransform": null,
+    "axesDefinition": {
+        "A": "La/10",
+        "B": "Yb/15",
+        "C": "Nb/8"
+    },
+    "suppressAxes":true,
+    "limits": {
+        "X": [
+            -0.03,
+            1.03
+        ],
+        "Y": [
+            -0.08,
+            1.03
+        ]
+    },
+    "template": {
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                0.38,
+                0.4364,
+                0.285,
+                0.4364,
+                0.4448,
+                0.515,
+                0.4448,
+                0.4508,
+                0.335,
+                0.4508,
+                0.476,
+                0.5,
+                0.476,
+                0.498,
+                0.6175,
+                0.498,
+                0.57,
+                0.7875,
+                0.57,
+                0.62
+            ],
+            "y": [
+                0,
+                0.407,
+                0.4936,
+                0.407,
+                0.4677,
+                0.5023,
+                0.4677,
+                0.511,
+                0.5802,
+                0.511,
+                0.6928,
+                0.866,
+                0.6928,
+                0.5889,
+                0.6625,
+                0.5889,
+                0.2382,
+                0.3681,
+                0.2382,
+                0
+            ],
+            "col": "pltcol2"
+        },
+        "arrows1": {
+            "plotFun": "arrows",
+            "x0": 0.5243,
+            "y0": 0.883,
+            "x1": 0.651,
+            "y1": 0.68,
+            "code": 3,
+            "col": "colgray",
+            "angle": 30,
+            "length": 0.15,
+            "lty": "linesolid",
+            "lwd": "arrowwidth"
+        },
+        "arrows2": {
+            "plotFun": "arrows",
+            "x0": 0.651,
+            "y0": 0.68,
+            "x1": 0.8146,
+            "y1": 0.392,
+            "code": 3,
+            "col": "colgray",
+            "angle": 30,
+            "length": 0.15,
+            "lty": "linesolid",
+            "lwd": "arrowwidth"
+        },
+        "arrows3": {
+            "plotFun": "arrows",
+            "x0": 0.8146,
+            "y0": 0.392,
+            "x1": 1.0255,
+            "y1": 0.0145,
+            "code": 3,
+            "col": "colgray",
+            "angle": 30,
+            "length": 0.15,
+            "lty": "linesolid",
+            "lwd": "arrowwidth"
+        },
+        "arrows4": {
+            "plotFun": "arrows",
+            "x0": -0.02,
+            "y0": 0.0219,
+            "x1": 0.3086,
+            "y1": 0.6,
+            "code": 3,
+            "col": "colgray",
+            "angle": 30,
+            "length": 0.15,
+            "lty": "linesolid",
+            "lwd": "arrowwidth"
+        },
+        "arrows5": {
+            "plotFun": "arrows",
+            "x0": 0.234,
+            "y0": 0.521,
+            "x1": 0.462,
+            "y1": 0.883,
+            "code": 3,
+            "col": "colgray",
+            "angle": 30,
+            "length": 0.15,
+            "lty": "linesolid",
+            "lwd": "arrowwidth"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "ternary",
+            "plot.position": 302,
+            "plot.name": "Cabanis + Lecolle (1989) La/10-Y/15-Nb/8"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 0.5963,
+            "y": 0.7762,
+            "text": "N-MORB",
+            "col": "pltcol3",
+            "cex": 1,
+            "srt": -60,
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 0.7452,
+            "y": 0.5182,
+            "text": "E-MORB",
+            "col": "pltcol3",
+            "cex": 1,
+            "srt": -60,
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 0.93,
+            "y": 0.1708,
+            "text": "Alkaline",
+            "col": "pltcol3",
+            "cex": 1,
+            "srt": -60,
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 0.097,
+            "y": 0.2477,
+            "text": "Calc-alkaline",
+            "col": "pltcol3",
+            "cex": 1,
+            "srt": 60,
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 0.34,
+            "y": 0.7167,
+            "text": "Tholeiites",
+            "col": "pltcol3",
+            "cex": 1,
+            "srt": 60,
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 0.22,
+            "y": 0.15,
+            "text": "Orogenic \n(compressive)\ndomains (island \narcs,active \nmargins)",
+            "col": "pltcol2",
+            "cex": 0.7,
+            "switch": "showText"
+        },
+        "text7": {
+            "plotFun": "text",
+            "x": 0.5,
+            "y": 0.15,
+            "text": "Late- \nto post-\norogenic\n(compressive\nto distensive)\nintra-continent.\ndomains",
+            "col": "pltcol2",
+            "cex": 0.7,
+            "switch": "showText"
+        },
+        "text8": {
+            "plotFun": "text",
+            "x": 0.75,
+            "y": 0.15,
+            "text": "Anorogenic\n(distensive) domains",
+            "col": "pltcol2",
+            "cex": 0.7,
+            "switch": "showText"
+        }
+    }
+}
+

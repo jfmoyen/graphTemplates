@@ -1,0 +1,315 @@
+{
+    "name": "DebonBA",
+    "fullName": "B-A (Debon + Le Fort 1983)",
+    "details": "",
+    "reference": "Debon F & Le Fort P (1983) A chemical-mineralogical classification of common plutonic rocks and associations. Trans Roy Soc Edinb; Earth Sci 73: 135-149",
+    "url": "https://doi.org/10.1017/S0263593300010117",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    "diagramType": "binary",
+
+    "RDialect": "GCDkit",
+    "optionSwitches": {
+        "reference.rocks": "Compare to ideal rock composition",
+        "showText":  "Default option to show diagram text"
+    },
+    "optionDefaults": {
+        "reference.rocks": false,
+        "showText": true
+    },
+
+    "dataTransform": "DebonCalcFull",
+    "axesDefinition": {
+        "X": "B",
+        "Y": "A"
+    },
+    "axesName": {
+        "X": "B = Fe + Mg +Ti",
+        "Y": "A = Al - (K + Na + 2Ca)"
+    },
+    "limits": {
+        "X": [
+            0,
+            500
+        ],
+        "Y": [
+            -500,
+            500
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7
+            ],
+            "rcname": [
+                "I",
+                "II",
+                "III",
+                "IV",
+                "V",
+                "VI"
+            ]
+        },
+        "lines1": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                435,
+                0,
+                0
+            ],
+            "y": [
+                0,
+                500,
+                500,
+                0
+            ]
+        },
+        "lines2": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                435,
+                500,
+                600,
+                0
+            ],
+            "y": [
+                0,
+                500,
+                500,
+                250,
+                0
+            ]
+        },
+        "lines3": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                600,
+                1500,
+                0
+            ],
+            "y": [
+                0,
+                250,
+                0,
+                0
+            ]
+        },
+        "lines4": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                1500,
+                500,
+                0
+            ],
+            "y": [
+                0,
+                0,
+                -239.36,
+                0
+            ]
+        },
+        "lines5": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                500,
+                500,
+                420,
+                0
+            ],
+            "y": [
+                0,
+                -239.36,
+                -885,
+                -885,
+                0
+            ]
+        },
+        "lines6": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                420,
+                0,
+                0
+            ],
+            "y": [
+                0,
+                -885,
+                -885,
+                0
+            ]
+        },
+        "lines7": {
+            "plotFun": "lines",
+            "x": [
+                0,
+                420
+            ],
+            "y": [
+                0,
+                -885
+            ],
+            "col": "pltcol2",
+            "lty": "dashed"
+        },
+        "lines8": {
+            "plotFun": "lines",
+            "x": [
+                0,
+                470
+            ],
+            "y": [
+                0,
+                -225
+            ],
+            "col": "pltcol2",
+            "lty": "dashed"
+        },
+        "lines9": {
+            "plotFun": "lines",
+            "x": [
+                0,
+                1500
+            ],
+            "y": [
+                0,
+                0
+            ],
+            "col": "pltcol2",
+            "lty": "dashed"
+        },
+        "lines10": {
+            "plotFun": "lines",
+            "x": [
+                0,
+                600
+            ],
+            "y": [
+                0,
+                250
+            ],
+            "col": "pltcol2",
+            "lty": "dashed"
+        },
+        "lines11": {
+            "plotFun": "lines",
+            "x": [
+                0,
+                435
+            ],
+            "y": [
+                0,
+                500
+            ],
+            "col": "pltcol2",
+            "lty": "dashed"
+        },
+        "lines12": {
+            "plotFun": "lines",
+            "x": [
+                38.8,
+                38.8
+            ],
+            "y": [
+                -500,
+                500
+            ],
+            "col": "pltcol2",
+            "lty": "dashed"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 35,
+            "plot.name": "B-A (Debon + Le Fort 1983)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 70,
+            "y": -400,
+            "text": "VI",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 400,
+            "y": -400,
+            "text": "V",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 450,
+            "y": -100,
+            "text": "IV",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 450,
+            "y": 50,
+            "text": "III",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 400,
+            "y": 250,
+            "text": "II",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 100,
+            "y": 300,
+            "text": "I",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "debonIdeal1": {
+            "plotFun": "reservoirs",
+            "autoscale": false,
+            "var.name": "debon.ideal.data",
+            "sample.names": ["gr","ad","gd","to","dq","go"],
+            "labels": ["gr","ad","gd","to","dq","go"],
+            "col": "gold4",
+            "pch": 19,
+            "cex": 1,
+            "type": "p",
+            "just.draw": true,
+            "switch":"reference.rocks"
+        },
+        "debonIdeal2": {
+            "plotFun": "reservoirs",
+            "autoscale": false,
+            "var.name": "debon.ideal.data",
+            "sample.names": ["sq","mzq","mzdq","s","mz","mzgo"],
+            "labels": ["sq","mzq","mzdq","s","mz","mzgo"],
+            "col": "gold4",
+            "pch": 19,
+            "cex": 1,
+            "type": "p",
+            "just.draw": true,
+            "switch":"reference.rocks"
+        }
+    }
+}
+

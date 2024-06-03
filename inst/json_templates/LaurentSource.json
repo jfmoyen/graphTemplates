@@ -1,0 +1,185 @@
+{
+    "name": "LaurentSource",
+    "fullName": "Source diagram (Laurent et al. 2014)",
+    "details": "",
+    "reference": "Laurent O, Martin H, Moyen JF, Doucelance R (2014) The diversity and evolution of late-Archean granitoids: evidence for the onset of 'modern-style' plate tectonics between 3.0 and 2.5 Ga. Lithos 205:208-235",
+    "url": "https://doi.org/10.1016/j.lithos.2014.06.012",
+    "templateAuthor": "J.-F. Moyen <jfmoyen@gmail.com>, Oscar Laurent <oscarlaurent86@gmail.com>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+	"styleDefaults": {"pltcol2": "gray8",
+					  "coldarkgray":"darkgray",
+					  "linesolid":"solid",
+					  "arrowwidth":1},
+	
+    "diagramType": "ternary",
+	"ternaryRotation":0,
+	"ternaryScale":1,
+	
+    "dataTransform": null,
+    "axesDefinition": {
+        "A": "Al2O3/(FeOt+MgO)",
+        "B": "CaO",
+        "C": "K2O/Na2O"
+    },
+    "suppressAxes":true,
+    "limits": {
+        "X": [
+            -0.03,
+            1.03
+        ],
+        "Y": [
+            -0.05,
+            1.03
+        ]
+    },
+    "template": {
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                0.175,
+                0.575
+            ],
+            "y": [
+                0.3031,
+                0.3031
+            ],
+            "col": "pltcol2"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                0.4,
+                0.7
+            ],
+            "y": [
+                0,
+                0.5196
+            ],
+            "col": "pltcol2"
+        },
+        "lines4": {
+            "plotFun": "lines",
+            "x": [
+                0.375,
+                0.5,
+                0.5
+            ],
+            "y": [
+                0.3031,
+                0.5196,
+                0.866
+            ],
+            "col": "pltcol2"
+        },
+        "arrows1": {
+            "plotFun": "arrows",
+            "x0": 0.23,
+            "y0": 0.54,
+            "x1": 0.285,
+            "y1": 0.464,
+            "code": 2,
+            "col": "coldarkgray",
+            "angle": 30,
+            "length": 0.1,
+            "lty": "linesolid",
+            "lwd": "arrowwidth",
+            "switch": "showText"
+        },
+        "arrows2": {
+            "plotFun": "arrows",
+            "x0": 0.04,
+            "y0": 0.22,
+            "x1": 0.133,
+            "y1": 0.204,
+            "code": 2,
+            "col": "coldarkgray",
+            "angle": 30,
+            "length": 0.1,
+            "lty": "linesolid",
+            "lwd": "arrowwidth",
+            "switch": "showText"
+        },
+        "arrows3": {
+            "plotFun": "arrows",
+            "x0": 0.735,
+            "y0": 0.59,
+            "x1": 0.644,
+            "y1": 0.56,
+            "code": 2,
+            "col": "coldarkgray",
+            "angle": 30,
+            "length": 0.1,
+            "lty": "linesolid",
+            "lwd": "arrowwidth",
+            "switch": "showText"
+        },
+        "arrows4": {
+            "plotFun": "arrows",
+            "x0": 0.91,
+            "y0": 0.298,
+            "x1": 0.864,
+            "y1": 0.209,
+            "code": 2,
+            "col": "coldarkgray",
+            "angle": 30,
+            "length": 0.1,
+            "lty": "linesolid",
+            "lwd": "arrowwidth",
+            "switch": "showText"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "ternary",
+            "plot.position": 101.6,
+            "plot.name": "Source diagram (Laurent et al. 2014)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 0.12,
+            "y": 0.25,
+            "adj": 1,
+            "text": "Tonalites",
+            "col": "pltcol2",
+            "font": 3,
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 1,
+            "y": 0.36,
+            "adj": 1,
+            "text": "Meta-\nsediments",
+            "col": "pltcol2",
+            "font": 3,
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 0.32,
+            "y": 0.6,
+            "adj": 1,
+            "text": "Low-K\nmafic rocks",
+            "col": "pltcol2",
+            "font": 3,
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 0.73,
+            "y": 0.6,
+            "adj": 0,
+            "text": "High-K\n mafic rocks",
+            "col": "pltcol2",
+            "font": 3,
+            "switch": "showText"
+        }
+        
+    }
+}
+

@@ -1,0 +1,210 @@
+{
+    "name": "Saccani",
+    "fullName": "NbN - ThN (Saccani 2015)",
+    "details": "",
+    "reference": "Saccani E (2015) A new method of discriminating different types of post-Archean ophiolitic basalts and their tectonic significance using Th-Nb and Ce-Dy-Yb systematics. Geosci Front 6: 481-501",
+    "url": "https://doi.org/10.1016/j.gsf.2014.03.006",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+	"styleDefaults": {"pltcol2": "gray8",
+					  "pltcol3": "darkblue",
+					  "linesolid":"solid"},
+					  
+    "diagramType": "binary",
+    "dataTransform": null,
+    "axesDefinition": {
+        "X": "Nb/2.33",
+        "Y": "Th/0.12"
+    },
+    "axesName": {
+        "X": "Nb[N]",
+        "Y": "Th[N]"
+    },
+    "limits": {
+        "X": [
+            0.01,
+            100
+        ],
+        "Y": [
+            0.01,
+            1000
+        ]
+    },
+    "log": "xy",
+    "template": {
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                0.01,
+                2.2
+            ],
+            "y": [
+                20,
+                8
+            ],
+            "col": "pltcol2"
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                0.01,
+                0.306,
+                100
+            ],
+            "y": [
+                0.1,
+                0.708,
+                1000
+            ],
+            "col": "pltcol2"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                0.306,
+                0.5
+            ],
+            "y": [
+                0.708,
+                0.001
+            ],
+            "col": "pltcol2"
+        },
+        "points1": {
+            "plotFun": "points",
+            "x": 0.306,
+            "y": 0.708,
+            "pch": 16,
+            "col": "pltcol3",
+            "cex": 2
+        },
+        "arrows1": {
+            "plotFun": "arrows",
+            "x0": 0.1,
+            "y0": 0.015,
+            "x1": 2,
+            "y1": 0.015,
+            "code": 3,
+            "col": "pltcol3",
+            "angle": 30,
+            "length": 0.15,
+            "lty": "linesolid",
+            "lwd": 2
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 200.5,
+            "plot.name": "NbN - ThN (Saccani 2015)"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 2.1,
+            "y": 0.013,
+            "text": "DIVERGENT PLATE &\nWITHIN-PLATE SETTINGS",
+            "cex": 0.8,
+            "col": "pltcol3",
+            "adj": [
+                0,
+                0
+            ],
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 0.09,
+            "y": 0.013,
+            "text": "CONVERGENT\nPLATE SETTINGS",
+            "cex": 0.8,
+            "col": "pltcol3",
+            "adj": [
+                1,
+                0
+            ],
+            "switch": "showText"
+        },
+        "text7": {
+            "plotFun": "text",
+            "x": 0.2,
+            "y": 17.5,
+            "text": "V o l c a n i c   A r c   A r r a y",
+            "cex": 1.5,
+            "col": "pltcol3",
+            "adj": [
+                0.5,
+                0.5
+            ],
+            "srt": 40,
+            "switch": "showText"
+        },
+        "text8": {
+            "plotFun": "text",
+            "x": 2.89,
+            "y": 3.55,
+            "text": "M O R B - O I B  A r r a y",
+            "cex": 1.5,
+            "col": "pltcol3",
+            "adj": [
+                0.5,
+                0.5
+            ],
+            "srt": 40,
+            "switch": "showText"
+        },
+        "text9": {
+            "plotFun": "text",
+            "x": 0.35,
+            "y": 0.708,
+            "text": "PM",
+            "col": "pltcol3",
+            "adj": 0,
+            "switch": "showText"
+        },
+        "text10": {
+            "plotFun": "text",
+            "x": 0.8,
+            "y": 40,
+            "text": "Continental margin\nvolcanic arc & \npolygenetic crust\nisland arc",
+            "col": "pltcol2",
+            "adj": [
+                0,
+                1
+            ],
+            "srt": 40,
+            "switch": "showText"
+        },
+        "text10.1": {
+            "plotFun": "text",
+            "x": 0.26,
+            "y": 2.74,
+            "text": "forearc &\nintra-arc",
+            "col": "pltcol2",
+            "adj": [
+                0.5,
+                0.5
+            ],
+            "srt": 40,
+            "switch": "showText"
+        },
+        "text10.2": {
+            "plotFun": "text",
+            "x": 0.03,
+            "y": 0.12,
+            "text": "nascent forearc",
+            "col": "pltcol2",
+            "adj": [
+                0.5,
+                0.5
+            ],
+            "srt": 22,
+            "switch": "showText"
+        }
+    }
+}
+

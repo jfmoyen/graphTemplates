@@ -1,0 +1,123 @@
+{
+    "name": "Hollocher2",
+    "fullName": "Hollocher et al. (2012) La/Yb vs. Th/Nb",
+    "details": "",
+    "reference": "Hollocher K, Robinson P, Walsh E, Roberts D (2012) Geochemistry of amphibolite-facies volcanics and gabbros of the Storen Nappe in extensions west and southwest of Trondheim, western gneiss region, Norway: a key to correlations and paleotectonic settings. Amer J Sci 312: 357-416",
+    "url": "https://doi.org/10.2475/04.2012.01",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+      
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+	"styleDefaults": {"pltcol2": "gray8"},
+	
+    "diagramType": "binary",
+    "dataTransform": null,
+    "axesDefinition": {
+        "X": "La/Yb",
+        "Y": "Th/Nb"
+    },
+    "limits": {
+        "X": [
+            0.5,
+            100
+        ],
+        "Y": [
+            0.01,
+            10
+        ]
+    },
+    "log": "xy",
+    "template": {
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                0.4,
+                7.15,
+                80,
+                7.15,
+                20,
+                7.15,
+                1.9,
+                5.5,
+                1.9,
+                7.15,
+                1.5
+            ],
+            "y": [
+                0.095,
+                0.13,
+                0.4,
+                0.13,
+                5,
+                0.13,
+                0.113,
+                5,
+                0.113,
+                0.13,
+                0.02
+            ],
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 211.5,
+            "plot.name": "Hollocher et al. (2012) La/Yb vs. Th/Nb"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 1.5,
+            "y": 0.05,
+            "text": "MORB",
+            "cex": 1,
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 20,
+            "y": 0.05,
+            "text": "Oceanic\nislands",
+            "cex": 1,
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 1.2,
+            "y": 0.8,
+            "text": "Oceanic\narcs",
+            "cex": 1,
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 6.8,
+            "y": 0.8,
+            "text": "Continental\narcs",
+            "cex": 1,
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 32,
+            "y": 0.8,
+            "text": "Alkaline\narcs",
+            "cex": 1,
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        }
+    }
+}
+

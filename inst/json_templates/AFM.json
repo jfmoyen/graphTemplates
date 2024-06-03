@@ -1,0 +1,173 @@
+{
+    "name": "AFM",
+    "fullName": "AFM (Irvine + Baragar 1971)",
+    "details": "",
+    "reference": "Irvine TM & Baragar WR (1971) A guide to the chemical classification of common volcanic rocks. Canad J Earth Sci 8: 523-548",
+    "url": "https://doi.org/10.1139/e71-055",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+    "styleDefaults": {"pltcol2": "gray8",
+					  "redline":"red"},
+
+    "diagramType": "ternary",
+	"ternaryRotation":0,
+	"ternaryScale":1,
+	
+    "dataTransform": null,
+    "axesDefinition": {
+        "A": "K2O+Na2O",
+        "B": "FeOt",
+        "C": "MgO"
+    },
+    "suppressAxes":true,
+    "limits": {
+        "X": [
+            -0.03,
+            1.03
+        ],
+        "Y": [
+            -0.05,
+            1.03
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3
+            ],
+            "rcname": [
+                "calc-alkaline series",
+                "tholeiite series"
+            ]
+        },
+        "lines0": {
+            "plotFun": "NULL",
+            "x": [
+                0,
+                0.15,
+                0.231,
+                0.312,
+                0.436,
+                0.473,
+                0.513,
+                0.542,
+                0.5555,
+                0.617,
+                0.675,
+                0.9167,
+                0
+            ],
+            "y": [
+                0,
+                0.2598,
+                0.3135,
+                0.3672,
+                0.4642,
+                0.4728,
+                0.4728,
+                0.4573,
+                0.4425,
+                0.3759,
+                0.3031,
+                0,
+                0
+            ],
+            "lwd": 3,
+            "col": "pltcol2"
+        },
+        "lines1": {
+            "plotFun": "NULL",
+            "x": [
+                1,
+                0.5,
+                0.15,
+                0.231,
+                0.312,
+                0.436,
+                0.473,
+                0.513,
+                0.542,
+                0.5555,
+                0.617,
+                0.675,
+                0.9167,
+                1
+            ],
+            "y": [
+                0,
+                0.866,
+                0.2598,
+                0.3135,
+                0.3672,
+                0.4642,
+                0.4728,
+                0.4728,
+                0.4573,
+                0.4425,
+                0.3759,
+                0.3031,
+                0,
+                0
+            ],
+            "lwd": 3,
+            "col": "redline"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                0.231,
+                0.312,
+                0.436,
+                0.473,
+                0.513,
+                0.542,
+                0.5555,
+                0.617,
+                0.675
+            ],
+            "y": [
+                0.3135,
+                0.3672,
+                0.4642,
+                0.4728,
+                0.4728,
+                0.4573,
+                0.4425,
+                0.3759,
+                0.3031
+            ],
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "ternary",
+            "plot.position": 11,
+            "plot.name": "AFM (Irvine + Baragar 1971)"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 0.5,
+            "y": 0.55,
+            "text": "Tholeiite Series",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 0.5,
+            "y": 0.1,
+            "text": "Calc-alkaline Series",
+            "col": "pltcol2",
+            "switch": "showText"
+        }
+    }
+}
+

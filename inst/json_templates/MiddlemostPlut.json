@@ -1,0 +1,464 @@
+{
+    "name": "MiddlemostPlut",
+    "fullName": "Middlemost (1985) ",
+    "details": "",
+    "reference": "Middlemost EAK (1985) Magmas and Magmatic Rocks. Longman, London",
+    "url": "",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+   
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+	"styleDefaults": {"pltcol2": "gray8"},
+	
+    "diagramType": "binary",
+    "dataTransform": null,
+    "axesDefinition": {
+        "X": "SiO2",
+        "Y": "Na2O+K2O"},
+    "limits": {
+        "X": [
+            42,
+            80
+        ],
+        "Y": [
+            0,
+            15
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+            ],
+            "rcname": [
+                "D, Gb",
+                "monzodiorite",
+                "monzonite",
+                "syenite",
+                "af syenite",
+                "diorite",
+                "qtz monzodiorite",
+                "qtz monzonite",
+                "qtz syenite",
+                "af qtz syenite",
+                "tonalite",
+                "granodirite",
+                "granite",
+                "af granite"
+            ]
+        },
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                44.5,
+                50.5,
+                45.5,
+                44.5
+            ],
+            "y": [
+                1.75,
+                4.9,
+                4,
+                1.75
+            ],
+            "col": "pltcol2"
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                45.5,
+                50.5,
+                56,
+                52,
+                45.5
+            ],
+            "y": [
+                4,
+                4.9,
+                7,
+                6.5,
+                4
+            ],
+            "col": "pltcol2"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                52,
+                56,
+                59.5,
+                56,
+                52
+            ],
+            "y": [
+                6.5,
+                7,
+                8.5,
+                8,
+                6.5
+            ],
+            "col": "pltcol2"
+        },
+        "lines4": {
+            "plotFun": "lines",
+            "x": [
+                56,
+                59.5,
+                62.1,
+                59.5,
+                56
+            ],
+            "y": [
+                8,
+                8.5,
+                11.1,
+                11.2,
+                8
+            ],
+            "col": "pltcol2"
+        },
+        "lines5": {
+            "plotFun": "lines",
+            "x": [
+                59.5,
+                62.1,
+                63,
+                62,
+                59.5
+            ],
+            "y": [
+                11.2,
+                11.1,
+                12.75,
+                13.5,
+                11.2
+            ],
+            "col": "pltcol2"
+        },
+        "lines6": {
+            "plotFun": "lines",
+            "x": [
+                44.5,
+                57.4,
+                60.25,
+                50.5,
+                44.5
+            ],
+            "y": [
+                1.75,
+                4.75,
+                5.5,
+                4.9,
+                1.75
+            ],
+            "col": "pltcol2"
+        },
+        "lines7": {
+            "plotFun": "lines",
+            "x": [
+                50.5,
+                60.25,
+                64,
+                56,
+                50.5
+            ],
+            "y": [
+                4.9,
+                5.5,
+                7.5,
+                7,
+                4.9
+            ],
+            "col": "pltcol2"
+        },
+        "lines8": {
+            "plotFun": "lines",
+            "x": [
+                56,
+                64,
+                67,
+                59.5,
+                56
+            ],
+            "y": [
+                7,
+                7.5,
+                9.5,
+                8.5,
+                7
+            ],
+            "col": "pltcol2"
+        },
+        "lines9": {
+            "plotFun": "lines",
+            "x": [
+                59.5,
+                67,
+                68,
+                62.1,
+                59.5
+            ],
+            "y": [
+                8.5,
+                9.5,
+                10.4,
+                11.1,
+                8.5
+            ],
+            "col": "pltcol2"
+        },
+        "lines10": {
+            "plotFun": "lines",
+            "x": [
+                68,
+                69,
+                63,
+                62.1,
+                68
+            ],
+            "y": [
+                10.4,
+                11.1,
+                12.75,
+                11.1,
+                10.4
+            ],
+            "col": "pltcol2"
+        },
+        "lines11": {
+            "plotFun": "lines",
+            "x": [
+                80,
+                80,
+                64,
+                60.25,
+                57.4,
+                80
+            ],
+            "y": [
+                2.67,
+                3.7,
+                5.4,
+                5.5,
+                4.75,
+                2.67
+            ],
+            "col": "pltcol2"
+        },
+        "lines12": {
+            "plotFun": "lines",
+            "x": [
+                80,
+                80,
+                74,
+                64,
+                60.25,
+                64,
+                80
+            ],
+            "y": [
+                3.7,
+                5.1,
+                6.5,
+                7.5,
+                5.5,
+                5.4,
+                3.7
+            ],
+            "col": "pltcol2"
+        },
+        "lines13": {
+            "plotFun": "lines",
+            "x": [
+                80,
+                80,
+                68,
+                67,
+                64,
+                74,
+                80
+            ],
+            "y": [
+                5.1,
+                7.3,
+                10.4,
+                9.5,
+                7.5,
+                6.5,
+                5.1
+            ],
+            "col": "pltcol2"
+        },
+        "lines14": {
+            "plotFun": "lines",
+            "x": [
+                80,
+                80,
+                69,
+                68,
+                80
+            ],
+            "y": [
+                7.3,
+                7.9,
+                11.1,
+                10.4,
+                7.3
+            ],
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 37,
+            "plot.name": "Middlemost (1985) "
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 61,
+            "y": 12,
+            "text": "Af\nSyenite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 65,
+            "y": 11.5,
+            "text": "Af\nQtz\nSyenite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 70,
+            "y": 10.5,
+            "text": "Af\nGranite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 59.5,
+            "y": 10,
+            "text": "Syenite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "srt": 45,
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 64,
+            "y": 10,
+            "text": "Qtz\nSyenite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 70,
+            "y": 8.5,
+            "text": "Granite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text7": {
+            "plotFun": "text",
+            "x": 56,
+            "y": 7.5,
+            "text": "Mz",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text8": {
+            "plotFun": "text",
+            "x": 61.5,
+            "y": 8,
+            "text": "Qtz\nMonzonite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text9": {
+            "plotFun": "text",
+            "x": 50.5,
+            "y": 5.5,
+            "text": "Monzo\nd",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "srt": 45,
+            "switch": "showText"
+        },
+        "text10": {
+            "plotFun": "text",
+            "x": 58,
+            "y": 6.5,
+            "text": "Qtz\nMonzodiorite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text11": {
+            "plotFun": "text",
+            "x": 68,
+            "y": 6.4,
+            "text": "Granodiorite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text12": {
+            "plotFun": "text",
+            "x": 46.5,
+            "y": 3.5,
+            "text": "D,\nGb",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text13": {
+            "plotFun": "text",
+            "x": 52,
+            "y": 4.3,
+            "text": "Qtz\nDiorite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        },
+        "text14": {
+            "plotFun": "text",
+            "x": 66,
+            "y": 4.75,
+            "text": "Tonalite",
+            "col": "pltcol2",
+            "cex": 0.75,
+            "switch": "showText"
+        }
+    }
+}
+

@@ -1,0 +1,114 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# graphTemplates
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+graphTemplates allows to define templates for R graphs, using json -- a human readable format (for certain values of "human"). These templates are primarily meant to be used with GCDkit (<http://gcdkit.org>), although the aim is to also supply parsers to use them in ggplot.
+
+## Installation
+
+The easiest way to install graphTemplates is directly from github:
+
+``` R
+devtools::install_github("jfmoyen/graphTemplates")
+```
+
+alternately, download the zip or gz archive from the "release" section and install with e.g.
+
+``` r
+install.packages("graphTemplates_0.1.zip",repo=NULL
+```
+
+However, the github version is more likely to be up to date.
+
+## Example
+
+### Using GCDkit/Figaro
+
+Once installed, templates can be used in GCDkit with
+
+```{r example}
+library(GCDkit)
+library(jsonGraphTemplates)
+
+ data("atacazo")
+ accessVar("atacazo")
+
+plotDiagram_json("TASMiddlemostVolc.json")
+```
+
+<img src="man/figures/example_graph.png" width="100%"/>
+
+### Using ggplot
+
+to be added
+
+## Templates
+
+Templates are defined as json files. For a more or less complete description of the format, `?jsonDiagramFormat`.
+
+## Technicities
+
+The normal workflow is the following:
+
+-   Read a template from the json file, together with some user-specified options (parse_template_fromjson). This returns a graphTemplate object. The parser combines json instructions with user input to modify or remove some elements.
+
+-   Modify it if needed, e.g. by adding ternary axes, but this is also the place where most components can be altered.
+
+-   Plot it, either
+
+    -   In figaro: pass to Figaro and convert into a Figaro template
+
+    -   in ggplot (to do).
+
+Thus, there are two main components: a parser, that reads a json file and returns a graphTemplate; and one (or several) plotters, that operate on a graphTemplate obejct.
+
+For instance:
+
+``` R
+# Load a template from its json file
+tt <- parse_template_fromjson("Cabanis",template_options=c(showText=F),
+                              style_options=c(arrowwidth=3))
+# Modify the template                              
+tt <- addTernaryAxes(tt)
+# Plot, in this case using globally-defined WR and labels as per GCDkit convention.
+plotFigaro(tt,WR,labels)
+```
+
+This workflow is wrapped in plotDiagram_json, that interprets GCDkit's options (and emulates plotDiagram).
+
+This package defines two (S3) classes – graphTemplate, and templateElement. Most functions operate on these classes.
+
+### graphTemplate
+
+The class graphTemplate is the core of the package. It is described in ?graphTemplate, and has a print method that gives some information. It is essentially a list of elements - the main one is template, itself a list of templateElement.
+
+A graphTemplate is generated from a json file (and user options) by the *parser*. Nothing stops you from defining it manually, or from any other source.
+
+It can be manipulated as a list, using normal R syntax; or through helper functions such as addTernaryAxes (adds pseudo-axes to draw the triangle of a ternary plot).
+
+Finally, one or several plotter(s) (for the moment there is only one plotter, a figaro plotter) interpret the template and combine it with data to plot the actual graph.
+
+### templateElement
+
+The class templateElement holds the information for one single element: a line, or a text item (the most commonly encountered). Such elements can be processed by Figaro. They are lists, with components depending on their actual type.
+
+templateElements hold graphical information (colour, line type...). They can be formatted, during parsing, using json fields and well as user options – see ?jsonDiagramFormat and ?templateElement.
+
+<!-- devtools::build_readme() -->

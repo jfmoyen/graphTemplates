@@ -1,0 +1,123 @@
+{
+    "name": "Norry",
+    "fullName": "Pearce + Norry (1979)",
+    "details": "",
+    "reference": "Pearce JA & Norry MJ (1979) Petrogenetic implications of Ti, Zr, Y, and Nb variations in volcanic rocks. Contrib Mineral Petrol 69: 33-47",
+    "url": "https://doi.org/10.1007/BF00375192",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+	
+    "styleDefaults": {"pltcol2": "gray8",
+					  "linedashed":"dashed"},
+					  
+   "diagramType": "binary",
+    "dataTransform": null,
+    "axesDefinition": {
+        "X": "Zr",
+        "Y": "Zr/Y"
+    },
+    "limits": {
+        "X": [
+            10,
+            1000
+        ],
+        "Y": [
+            1,
+            20
+        ]
+    },
+    "log": "xy",
+    "template": {
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                17,
+                35,
+                115,
+                59,
+                17
+            ],
+            "y": [
+                1.35,
+                3.2,
+                3.2,
+                1.35,
+                1.35
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                35,
+                72.5,
+                285,
+                130,
+                35
+            ],
+            "y": [
+                1.9,
+                3.6,
+                3.6,
+                1.9,
+                1.9
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                72.5,
+                210,
+                600,
+                210
+            ],
+            "y": [
+                3.6,
+                10,
+                10,
+                3.6
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 206,
+            "plot.name": "Pearce + Norry (1979)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 600,
+            "y": 5.8,
+            "text": "Within-Plate\nBasalts",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 17,
+            "y": 2.2,
+            "text": "Island Arc\nBasalts",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 280,
+            "y": 2.3,
+            "text": "Mid-Ocean\nRidge Basalts",
+            "col": "pltcol2",
+            "switch": "showText"
+        }
+    }
+}
+

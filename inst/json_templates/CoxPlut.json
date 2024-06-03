@@ -1,0 +1,560 @@
+{
+    "name": "CoxPlut",
+    "fullName": "TAS (Cox et al. 1979) ",
+    "details": "",
+    "reference": "Cox KG, Bell JD & Pankhurst (1979) The Interpretation of Igneous Rocks. Allen & Unwin, London",
+    "url": "",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    "diagramType": "binary",
+
+    "RDialect": "base",
+    "optionSwitches": {
+        "alkline": "Alkaline/subalkaline boundary",
+        "showText":  "Default option to show diagram text"},
+    "optionDefaults": {
+        "alkline": true,
+        "showText": true
+    },
+    "styleDefaults": {"pltcol2": "gray8",
+					  "pltcol3": "darkblue",
+					  "linedashed": "dashed"},
+					  
+    "dataTransform": null,
+    "axesDefinition": {
+        "X": "SiO2",
+        "Y": "Na2O+K2O"
+    },
+    "limits": {
+        "X": [
+            35,
+            76
+        ],
+        "Y": [
+            0,
+            17
+        ]
+    },
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ],
+            "rcname": [
+                "gabbro",
+                "gabbro",
+                "diorite",
+                "quartz diorite (granodiorite)",
+                "granite",
+                "undefined",
+                "undefined",
+                "syenodiorite",
+                "syenite",
+                "ijolite",
+                "nepheline syenite"
+            ]
+        },
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                41,
+                44,
+                52,
+                52,
+                53,
+                46.4,
+                44.5,
+                41
+            ],
+            "y": [
+                3,
+                2,
+                1.75,
+                5.6,
+                7.2,
+                7,
+                5.75,
+                3
+            ],
+            "col": "pltcol2"
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                52,
+                55,
+                54.75,
+                52,
+                52
+            ],
+            "y": [
+                1.75,
+                1.75,
+                5.5,
+                5.6,
+                1.75
+            ],
+            "col": "pltcol2"
+        },
+        "lines3": {
+            "plotFun": "lines",
+            "x": [
+                55,
+                57,
+                63,
+                62.5,
+                54.75,
+                55
+            ],
+            "y": [
+                1.75,
+                2,
+                3.5,
+                7,
+                5.5,
+                1.75
+            ],
+            "col": "pltcol2"
+        },
+        "lines4": {
+            "plotFun": "lines",
+            "x": [
+                63,
+                70,
+                65,
+                62.5,
+                63
+            ],
+            "y": [
+                3.5,
+                5.5,
+                9,
+                7,
+                3.5
+            ],
+            "col": "pltcol2"
+        },
+        "lines5": {
+            "plotFun": "lines",
+            "x": [
+                70,
+                75,
+                75,
+                69.3,
+                65,
+                70
+            ],
+            "y": [
+                5.5,
+                8,
+                9,
+                11.9,
+                9,
+                5.5
+            ],
+            "col": "pltcol2"
+        },
+        "lines6": {
+            "plotFun": "lines",
+            "x": [
+                52,
+                54.75,
+                62.5,
+                65,
+                62,
+                57,
+                53,
+                52
+            ],
+            "y": [
+                5.6,
+                5.5,
+                7,
+                9,
+                10,
+                9,
+                7.2,
+                5.6
+            ],
+            "col": "pltcol2"
+        },
+        "lines7": {
+            "plotFun": "lines",
+            "x": [
+                39.5,
+                41,
+                44.5,
+                46.4,
+                48,
+                50.25,
+                54.5,
+                51.5,
+                49,
+                40.5,
+                43.5,
+                39.5
+            ],
+            "y": [
+                4,
+                3,
+                5.75,
+                7,
+                8.3,
+                9.25,
+                11,
+                13.2,
+                15,
+                9.5,
+                8.33,
+                4
+            ],
+            "col": "pltcol2"
+        },
+        "lines8": {
+            "plotFun": "lines",
+            "x": [
+                46.4,
+                53,
+                57,
+                54.25,
+                50.25,
+                48,
+                46.4
+            ],
+            "y": [
+                7,
+                7.2,
+                9,
+                9.35,
+                9.25,
+                8.3,
+                7
+            ],
+            "col": "pltcol2"
+        },
+        "lines9": {
+            "plotFun": "lines",
+            "x": [
+                50.25,
+                54.25,
+                57,
+                62,
+                65,
+                69.3,
+                62,
+                57.75,
+                54.5,
+                50.25
+            ],
+            "y": [
+                9.25,
+                9.35,
+                9,
+                10,
+                9,
+                11.9,
+                14,
+                11.25,
+                11,
+                9.25
+            ],
+            "col": "pltcol2"
+        },
+        "lines10": {
+            "plotFun": "lines",
+            "x": [
+                36,
+                39.5,
+                43.5,
+                40.5,
+                36,
+                36
+            ],
+            "y": [
+                5.9,
+                4,
+                8.33,
+                9.5,
+                6.5,
+                5.9
+            ],
+            "col": "pltcol2"
+        },
+        "lines11": {
+            "plotFun": "lines",
+            "x": [
+                49,
+                51.5,
+                54.5,
+                57.75,
+                62,
+                52.2,
+                51.5,
+                49
+            ],
+            "y": [
+                15,
+                13.2,
+                11,
+                11.25,
+                14,
+                16.25,
+                16.25,
+                15
+            ],
+            "col": "pltcol2"
+        },
+        "lines12": {
+            "plotFun": "lines",
+            "x": [
+                57.75,
+                62
+            ],
+            "y": [
+                11.25,
+                10
+            ],
+            "col": "pltcol2"
+        },
+        "lines13": {
+            "plotFun": "lines",
+            "x": [
+                43.5,
+                45.35,
+                51.5
+            ],
+            "y": [
+                8.33,
+                9.375,
+                13.2
+            ],
+            "col": "pltcol2"
+        },
+        "lines14": {
+            "plotFun": "lines",
+            "x": [
+                45.35,
+                48
+            ],
+            "y": [
+                9.375,
+                8.3
+            ],
+            "col": "pltcol2"
+        },
+        "lines15": {
+            "plotFun": "lines",
+            "x": [
+                44.5,
+                52
+            ],
+            "y": [
+                5.75,
+                5.6
+            ],
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 31,
+            "plot.name": "TAS (Cox et al. 1979) "
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 70,
+            "y": 8.5,
+            "text": "Granite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 66,
+            "y": 6,
+            "text": "Quartz\ndiorite\n(granodiorite)",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 59,
+            "y": 4.5,
+            "text": "Diorite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 48.5,
+            "y": 3.5,
+            "text": "Gabbro",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 64,
+            "y": 11.5,
+            "text": "Syenite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 51.5,
+            "y": 8.3,
+            "text": "Syeno-\ndiorite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text7": {
+            "plotFun": "text",
+            "x": 56,
+            "y": 13.5,
+            "text": "Nepheline\nsyenite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text8": {
+            "plotFun": "text",
+            "x": 49.5,
+            "y": 6.2,
+            "text": "Gabbro",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text9": {
+            "plotFun": "text",
+            "x": 39,
+            "y": 6.5,
+            "text": "Ijolite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text10": {
+            "plotFun": "text",
+            "x": 56.5,
+            "y": 10,
+            "text": "Syenite",
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "lines16": {
+            "plotFun": "lines",
+            "x": [
+                39.2,
+                40,
+                43.2,
+                45,
+                48,
+                50,
+                53.7,
+                55,
+                60,
+                65,
+                77.4
+            ],
+            "y": [
+                0,
+                0.4,
+                2,
+                2.8,
+                4,
+                4.75,
+                6,
+                6.4,
+                8,
+                8.8,
+                10
+            ],
+            "col": "pltcol3",
+            "switch":"alkline"
+        },
+        "lines17": {
+            "plotFun": "abline",
+            "v": 45,
+            "lty": "linedashed",
+            "col": "pltcol3",
+            "switch":"alkline"
+        },
+        "lines18": {
+            "plotFun": "abline",
+            "v": 52,
+            "lty": "linedashed",
+            "col": "pltcol3",
+            "switch":"alkline"
+        },
+        "lines19": {
+            "plotFun": "abline",
+            "v": 63,
+            "lty": "linedashed",
+            "col": "pltcol3",
+            "switch":"alkline"
+        },
+        "text11": {
+            "plotFun": "text",
+            "x": 38.5,
+            "y": 2,
+            "text": "Alkaline",
+            "col": "pltcol3",
+            "font": 4,
+            "switch":"alkline"
+        },
+        "text12": {
+            "plotFun": "text",
+            "x": 42,
+            "y": 1,
+            "text": "Subalkaline/Tholeiitic",
+            "col": "pltcol3",
+            "adj": 0,
+            "font": 4,
+            "switch":"alkline"
+        },
+        "text13": {
+            "plotFun": "text",
+            "x": 40,
+            "y": 16,
+            "text": "Ultrabasic",
+            "col": "pltcol3",
+            "switch":"showText"
+        },
+        "text14": {
+            "plotFun": "text",
+            "x": 49,
+            "y": 16,
+            "text": "Basic",
+            "col": "pltcol3",
+            "switch":"showText"
+        },
+        "text15": {
+            "plotFun": "text",
+            "x": 58,
+            "y": 16,
+            "text": "Intermediate",
+            "col": "pltcol3",
+            "switch":"showText"
+        },
+        "text16": {
+            "plotFun": "text",
+            "x": 68,
+            "y": 16,
+            "text": "Acid",
+            "col": "pltcol3",
+            "switch":"showText"
+        }
+    }
+}
+

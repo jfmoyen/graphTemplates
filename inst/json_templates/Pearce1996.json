@@ -1,0 +1,479 @@
+{
+    "name": "Pearce1996",
+    "fullName": "Nb/Y - Zr/Ti plot (modified by Pearce 1996)",
+    "details": "",
+    "reference": "Pearce JA (1996) A User's Guide to Basalt Discrimination Diagrams. In Wyman DA (ed) Trace Element Geochemistry of Volcanic Rocks: Applications for Massive Sulphide Exploration. Geological Association of Canada, Short Course Notes 12, pp 79-113",
+    "url": "",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+						  
+   "diagramType": "binary",
+    "dataTransform": null,
+    "axesDefinition": {
+        "X": "Nb/Y",
+        "Y": "Zr/Ti"
+    },
+    "suppressAxes":true,
+    "limits": {
+        "X": [
+            0.01,
+            100
+        ],
+        "Y": [
+            0.001,
+            2
+        ]
+    },
+    "log": "xy",
+    "template": {
+        "clssf": {
+            "plotFun": "NULL",
+            "use": [
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11
+            ],
+            "rcname": [
+                "basalt",
+                "alkali basalt",
+                "foidite",
+                "andesite, basaltic andesite",
+                "trachyandesite",
+                "tephriphonolite",
+                "rhyolite, dacite",
+                "trachyte",
+                "phonolite",
+                "alkali rhyolite"
+            ]
+        },
+        "lines1": {
+            "plotFun": "NULL",
+            "x": [
+                -2,
+                -0.1739,
+                -0.1739,
+                -2,
+                -2
+            ],
+            "y": [
+                -3,
+                -3,
+                -1.6198,
+                -2.1192,
+                -3
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines2": {
+            "plotFun": "NULL",
+            "x": [
+                -0.1739,
+                0.4487,
+                0.4487,
+                -0.1739,
+                -0.1739
+            ],
+            "y": [
+                -3,
+                -3,
+                -1.4498,
+                -1.6198,
+                -3
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines3": {
+            "plotFun": "NULL",
+            "x": [
+                0.4487,
+                1.699,
+                1.699,
+                0.4487,
+                0.4487
+            ],
+            "y": [
+                -3,
+                -3,
+                -1.1073,
+                -1.4498,
+                -3
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines4": {
+            "plotFun": "NULL",
+            "x": [
+                -2,
+                -0.1739,
+                -0.1739,
+                -2,
+                -2
+            ],
+            "y": [
+                -2.1192,
+                -1.6198,
+                -1.0862,
+                -1.585,
+                -2.1192
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines5": {
+            "plotFun": "NULL",
+            "x": [
+                -0.1739,
+                0.4487,
+                0.4487,
+                -0.1739,
+                -0.1739
+            ],
+            "y": [
+                -1.6198,
+                -1.4498,
+                -0.9208,
+                -1.0862,
+                -1.6198
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines6": {
+            "plotFun": "NULL",
+            "x": [
+                0.4487,
+                1.699,
+                1.699,
+                0.4487,
+                0.4487
+            ],
+            "y": [
+                -1.4498,
+                -1.1073,
+                -0.5746,
+                -0.9208,
+                -1.4498
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines7": {
+            "plotFun": "NULL",
+            "x": [
+                -2,
+                -0.1739,
+                -0.1739,
+                -1.1871,
+                -2,
+                -2
+            ],
+            "y": [
+                -1.585,
+                -1.0862,
+                -0.699,
+                0.301,
+                0.301,
+                -1.585
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines8": {
+            "plotFun": "NULL",
+            "x": [
+                -0.1739,
+                0.4487,
+                0.4487,
+                -0.1739,
+                -0.1739
+            ],
+            "y": [
+                -1.0862,
+                -0.9208,
+                -0.0044,
+                -0.699,
+                -1.0862
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines9": {
+            "plotFun": "NULL",
+            "x": [
+                0.4487,
+                1.699,
+                1.699,
+                0.7419,
+                0.4487,
+                0.4487
+            ],
+            "y": [
+                -0.9208,
+                -0.5746,
+                0.301,
+                0.301,
+                -0.0044,
+                -0.9208
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines10": {
+            "plotFun": "NULL",
+            "x": [
+                -1.1871,
+                -0.1739,
+                0.4487,
+                0.7419,
+                -1.1871
+            ],
+            "y": [
+                0.301,
+                -0.699,
+                -0.0044,
+                0.301,
+                0.301
+            ],
+            "col": "red",
+            "lwd": 3
+        },
+        "lines11": {
+            "plotFun": "lines",
+            "x": [
+                0.01,
+                0.67,
+                2.81,
+                50
+            ],
+            "y": [
+                0.0076,
+                0.024,
+                0.0355,
+                0.0781
+            ],
+            "col": "pltcol2"
+        },
+        "lines12": {
+            "plotFun": "lines",
+            "x": [
+                0.01,
+                0.67,
+                2.81,
+                50
+            ],
+            "y": [
+                0.026,
+                0.082,
+                0.12,
+                0.2663
+            ],
+            "col": "pltcol2"
+        },
+        "lines13": {
+            "plotFun": "lines",
+            "x": [
+                0.67,
+                0.67
+            ],
+            "y": [
+                0.001,
+                0.2
+            ],
+            "col": "pltcol2"
+        },
+        "lines14": {
+            "plotFun": "lines",
+            "x": [
+                2.81,
+                2.81
+            ],
+            "y": [
+                0.001,
+                0.99
+            ],
+            "col": "pltcol2"
+        },
+        "lines15": {
+            "plotFun": "lines",
+            "x": [
+                0.065,
+                0.67,
+                5.52
+            ],
+            "y": [
+                2,
+                0.2,
+                2
+            ],
+            "col": "pltcol2"
+        },
+        "axis1": {
+            "plotFun": "axis",
+            "side": 1,
+            "at": [
+                0.01,
+                0.1,
+                1,
+                10,
+                100,
+                1000
+            ],
+            "labels": [
+                0.01,
+                0.1,
+                1,
+                10,
+                100,
+                1000
+            ],
+            "las": 0,
+            "hadj": "NA",
+            "padj": "NA",
+            "lty": "solid"
+        },
+        "axis2": {
+            "plotFun": "axis",
+            "side": 2,
+            "at": [
+                0.001,
+                0.01,
+                0.1,
+                1
+            ],
+            "labels": [
+                0.001,
+                0.01,
+                0.1,
+                1
+            ],
+            "las": 0,
+            "hadj": "NA",
+            "padj": "NA",
+            "lty": "solid"
+        },
+        "box": {
+            "plotFun": "box",
+            "which": "plot",
+            "col": "black",
+            "lwd": 1
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 27,
+            "plot.name": "Nb/Y - Zr/Ti plot (modified by Pearce 1996)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 0.08,
+            "y": 0.003,
+            "text": "basalt",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 1.5,
+            "y": 0.01,
+            "text": "alkali\nbasalt",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 8,
+            "y": 0.01,
+            "text": "foidite",
+            "col": "pltcol2",
+            "adj": [
+                0,
+                0.5
+            ],
+            "switch": "showText"
+        },
+        "text4": {
+            "plotFun": "text",
+            "x": 0.1,
+            "y": 0.03,
+            "text": "andesite\nbasaltic andesite",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "srt": 17,
+            "switch": "showText"
+        },
+        "text5": {
+            "plotFun": "text",
+            "x": 1.5,
+            "y": 0.06,
+            "text": "trachy-\nandesite",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "srt": 17,
+            "switch": "showText"
+        },
+        "text6": {
+            "plotFun": "text",
+            "x": 10,
+            "y": 0.095,
+            "text": "tephriphonolite",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "srt": 17,
+            "switch": "showText"
+        },
+        "text7": {
+            "plotFun": "text",
+            "x": 0.1,
+            "y": 0.2,
+            "text": "rhyolite\ndacite",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text8": {
+            "plotFun": "text",
+            "x": 1.5,
+            "y": 0.2,
+            "text": "trachyte",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text9": {
+            "plotFun": "text",
+            "x": 10,
+            "y": 0.4,
+            "text": "phonolite",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        },
+        "text10": {
+            "plotFun": "text",
+            "x": 0.8,
+            "y": 0.6,
+            "text": "alkali\nrhyolite",
+            "col": "pltcol2",
+            "adj": 0.5,
+            "switch": "showText"
+        }
+    }
+}
+

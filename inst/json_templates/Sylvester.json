@@ -1,0 +1,103 @@
+{
+    "name": "Sylvester",
+    "fullName": "Sylvester (1989)",
+    "details": "",
+    "reference": "Sylvester P J (1989) Post-collisional alkaline granites. J Geol 97: 261-280",
+    "url": "https://doi.org/10.1086/629302",
+    "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+
+    "RDialect": "base",
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": true},
+
+	"styleDefaults": {"pltcol2": "gray8",
+					  "linedashed":"dashed",
+					  "linesolid":"solid"},
+					  
+    "diagramType": "binary",
+    "dataTransform": null,
+    "dataFilter": "SiO2>68",
+    "axesDefinition": {
+        "X": "100*(MgO+FeOt+TiO2)/SiO2",
+        "Y": "(Al2O3+CaO)/(FeOt+Na2O+K2O)"
+    },
+    "limits": {
+        "X": [
+            0,
+            12
+        ],
+        "Y": [
+            0.8,
+            2.2
+        ]
+    },
+    "template": {
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                1.6,
+                4.4,
+                9
+            ],
+            "y": [
+                1.7,
+                1.44,
+                1.44
+            ],
+            "col": "pltcol2",
+            "lty": "linesolid"
+        },
+        "lines2": {
+            "plotFun": "lines",
+            "x": [
+                3,
+                4.4
+            ],
+            "y": [
+                1.28,
+                1.44
+            ],
+            "col": "pltcol2",
+            "lty": "linedashed"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.position": 107,
+            "plot.name": "Sylvester (1989)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 1,
+            "y": 1.85,
+            "text": "Calc-alkaline & Strongly peraluminous",
+            "cex": 1,
+            "adj": 0,
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 1,
+            "y": 1.15,
+            "text": "Alkaline",
+            "cex": 1,
+            "adj": 0,
+            "col": "pltcol2",
+            "switch": "showText"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 9,
+            "y": 2.15,
+            "text": "expression({SiO[2]} > 68*symbol(' ')*wt.*symbol('%'))" ,
+            "cex": 1,
+            "adj": 0,
+            "col": "pltcol3",
+            "switch": "showText"
+        }
+    }
+}
+
