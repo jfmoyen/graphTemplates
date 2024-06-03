@@ -148,6 +148,9 @@ plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
   # Include in template
   self$template <- c(self$template,A=list(A),B=list(B),C=list(C))
 
+  # Draw pseudo axes
+  self <- addTernaryAxes(self)
+
   #### Build the figaro "style sheet" ####
   sheet<-list(demo=list(fun="plot",
                         call=list(xlim = self$limits$X,

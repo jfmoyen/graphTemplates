@@ -218,7 +218,7 @@ addTernaryAxes.graphTemplate <- function(self,scale,rotation){
   stop(msg)
 }
 
-addTernaryAxes.ternary <- function(self,scale,rotation){
+addTernaryAxes.ternary <- function(self,scale=1,rotation=0){
   #' @export
   #' @rdname addTernaryAxes.graphTemplate
   pseudoAxes=list(type="lines",x=c(0,1,0.5,0),y=c(0,0,sqrt(3)/2,0),col="black")

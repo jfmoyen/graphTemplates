@@ -71,6 +71,17 @@ plotFigaro(tt,WR,labels)
 
 ############
 # Adding points
+WRata <- WR
+lblata <- labels
+data(blatna)
+accessVar("blatna")
+
+plotDiagram_json("DebonPQ")
+addData(tt,WRata,"black",3)
+
+# Adding lines
+plotDiagram_json("DebonPQ")
+addLine(c(0,100),c(-100,100))
 
 ######## Test all diagrams
 templ_dir <- system.file("json_templates",package="graphTemplates")
