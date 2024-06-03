@@ -2,14 +2,10 @@
 ### SETUP ###
 
 library(GCDkit)
+library(graphTemplates)
 
 data("atacazo")
 accessVar(atacazo)
-
-setwd("D:/GitProjects/graphTemplates")
-
-document()
-load_all()
 
 #############
 # low-level functions: simple usage

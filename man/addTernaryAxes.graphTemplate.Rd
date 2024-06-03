@@ -10,7 +10,7 @@ addTernaryAxes(self, scale, rotation)
 
 \method{addTernaryAxes}{graphTemplate}(self, scale, rotation)
 
-\method{addTernaryAxes}{ternary}(self, scale, rotation)
+\method{addTernaryAxes}{ternary}(self, scale = 1, rotation = 0)
 }
 \arguments{
 \item{self}{a graphTemplate}
