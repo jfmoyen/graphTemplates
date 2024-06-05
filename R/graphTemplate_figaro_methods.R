@@ -189,6 +189,14 @@ plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
 
 }
 
+plotFigaro.plate <- function(self,wrdata,lbl,new=F,...){
+  #' @export
+  #' @rdname plotFigaro.graphTemplate
+
+  self <- NextMethod()
+
+}
+
 #### Generic
 pointCoordinates <- function(self,wrdata,lbl) {
   #' @rdname pointCoordinates.graphTemplate

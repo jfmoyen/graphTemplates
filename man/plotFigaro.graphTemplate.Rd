@@ -5,6 +5,7 @@
 \alias{plotFigaro.graphTemplate}
 \alias{plotFigaro.binary}
 \alias{plotFigaro.ternary}
+\alias{plotFigaro.plate}
 \title{plotFigaro}
 \usage{
 plotFigaro(self, wrdata, lbl, new, ...)
@@ -14,6 +15,8 @@ plotFigaro(self, wrdata, lbl, new, ...)
 \method{plotFigaro}{binary}(self, wrdata, lbl, new = F, ...)
 
 \method{plotFigaro}{ternary}(self, wrdata, lbl, new = F, ...)
+
+\method{plotFigaro}{plate}(self, wrdata, lbl, new = F, ...)
 }
 \arguments{
 \item{self}{a graphTemplate object}

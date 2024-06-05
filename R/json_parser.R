@@ -1,5 +1,58 @@
-####### json reader #################
+#############################################
+#
+## The json parser and its subcomponents ####
+#
+#############################################
 
+
+#### Top-level json parser ####
+###############################
+
+parseJsonTemplate <-function(json,path=NULL,...){
+  #' Parse a template loaded from json, converting the options as required
+  #'
+  #' This function combines a "raw" list, loaded from json file, with user options.
+  #' It performs the required modifications, such as changing colours or
+  #' removing elements, and returns a properly formatted graphTemplate object.
+  #'
+  #' @param json Name of the template file (if the .json extension is missing, it will be added automatically)
+  #' @param path Path to json file. By default the package files.
+  #' @param meta the names of the fields from the json file that should be kept as meta
+  #' @param ... further options to be processed, see \link{make_single_template}
+  #' @details
+  #' This is a thin wrapper on make_single_template. It main job is to decide whether
+  #' we are looking at a single plot, or a plate, and send the template or templates
+  #' to make_single_template
+  #'
+  #' @returns a graphTemplate object.
+  #'
+  #' @export
+
+  # Get the template
+  tpl_raw <- load_json_file(json,path)
+
+  if(tpl_raw$diagramType == "plate"){
+    # # Several diagrams, that need to be treated in turn
+    # nbslots <- length(tpl$plateSlots)
+    # ee <- lapply(1:nbslots, function(i) {
+    #   component <- tpl$plateSlots[i]
+    #   foo <- load_json_file(component,path)
+    #   process_options(foo,...)
+    # })
+    # class(ee)<- c("plate","graphTemplate")
+  }else{
+    # Any other type is only one diagram
+    tpl <- make_single_template(tpl_raw,...)
+  }
+
+  # Global template description options
+
+  return(tpl)
+}
+
+
+#### Internal functions ####
+############################
 
 #### Load json template ####
 
@@ -56,61 +109,99 @@ load_json_file<-function(json,path=NULL){
   return(graphDef)
 }
 
-#### JSON PARSER ####
-parse_template_fromjson<-function(json,path=NULL,
-                                  meta=c("details","reference","url","templateAuthor","templateConversion","templateHistory"),
-                                  template_options=NULL,
-                                  transform_options=NULL,
-                                  style_options=c("colDefault"="black",
-                                                  ltyDefault="solid",
-                                                  lwdDefault=1),
-                                  doFilter=T){
-  #' Parse a template loaded from json, converting the options as required
+#### Convert the input list into a graphTemplate ####
+make_single_template <- function(tpl_raw,
+                                 meta=c("details","reference","url","templateAuthor","templateConversion","templateHistory"),
+                                 template_options=NULL,
+                                 transform_options=NULL,
+                                 style_options=c("colDefault"="black",
+                                                 ltyDefault="solid",
+                                                 lwdDefault=1),
+                                 doFilter=T){
+  #' Convert a raw list into a proper graphTemplate
   #'
-  #' This function combines a "raw" list, loaded from json file, with user options.
-  #' It performs the required modifications, such as changing colours or
-  #' removing elements, and returns a properly formatted graphTemplate object.
-  #'
-  #' @param json Name of the template file (if the .json extension is missing, it will be added automatically)
-  #' @param path Path to json file. By default the package files.
-  #' @param meta the names of the fields from the json file that should be kept as meta
-  #' @param template_options Named vector. They contain the switches to activate, or
-  #' desactivate, controlling the display of some graph elements (see ?jsonDiagramFormat)
+  #' @param tpl_raw a list, that will be converted to a graphTemplate.
+  #' Probably loaded from json, using \link{load_json_file}
+  #' @param meta the names of the fields from the input list that should be kept as meta
+  #' @param template_options Named vector. They contain the switches to activate, or desactivate,
+  #' controlling the display of some graph elements (see \link{jsonDiagramFormat}).
   #' @param transform_options Additional parameters to pass to the data transformation function
-  #' @param style_options Options to control the styling of some elements of the template.
-  #' (see ?jsonDiagramFormat).
+  #' @param style_options Options to control the styling of some elements of the template (see \link{jsonDiagramFormat}).
   #' @param doFilter if the template contains a filter (eg SiO2 > 45), should we respect it?
-  #'
-  #' @details
-    #' Most of the heavy loading is done at etemplate element level. A template is
-    #' primarily a collection (list) of templateElement, stored in self$template.
-    #' Each will be further processed, based on its class (lines, text...)
-    #'
-  #' @returns a graphTemplate object.
   #'
   #' @export
 
-  # Get the template
-  tpl <- load_json_file(json,path)
-
   # Prepare the switching options
-  switching_options <- unlist(tpl$optionDefaults)
+  switching_options <- unlist(tpl_raw$optionDefaults)
   switching_options[names(template_options)]<-template_options[names(template_options)]
 
   # Prepare the styling options
   # Default is what is found in the template, overidden by user
   # Note that we include de fact a default value!
-  st_opt <- unlist(tpl$styleDefaults)
+  st_opt <- unlist(tpl_raw$styleDefaults)
   st_opt[names(style_options)] <- style_options[names(style_options)]
 
+  # Prettify the template
+  template_nice <- process_template_options(tpl_raw$template,switching_options,st_opt)
+
+  # Assemble the return object
+  gt <- graphTemplate(
+    Rdialect = tpl_raw$RDialect,
+    axesDefinition = tpl_raw$axesDefinition,
+    axesName = tpl_raw$axesName,
+    limits = tpl_raw$limits,
+    template = template_nice,
+    diagramType = tpl_raw$diagramType,
+    dataFilter = if(doFilter){tpl_raw$dataFilter}
+  )
+
+  ## Add the missing bits
+  # Metadata etc
+  meta <- intersect(meta,names(tpl_raw))
+
+  # Include in template
+  gt$meta <- tpl_raw[meta]
+
+  # Name
+  if(is.null(tpl_raw$name)){gt$name<-""}else{gt$name<-tpl_raw$name}
+  if(is.null(tpl_raw$fullName)){gt$fullName<-""}else{gt$fullName<-tpl_raw$fullName}
+
+  # A better definition of log
+  if(is.null(tpl_raw$log)){gt$log<-""}else{gt$log<-tpl_raw$log}
+
+  # Construct the data transform function
+  gt <- add_datatransform(gt, tpl_raw$dataTransform, tpl_raw$dataTransformParams, transform_options )
+
+  return(gt)
+}
+
+#### Modify a template based on options ####
+process_template_options<-function(tpl_objects,
+                                   switching_options=NULL,
+                                   style_options=c("colDefault"="black",
+                                                   ltyDefault="solid",
+                                                   lwdDefault=1)){
+  #' Internal function, modifies a template based on user options
+  #'
+  #' @param tpl_objects A list containing elements that can be interpreted as templateElement
+  #' @param template_options Named vector. They contain the switches to activate, or desactivate,
+  #' controlling the display of some graph elements (see \link{jsonDiagramFormat}).
+  #' @param style_options Options to control the styling of some elements of the template (see \link{jsonDiagramFormat}).
+  #' @details each element of the input list will be converted into a templateElement object.
+  #' If it is switched "off", it will be removed. If appropriate, its properties
+  #' (col, lty and lwd) will be modified.
+  #'
+  #' @returns a list of templateElement, modified and "filtered" as required
+  #' @export
+
   # Prettify each template element
-  if(is.null(tpl$template)){
+  if(is.null(tpl_objects)){
     template_nice <- NULL
   }else{
-    template_nice<-lapply(tpl$template,
+    template_nice<-lapply(tpl_objects,
                           function(z){
-                            class(z) <- c(z$plotFun, "templateElement",class(z))
-                            zz<-styleTemplateElement(z,st_opt)
+                            class(z)<-c("templateElement",class(z))
+                            zz<-styleTemplateElement(z,style_options)
                             zzz<-showTemplateElement(zz,switching_options)
                             return(zzz)
                           })
@@ -123,45 +214,45 @@ parse_template_fromjson<-function(json,path=NULL,
     template_nice <- list(nothing=list(plotFun=""))
   }
 
-  # A better definition of log
-  if(is.null(tpl$log)){lg<-""}else{lg<-tpl$log}
-  # The return object
-   ee<- graphTemplate(
-      name = tpl$name,
-      fullName = tpl$fullName,
-      meta = tpl[meta],
-      Rdialect = tpl$RDialect,
-      axesDefinition = tpl$axesDefinition,
-      axesName = tpl$axesName,
-      log=lg,
-      limits = tpl$limits,
-      template = template_nice,
-      diagramType = tpl$diagramType,
-      dataFilter = if(doFilter){tpl$dataFilter}
-    )
+  return(template_nice)
+}
 
- # Add the data transform function (if there is one)
-   if(!is.null(tpl$dataTransform)){
-     #Build the function
-     trfFunction<-try(get(tpl$dataTransform),silent=T)
-     if(class(trfFunction)=="try-error"){
-       stop(cat("Function",tpl$dataTransform,"is required but has not been found\n"))
-       }
-     trfParams <- tpl$dataTransformParams
+#### Append data transformation function ####
 
-     # So we have a function that returns a function that executes a function
-     # (holy Molly...)
-     fun <- function(trfParams,transform_options){
-       function(wrdata) {
-         args <- c(list(wrdata),trfParams,transform_options)
-         do.call(trfFunction,args=args )
-       }
-     }
+add_datatransform <- function(tpl,
+                              dataTransform=tpl$dataTransform,
+                              dataTransformParams=tpl$dataTransformParams,
+                              transform_options=NULL){
+  #' Internal function to build and add the data transform function
+  #'
+  #' @param tpl a graphTemplate
+  #' @param dataTransform In string form, the name of the data transform function
+  #' @param transform_options optional options for the data transform function
+  #' @returns a graphtemplate with data transform function
+  #'
+  #' @export
 
-     # Include it in the object (at least we execute one...)
-     ee$dataTransform <- fun(trfParams,transform_options)
- }
+  if(!is.null(dataTransform)){
+    #Build the function
+    trfFunction<-try(get(dataTransform),silent=T)
+    if(class(trfFunction)=="try-error"){
+      stop(cat("Function",dataTransform,"is required but has not been found\n"))
+    }
+    trfParams <- dataTransformParams
 
- return(ee)
+    # So we have a function that returns a function that executes a function
+    # (holy Molly...)
+    fun <- function(trfParams,transform_options){
+      function(wrdata) {
+        args <- c(list(wrdata),trfParams,transform_options)
+        do.call(trfFunction,args=args )
+      }
+    }
+
+    # Include it in the object (at least we execute one...)
+    tpl$dataTransform <- fun(trfParams,transform_options)
+  }
+
+  return(tpl)
 }
 

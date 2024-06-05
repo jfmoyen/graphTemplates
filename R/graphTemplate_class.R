@@ -183,8 +183,15 @@ print.ternary <- function(self,..){
   NextMethod()
 }
 
-
-
+print.plate <- function(self,..){
+  #' @export
+  #' @rdname graphTemplate
+  cat("A plate template called ")
+  cat(self$name,"\n")
+  cat(self$fullName,"\n")
+  cat("(see $meta for more details)\n")
+  cat("-----------------------------------\n")
+}
 
 #### Generic
 #' addTernary

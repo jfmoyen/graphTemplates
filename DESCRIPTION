@@ -1,6 +1,6 @@
 Package: graphTemplates
 Title: An infrastructure to define reusable templates for graphs
-Version: 0.2
+Version: 0.2.1
 Authors@R: 
     person("Jean-François", "Moyen", , "jfmoyen@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0065-2442"))

@@ -1,7 +1,7 @@
 ### Call from GCDkit
 
 
-plotDiagram_json <- function(diagram,select.samples=TRUE,new=TRUE,main=NULL,width=6.5,height=6.5,pointsize=10,
+plotDiagram.json <- function(diagram,select.samples=TRUE,new=TRUE,main=NULL,width=6.5,height=6.5,pointsize=10,
                              bg="transparent",autoscale=TRUE,interactive=FALSE,...){
   #' A replacement for GCDkit's plotDiagram, with the same API
   #'
@@ -133,7 +133,7 @@ addData <- function(tpl,newData,col,pch){
   #' A simple function demonstrating how to use the template info to add points
   #' to a graph...
   #'
-  #' @param tpl a template
+  #' @param tpl a graphTemplate (of this class)
   #' @param newData The new compositions, in WR style
   #' @param col, pch: symbols and colors
   #'

@@ -8,6 +8,7 @@
 \alias{print.unknown}
 \alias{print.binary}
 \alias{print.ternary}
+\alias{print.plate}
 \title{Class constructor for graphTemplate}
 \usage{
 new_graphTemplate(
@@ -50,6 +51,8 @@ graphTemplate(
 \method{print}{binary}(self, ..)
 
 \method{print}{ternary}(self, ..)
+
+\method{print}{plate}(self, ..)
 }
 \arguments{
 \item{All}{the elements of the list, as given above, correspond to parameters of the
