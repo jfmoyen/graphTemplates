@@ -52,7 +52,8 @@ readFigaroTemplate<-function(diag){
 }
 
 ##########
-ee<-readFigaroTemplate(plate[[1]])
+plotDiagram("Frost")
+ee<-readFigaroTemplate(plate[[3]])
 # ee$template$B$text<-NULL ##When text appears as expression
 ee.json <- prettify(toJSON(ee,null="null",auto_unbox = T))
-write(ee.json,"./inst/json_templates/plate_components/Frost_fig1.json")
+write(ee.json,"./inst/json_templates/plate_components/Frost_fig3.json")

@@ -229,14 +229,13 @@ plotFigaro.plate <- function(self,wrdata,lbl,new=F,...){
     graphics::screen(i, new = FALSE)
 
     ## Geometric considerations
+    graphics::par(pty = "s")
     if (.Platform$OS.type == "windows" & .Platform$GUI ==
         "Rgui") {
       graphics::par(mar = c(4.5, 5.5, 2, 1.5))
-      graphics::par(pty = "s")
     }
     else {
       graphics::par(mar = c(2, 0.5, 1, 1))
-      graphics::par(pty = "s")
     }
 
     ## The actual plot
@@ -315,7 +314,6 @@ pointCoordinates.binary <- function(self,wrdata,lbl){
     newdata <- newdata[selected,,drop=F]
     lbl <- lbl[selected,,drop=F]
   }
-
 
   x.data <- GCDkit::calcCore(self$axesDefinition$X,where="newdata",redo=F)$results
   y.data <- GCDkit::calcCore(self$axesDefinition$Y,where="newdata",redo=F)$results

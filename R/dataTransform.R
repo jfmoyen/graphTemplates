@@ -47,7 +47,6 @@ recastAnhydrous <- function(where){
 
 ############### Calculate Ohta & Arai parameters ####################
 
-
 OhtaAraiParams<-function(where){
   #' Recalculate Otha + Arai M, F and W parameters
   #' @export
@@ -101,7 +100,6 @@ OhtaAraiParams<-function(where){
 
   return(as.matrix(ret))
   }
-
 
 
 ####### Demo transformation function #####

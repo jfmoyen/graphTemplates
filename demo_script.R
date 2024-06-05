@@ -102,3 +102,7 @@ sapply(templ_list,
          plotFigaro(tt,WR,labels)
          cat(thediag,"OK\n")
          } )
+
+### TESTING ZONE
+tt<-parseJsonTemplate("Frost")
+plotFigaro(tt,WR,labels)

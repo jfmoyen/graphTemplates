@@ -1,0 +1,148 @@
+{
+    "name": "Frost_fig3",
+    "fullName": "ASI - A/NK (Frost et al. 2001, plot 3)",
+    "details": "",
+"reference": "Frost BR, Barnes CG, Collins WJ, Arculus RJ, Ellis DJ, Frost CD (2001) A geochemical classification for granitic rocks. J Petrol 42: 2033-2048. doi: 10.1093/petrology/42.11.2033",
+    "url": "https://academic.oup.com/petrology/article/42/11/2033/1480305",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    "RDialect": "GCDkit",
+    "optionSwitches": {
+        "showText": "Default option to show diagram text"
+    },
+    "optionDefaults": {
+        "showText": true
+    },
+	
+	"styleDefaults": {"pltcol2": "gray8",
+			  "colblack": "black",
+			  "linesolid": "solid"},
+			  
+    "diagramType": "binary",
+    "dataTransform": "FrostASI",
+    "axesDefinition": {
+        "X": "ASI",
+        "Y": "A/NK"
+    },
+	"suppressAxes":true,
+    "limits": {
+        "X": [
+            0.5,
+            1.9
+        ],
+        "Y": [
+            0.6,
+            3.5
+        ]
+    },
+    "template": {
+        "axis1": {
+            "plotFun": "axis",
+            "side": 1,
+            "at": [
+                0.5,
+                0.7,
+                0.9,
+                1.1,
+                1.3,
+                1.5,
+                1.7,
+                1.9
+            ],
+            "labels": [
+                "0.5",
+                "0.7",
+                "0.9",
+                "1.1",
+                "1.3",
+                "1.5",
+                "1.7",
+                "1.9"
+            ],
+            "cex.axis": 1.2,
+            "cex.lab": 1.35,
+            "las": 0,
+            "hadj": "NA",
+            "padj": "NA",
+            "lty": "linesolid"
+        },
+        "axis2": {
+            "plotFun": "axis",
+            "side": 2,
+            "at": [
+                0.6,
+                1,
+                1.4,
+                1.8,
+                2.2,
+                2.6,
+                3
+            ],
+            "labels": [
+                "0.6",
+                "1",
+                "1.4",
+                "1.8",
+                "2.2",
+                "2.6",
+                "3"
+            ],
+            "cex.axis": 1.2,
+            "cex.lab": 1.35,
+            "las": 0,
+            "hadj": "NA",
+            "padj": "NA",
+            "lty": "linesolid"
+        },
+        "box": {
+            "plotFun": "box",
+            "which": "plot",
+            "col": "colblack",
+            "lwd": 1
+        },
+        "lines1": {
+            "plotFun": "abline",
+            "h": 1,
+            "col": "pltcol2"
+        },
+        "lines2": {
+            "plotFun": "abline",
+            "v": 1,
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.name": "ASI - A/NK (Frost et al. 2001)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 0.55,
+            "y": 3.4,
+            "text": "metaluminous",
+            "adj": 0,
+            "cex": 1,
+            "col": "pltcol2"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 1.85,
+            "y": 3.4,
+            "text": "peraluminous",
+            "adj": 1,
+            "cex": 1,
+            "col": "pltcol2"
+        },
+        "text3": {
+            "plotFun": "text",
+            "x": 0.55,
+            "y": 0.8,
+            "text": "peralkaline",
+            "adj": 0,
+            "cex": 1,
+            "col": "pltcol2"
+        }
+    }
+}
+

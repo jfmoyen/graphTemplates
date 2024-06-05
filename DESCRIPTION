@@ -1,10 +1,10 @@
 Package: graphTemplates
 Title: An infrastructure to define reusable templates for graphs
-Version: 0.3
+Version: 0.3.1
 Authors@R: 
     person("Jean-François", "Moyen", , "jfmoyen@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-0065-2442"))
-Description: Define a S3 class that stores all the informatin needed to define a
+Description: Define a S3 class that stores all the information needed to define a
     reproducible graph template.
 Imports: jsonlite
 Suggests: GCDkit, ggplot2

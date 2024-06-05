@@ -1,0 +1,197 @@
+{
+    "name": "Frost_fig1",
+    "fullName": "SiO2 - FeNr (Frost et al. 2001, plot 1)",
+    "details": "The template should be adapted when FeO or FeOt are used...",
+    "reference": "Frost BR, Barnes CG, Collins WJ, Arculus RJ, Ellis DJ, Frost CD (2001) A geochemical classification for granitic rocks. J Petrol 42: 2033-2048. doi: 10.1093/petrology/42.11.2033",
+    "url": "https://academic.oup.com/petrology/article/42/11/2033/1480305",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Converted from original GCDkit function",
+    "RDialect": "base",
+    "optionSwitches": {
+        "showText": "Default option to show diagram text"
+    },
+    "optionDefaults": {
+        "showText": true
+    },
+	
+	"styleDefaults": {"pltcol2": "gray8",
+				  "colblack": "black",
+				  "linesolid": "solid"},
+					  
+    "diagramType": "binary",
+    "dataTransform": "FrostFeNbr",
+    "axesDefinition": {
+        "X": "SiO2",
+        "Y": "FeNbr"
+    },
+	    "axesName": {
+        "X": "SiO2",
+        "Y": "Fe Nbr. (wt.)"
+    },
+	"suppressAxes":true,
+    "limits": {
+        "X": [
+            50,
+            80
+        ],
+        "Y": [
+            0,
+            1
+        ]
+    },
+    "template": {
+        "axis1": {
+            "plotFun": "axis",
+            "side": 1,
+            "at": [
+                40,
+                45,
+                50,
+                55,
+                60,
+                65,
+                70,
+                75,
+                80
+            ],
+            "labels": [
+                "40",
+                "45",
+                "50",
+                "55",
+                "60",
+                "65",
+                "70",
+                "75",
+                "80"
+            ],
+            "cex.axis": 1.2,
+            "cex.lab": 1.35,
+            "las": 0,
+            "hadj": "NA",
+            "padj": "NA",
+            "lty": "linesolid"
+        },
+        "axis2": {
+            "plotFun": "axis",
+            "side": 2,
+            "at": [
+                0,
+                0.2,
+                0.4,
+                0.6,
+                0.8,
+                1
+            ],
+            "labels": [
+                "0",
+                "0.2",
+                "0.4",
+                "0.6",
+                "0.8",
+                "1"
+            ],
+            "cex.axis": 1.2,
+            "cex.lab": 1.35,
+            "las": 0,
+            "hadj": "NA",
+            "padj": "NA",
+            "lty": "linesolid"
+        },
+        "box": {
+            "plotFun": "box",
+            "which": "plot",
+            "col": "colblack",
+            "lwd": 1
+        },
+        "lines1": {
+            "plotFun": "lines",
+            "x": [
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77
+            ],
+            "y": [
+                0.676,
+                0.6806,
+                0.6852,
+                0.6898,
+                0.6944,
+                0.699,
+                0.7036,
+                0.7082,
+                0.7128,
+                0.7174,
+                0.722,
+                0.7266,
+                0.7312,
+                0.7358,
+                0.7404,
+                0.745,
+                0.7496,
+                0.7542,
+                0.7588,
+                0.7634,
+                0.768,
+                0.7726,
+                0.7772,
+                0.7818,
+                0.7864,
+                0.791,
+                0.7956,
+                0.8002
+            ],
+            "col": "pltcol2"
+        },
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "binary",
+            "plot.name": "SiO2 - FeNr (Frost et al. 2001)"
+        },
+        "text1": {
+            "plotFun": "text",
+            "x": 60,
+            "y": 0.9,
+            "text": "ferroan",
+            "adj": 0.5,
+            "col": "pltcol2",
+			"switch": "showText"
+        },
+        "text2": {
+            "plotFun": "text",
+            "x": 60,
+            "y": 0.6,
+            "text": "magnesian",
+            "adj": 0.5,
+            "col": "pltcol2",
+			"switch": "showText"
+        }
+    }
+}
+

@@ -1,0 +1,23 @@
+{
+    "name": "Frost et al. (2001)",
+    "fullName": "Granite tectonic discrimination - Frost et al. (2001)",
+    "details": "",
+    "reference": "",
+    "templateAuthor": "V. Erban <erban@sopky.cz>, V. Janoušek <vojtech.janousek@geology.cz>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Having fun with plates",
+    "diagramType": "plate",
+    "RDialect": "GCDkit",
+
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": false},
+
+    "nrow":1,
+    "ncol":3,
+
+    "plateSlots":{
+      "slot1":{"diagram":"Frost_fig1.json"},
+      "slot2":{"diagram":"Frost_fig2.json"},
+      "slot3":{"diagram":"Frost_fig3.json"}
+    }
+}

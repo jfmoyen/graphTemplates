@@ -152,6 +152,13 @@ make_single_template <- function(tpl_raw,
   )
 
   ## Add the missing bits
+  # Suppress axes
+  if(is.null(tpl_raw$suppressAxes)|| !(tpl_raw$suppressAxes)){
+    gt$suppressAxes <- FALSE}
+  else{
+    gt$suppressAxes <- TRUE
+  }
+
   # Metadata etc
   meta <- intersect(meta,names(tpl_raw))
 
