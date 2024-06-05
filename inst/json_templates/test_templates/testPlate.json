@@ -7,8 +7,21 @@
     "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
     "templateHistory": "Having fun with plates",
     "diagramType": "plate",
+    "RDialect": "GCDkit",
+
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": false},
 
     "nrow":1,
     "ncol":3,
-    "plateSlots":["AFM.json","Shand.json","Shervais.json"]
+
+    "plateSlots":{
+      "slot1":{"diagram":"Shand.json",
+            "limits": {
+        "X": [0.5, 1.5],
+        "Y": [0, 3] }
+      },
+      "slot21":{"diagram":"AFM.json"},
+      "slot3":{"diagram":"Shervais.json"}
+    }
 }

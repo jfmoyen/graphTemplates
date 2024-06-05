@@ -25,7 +25,7 @@ graphTemplates allows to define templates for R graphs, using json -- a human re
 
 The easiest way to install graphTemplates is directly from github:
 
-``` R
+``` r
 devtools::install_github("jfmoyen/graphTemplates")
 ```
 
@@ -81,7 +81,7 @@ Thus, there are two main components: a parser, that reads a json file and return
 
 For instance:
 
-``` R
+``` r
 # Load a template from its json file
 tt <- parse_template_fromjson("Cabanis",template_options=c(showText=F),
                               style_options=c(arrowwidth=3))
@@ -110,5 +110,9 @@ Finally, one or several plotter(s) (for the moment there is only one plotter, a 
 The class templateElement holds the information for one single element: a line, or a text item (the most commonly encountered). Such elements can be processed by Figaro. They are lists, with components depending on their actual type.
 
 templateElements hold graphical information (colour, line type...). They can be formatted, during parsing, using json fields and well as user options – see ?jsonDiagramFormat and ?templateElement.
+
+## Experimental support for plates
+
+Plates (as used in GCDkit) are included in version 0.3. Since the plate templates have not been developped yet, the plate routines have not been fully debugged and should be regarded as experimental, at best.
 
 <!-- devtools::build_readme() -->

@@ -8,7 +8,9 @@
 #### Top-level json parser ####
 ###############################
 
-parseJsonTemplate <-function(json,path=NULL,...){
+parseJsonTemplate <-function(json,path=NULL,
+                             plateMeta=c("details","reference","url","templateAuthor","templateConversion","templateHistory"),
+                             ...){
   #' Parse a template loaded from json, converting the options as required
   #'
   #' This function combines a "raw" list, loaded from json file, with user options.
@@ -17,7 +19,9 @@ parseJsonTemplate <-function(json,path=NULL,...){
   #'
   #' @param json Name of the template file (if the .json extension is missing, it will be added automatically)
   #' @param path Path to json file. By default the package files.
-  #' @param meta the names of the fields from the json file that should be kept as meta
+  #' @param plateMeta the names of the fields from the json file that should be kept
+  #'  as metadata for the plate (if we are looking at a plate). Single plot-level metadata
+  #'  should be defined using meta, and are passed to make_single_template via ...
   #' @param ... further options to be processed, see \link{make_single_template}
   #' @details
   #' This is a thin wrapper on make_single_template. It main job is to decide whether
@@ -26,26 +30,18 @@ parseJsonTemplate <-function(json,path=NULL,...){
   #'
   #' @returns a graphTemplate object.
   #'
+  #' @importFrom grDevices n2mfrow
   #' @export
 
   # Get the template
   tpl_raw <- load_json_file(json,path)
 
   if(tpl_raw$diagramType == "plate"){
-    # # Several diagrams, that need to be treated in turn
-    # nbslots <- length(tpl$plateSlots)
-    # ee <- lapply(1:nbslots, function(i) {
-    #   component <- tpl$plateSlots[i]
-    #   foo <- load_json_file(component,path)
-    #   process_options(foo,...)
-    # })
-    # class(ee)<- c("plate","graphTemplate")
+    tpl <- make_plate_template(tpl_raw,path=path,plateMeta=plateMeta,...)
   }else{
     # Any other type is only one diagram
     tpl <- make_single_template(tpl_raw,...)
   }
-
-  # Global template description options
 
   return(tpl)
 }
@@ -175,6 +171,84 @@ make_single_template <- function(tpl_raw,
   return(gt)
 }
 
+#### Convert the input list into a graphTemplate ####
+make_plate_template <- function(tpl_raw,path,
+                                 plateMeta=c("details","reference","url","templateAuthor","templateConversion","templateHistory"),
+                                 template_options=NULL,
+                                 transform_options=NULL,
+                                 style_options=c("colDefault"="black",
+                                                 ltyDefault="solid",
+                                                 lwdDefault=1),
+                                 doFilter=T,...){
+  #' Convert a raw list into a proper graphTemplate
+  #'
+  #' @param tpl_raw a list, that will be converted to a graphTemplate.
+  #' Probably loaded from json, using \link{load_json_file}
+  #' @param plateMeta the names of the fields from the json file that should be kept
+  #'  as metadata for the plate
+  #' @param template_options Named vector. They contain the switches to activate, or desactivate,
+  #' controlling the display of some graph elements (see \link{jsonDiagramFormat}).
+  #' @param transform_options Additional parameters to pass to the data transformation function
+  #' @param style_options Options to control the styling of some elements of the template (see \link{jsonDiagramFormat}).
+  #' @param doFilter if the template contains a filter (eg SiO2 > 45), should we respect it?
+  #' @param ... Further arguments passed to make_single_template(),
+  #' i.e. arguments applying to individual templates.
+  #'
+  #' @export
+
+  ## Combine the plate-level options with the user options
+  # Switching options
+  switching_options <- unlist(tpl_raw$optionDefaults)
+  switching_options[names(template_options)]<-template_options[names(template_options)]
+
+  # Styling options
+  st_opt <- unlist(tpl_raw$styleDefaults)
+  st_opt[names(style_options)] <- style_options[names(style_options)]
+
+  # Several diagrams, that need to be treated in turn
+  nbslots <- length(tpl_raw$plateSlots)
+  tpl <- list(plateSlots=NULL)
+  tpl$plateSlots<-lapply(1:nbslots, function(i) {
+    json_subplot <- tpl_raw$plateSlots[[i]]$diagram
+    component <- load_json_file(json_subplot,path)
+
+    ee <- make_single_template(component,
+                           template_options=switching_options,
+                           style_options=st_opt,...)
+
+    # Rescale if needed, i.e. if limits are supplied in the template
+    if( !is.null(tpl_raw$plateSlots[[i]]$limits) ){
+      ee$limits <- tpl_raw$plateSlots[[i]]$limits
+    }
+    return(ee)
+  })
+  class(tpl)<- c("plate","graphTemplate")
+
+  # Metadata etc
+  plateMeta <- intersect(plateMeta,names(tpl_raw))
+
+  # Include in template
+  tpl$meta <- tpl_raw[plateMeta]
+
+  # Name
+  if(is.null(tpl_raw$name)){tpl$name<-""}else{tpl$name<-tpl_raw$name}
+  if(is.null(tpl_raw$fullName)){tpl$fullName<-""}else{tpl$fullName<-tpl_raw$fullName}
+
+  # Geometry
+  tpl$nbslots <- nbslots
+
+  tpl$ncol <- tpl_raw$ncol
+  tpl$nrow <- tpl_raw$nrow
+
+  if(is.null(tpl$nrow)||is.null(tpl$ncol)){
+    tpl$ncol <- grDevices::n2mfrow(nbslots)[1]
+    tpl$nrow <- grDevices::n2mfrow(nbslots)[2]
+  }
+
+  return(tpl)
+}
+
+
 #### Modify a template based on options ####
 process_template_options<-function(tpl_objects,
                                    switching_options=NULL,
@@ -184,7 +258,7 @@ process_template_options<-function(tpl_objects,
   #' Internal function, modifies a template based on user options
   #'
   #' @param tpl_objects A list containing elements that can be interpreted as templateElement
-  #' @param template_options Named vector. They contain the switches to activate, or desactivate,
+  #' @param switching_options Named vector. They contain the switches to activate, or desactivate,
   #' controlling the display of some graph elements (see \link{jsonDiagramFormat}).
   #' @param style_options Options to control the styling of some elements of the template (see \link{jsonDiagramFormat}).
   #' @details each element of the input list will be converted into a templateElement object.
@@ -227,6 +301,7 @@ add_datatransform <- function(tpl,
   #'
   #' @param tpl a graphTemplate
   #' @param dataTransform In string form, the name of the data transform function
+  #' @param dataTransformParams Parameters to pass to the dataTransform function
   #' @param transform_options optional options for the data transform function
   #' @returns a graphtemplate with data transform function
   #'

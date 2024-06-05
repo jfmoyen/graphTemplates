@@ -47,4 +47,11 @@ a new graph...
 Obviously, this will not work if GCDkit is not present...
 
 Different methods are supplied for binary and ternary graphTemplate.
+
+Plates are yet another animal. GCDkit does a lot of things behind the scenes
+when plotting a plate. Some of the arguments can be passed to the undrlying function
+(via ...); the interested are aventurous user will note that the function
+called to setup plates is .plateSetup = function (number, nrow = NULL, ncol = NULL,
+title = NULL, new = TRUE, device = "windows", filename = NULL, colormodel = "rgb").
+In RStudio, \code{device=""} can be used to send the plate to the internal viewer.
 }

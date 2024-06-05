@@ -13,10 +13,10 @@ process_template_options(
 \arguments{
 \item{tpl_objects}{A list containing elements that can be interpreted as templateElement}
 
-\item{style_options}{Options to control the styling of some elements of the template (see \link{jsonDiagramFormat}).}
-
-\item{template_options}{Named vector. They contain the switches to activate, or desactivate,
+\item{switching_options}{Named vector. They contain the switches to activate, or desactivate,
 controlling the display of some graph elements (see \link{jsonDiagramFormat}).}
+
+\item{style_options}{Options to control the styling of some elements of the template (see \link{jsonDiagramFormat}).}
 }
 \value{
 a list of templateElement, modified and "filtered" as required

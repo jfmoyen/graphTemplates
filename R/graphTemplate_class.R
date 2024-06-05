@@ -191,6 +191,12 @@ print.plate <- function(self,..){
   cat(self$fullName,"\n")
   cat("(see $meta for more details)\n")
   cat("-----------------------------------\n")
+  cat(self$nbslots,"sub-plots,",self$nrow,"row(s) and",self$ncol,"col(s)\n")
+  cat("Sub-plots:\n")
+  for(i in 1:self$nbslots){
+    cat("Slot",i,":",self$plateSlots[[i]]$fullName,"\n")
+  }
+  cat("use <template>$plateSlots[[1]] (etc) to see individual plots\n")
 }
 
 #### Generic

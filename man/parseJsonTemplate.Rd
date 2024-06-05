@@ -4,16 +4,24 @@
 \alias{parseJsonTemplate}
 \title{Parse a template loaded from json, converting the options as required}
 \usage{
-parseJsonTemplate(json, path = NULL, ...)
+parseJsonTemplate(
+  json,
+  path = NULL,
+  plateMeta = c("details", "reference", "url", "templateAuthor", "templateConversion",
+    "templateHistory"),
+  ...
+)
 }
 \arguments{
 \item{json}{Name of the template file (if the .json extension is missing, it will be added automatically)}
 
 \item{path}{Path to json file. By default the package files.}
 
-\item{...}{further options to be processed, see \link{make_single_template}}
+\item{plateMeta}{the names of the fields from the json file that should be kept
+as metadata for the plate (if we are looking at a plate). Single plot-level metadata
+should be defined using meta, and are passed to make_single_template via ...}
 
-\item{meta}{the names of the fields from the json file that should be kept as meta}
+\item{...}{further options to be processed, see \link{make_single_template}}
 }
 \value{
 a graphTemplate object.

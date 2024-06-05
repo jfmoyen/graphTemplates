@@ -16,6 +16,8 @@ add_datatransform(
 
 \item{dataTransform}{In string form, the name of the data transform function}
 
+\item{dataTransformParams}{Parameters to pass to the dataTransform function}
+
 \item{transform_options}{optional options for the data transform function}
 }
 \value{

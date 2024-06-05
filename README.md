@@ -41,9 +41,8 @@ library(GCDkit)
 #> Entering the normal mode...
 #> 
 #> Initializing the EarthChem interface....
-#> R proxy:  
-#> System proxy: 172.16.8.254:8080 
-#> System proxy detected! R proxy set to 172.16.8.254:8080
+#> R proxy: 172.16.8.254:8080 
+#> System proxy:
 #> Le chargement a nécessité le package : XML
 #> ... cannot connect to the web service, check your Internet connection! ***
 #> Windows version: Windows 10 x64 (build 22631)
@@ -203,5 +202,11 @@ their actual type.
 templateElements hold graphical information (colour, line type…). They
 can be formatted, during parsing, using json fields and well as user
 options – see ?jsonDiagramFormat and ?templateElement.
+
+## Experimental support for plates
+
+Plates (as used in GCDkit) are included in version 0.3. Since the plate
+templates have not been developped yet, the plate routines have not been
+fully debugged and should be regarded as experimental, at best.
 
 <!-- devtools::build_readme() -->

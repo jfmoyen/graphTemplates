@@ -162,5 +162,44 @@ For example:
 will use elements lines1 to lines6 for classification (but not lines7 and subsequent)
 }
 
+\section{Plates}{
+Plates are defined as a collection of individual plot, stored in the plateSlot component.
+Each plot is itself described in a separate json file, which can therefore be reused from somewhere else,
+or conversely be used as a stand-alone template. The global plate definition contains plate-level information, and the name of the sub-plots to draw.
+\subsection{Plate-level informations}{
+Plate level information includes the usual meta data (name,fullName, etc.). It should also
+include \code{nrow} and \code{ncol} to indicate how the plots will be arranged. If this is
+missing, the parser will try to arrange the sub-plots in a sensible way.
+
+It may include global options (e.g. \code{"showText": false}, sensible in this context). If the user
+uses global options, as for normal template, they must have a full definition with names and defaults:
+\code{
+    "optionSwitches": {"showText":  "Default option to show diagram text"},
+    "optionDefaults": {"showText": false}
+}
+
+These options will override subplot-level options but will be overridden by anything user supplied.
+}
+\subsection{Sub-plots}{
+
+Subplots are defined as a list, containing at least the name of the diagram.
+
+It is also possible to rescale a template to include it into a subplot. This is done by supplying limits,
+that will override the built-in ones. If this is done, full limits (X and Y) must be given.
+}
+
+A complete slots definition looks like that:
+\code{
+    "plateSlots":{
+      "slot1":{"diagram":"Shand.json",
+            "limits": {
+        "X": [0.5, 1.5],
+        "Y": [0, 3] }
+      },
+      "slot2":{"diagram":"AFM.json"},
+      "slot3":{"diagram":"Shervais.json"}
+    }
+}
+}
 
 

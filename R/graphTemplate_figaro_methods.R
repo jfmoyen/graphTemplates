@@ -11,7 +11,7 @@ plotFigaro <- function(self,wrdata,lbl,new,...) {
 
 ### This is to avoid check() notes when using global variables
 # or unquoted arguments in dplyr/ggplot
-utils::globalVariables(c("demo","sheet","x.data","y.data"))
+utils::globalVariables(c("demo","sheet","x.data","y.data","plate","plate.data","scr.old"))
 
 ##NB There is deliberately no import from GCDkit to avoid creating a dependency !
 
@@ -30,6 +30,13 @@ plotFigaro.graphTemplate <- function(self,wrdata,lbl,new=F,...){
   #' Obviously, this will not work if GCDkit is not present...
   #'
   #' Different methods are supplied for binary and ternary graphTemplate.
+  #'
+  #' Plates are yet another animal. GCDkit does a lot of things behind the scenes
+  #' when plotting a plate. Some of the arguments can be passed to the undrlying function
+  #' (via ...); the interested are aventurous user will note that the function
+  #' called to setup plates is .plateSetup = function (number, nrow = NULL, ncol = NULL,
+  #' title = NULL, new = TRUE, device = "windows", filename = NULL, colormodel = "rgb").
+  #' In RStudio, \code{device=""} can be used to send the plate to the internal viewer.
   #'
   #' @param self a graphTemplate object
   #' @param wrdata a MATRIX containing WR analyses, as per GCDkit's convention.
@@ -83,7 +90,7 @@ plotFigaro.binary <- function(self,wrdata,lbl,new=F,...){
     axes <- FALSE
   }
 
-  #### Build the figaro "style sheet" ####
+  ## Build the figaro "style sheet"
   sheet<-list(demo=list(fun="plot",
                         call=list(xlim = self$limits$X,
                                   ylim = self$limits$Y,
@@ -104,7 +111,7 @@ plotFigaro.binary <- function(self,wrdata,lbl,new=F,...){
   assign("x.data", x.data, .GlobalEnv)
   assign("y.data", y.data, .GlobalEnv)
 
-  #### Create the actual figaro object and plot ####
+  ## Create the actual figaro object and plot
   pp <- GCDkit::figaro(demo, prefix = "sheet")
 
   pp$draw(x.data, y.data,
@@ -151,7 +158,7 @@ plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
   # Draw pseudo axes
   self <- addTernaryAxes(self)
 
-  #### Build the figaro "style sheet" ####
+  ## Build the figaro "style sheet"
   sheet<-list(demo=list(fun="plot",
                         call=list(xlim = self$limits$X,
                                   ylim = self$limits$Y,
@@ -171,7 +178,7 @@ plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
   assign("x.data", x.data, .GlobalEnv)
   assign("y.data", y.data, .GlobalEnv)
 
-  #### Create the actual figaro object and plot ####
+  ## Create the actual figaro object and plot
   pp <- GCDkit::figaro(demo, prefix = "sheet")
 
   pp$draw(x.data, y.data,
@@ -192,9 +199,59 @@ plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
 plotFigaro.plate <- function(self,wrdata,lbl,new=F,...){
   #' @export
   #' @rdname plotFigaro.graphTemplate
+  #' @importFrom graphics mtext screen par
 
   self <- NextMethod()
 
+  ## Create the plate itself
+  plate <- GCDkit::.plateSetup(self$nbslots, self$nrow, self$ncol,
+                               title = self$fullName,
+                               ...)
+
+  ## Prepare the data structure, empty so far
+  plate.data <- as.list(1:self$nbslots)
+  plate.data <- lapply(1:self$nbslots, function(i) {
+    plate.data[[i]] <- list(x = 1, y = 1)
+  })
+  names(plate.data) <- paste("Fig", 1:self$nbslots, sep = "")
+
+  ## Make global
+  assign("plate", plate, .GlobalEnv)
+  assign("plate.data", plate.data, .GlobalEnv)
+
+  ## Graphic setup and title
+  graphics::par(oma = c(0, 0, 4, 0))
+  graphics::mtext(text = GCDkit::annotate(plate$title), side = 3, line = 0.25,
+                  outer = TRUE, cex = 1.5)
+
+  ## Construct every individual plot
+  ee <- lapply(1:self$nbslots, function(i) {
+    graphics::screen(i, new = FALSE)
+
+    ## Geometric considerations
+    if (.Platform$OS.type == "windows" & .Platform$GUI ==
+        "Rgui") {
+      graphics::par(mar = c(4.5, 5.5, 2, 1.5))
+      graphics::par(pty = "s")
+    }
+    else {
+      graphics::par(mar = c(2, 0.5, 1, 1))
+      graphics::par(pty = "s")
+    }
+
+    ## The actual plot
+    plotFigaro(self$plateSlots[[i]],wrdata=wrdata,lbl=lbl,new=new)
+    GCDkit::.saveCurPlotDef(i)
+  })
+
+  ## Final touch
+  assign("scr.old", 1, .GlobalEnv)
+  graphics::screen(1, new = FALSE)
+  if (.Platform$OS.type == "windows" & .Platform$GUI == "Rgui")
+    GCDkit::.menuPopUp()
+  graphics::screen(1, new = FALSE)
+
+  invisible(self)
 }
 
 #### Generic
