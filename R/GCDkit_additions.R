@@ -29,22 +29,15 @@ FrostFeNbr<-function(wrdata,FeOonly=F){
   #' @details
   #' Frost's Fe nbr is said to use FeO. It is however unclear whether this
   #' should be FeO strictly, or FeOt (all iron as FeO).
-  #' NB in this case we should change the template depending on the option!!
   #'
-if( all(!is.na(WR[,"FeO"])&!is.na(WR[,"Fe2O3"]))){
-  typ <- FeOonly
-}else{
-  typ<-F
-}
 
-if (typ){
-  koef<-0.446
-  FeNbr <- GCDkit::calcCore("FeO/(FeO+MgO)",where="wrdata",redo=F)$results
+  swt <- all(!is.na(wrdata[,"FeO"])&!is.na(wrdata[,"Fe2O3"]) ) & FeOonly
 
-}else{
-  koef<-0.486
-  FeNbr <- GCDkit::calcCore("FeOt/(FeOt+MgO)",where="wrdata",redo=F)$results
-}
+  if(swt){
+    FeNbr <- GCDkit::calcCore("FeO/(FeO+MgO)"  ,where="wrdata",redo=F)$results
+  }else{
+    FeNbr <- GCDkit::calcCore("FeOt/(FeOt+MgO)",where="wrdata",redo=F)$results
+      }
 
   return(cbind(wrdata,FeNbr))
 }

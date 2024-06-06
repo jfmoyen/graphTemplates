@@ -66,6 +66,13 @@ plotFigaro.binary <- function(self,wrdata,lbl,new=F,...){
 
   self <- NextMethod()
 
+  # Execute hook function
+  ee <- self$hook(self,wrdata,lbl)
+
+  self <- ee$self
+  wrdata <- ee$wrdata
+  lbl <- ee$lbl
+
   # Get the X and Y values
   cc <- pointCoordinates(self,wrdata,lbl)
   x.data <- cc$plottingCoords[,"x.data"]
@@ -134,6 +141,13 @@ plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
   #' @rdname plotFigaro.graphTemplate
 
   self <- NextMethod()
+
+  # Execute hook function
+  ee <- self$hook(self,wrdata,lbl)
+
+  self <- ee$self
+  wrdata <- ee$wrdata
+  lbl <- ee$lbl
 
   # Get the X and Y values
   cc <- pointCoordinates(self,wrdata,lbl)

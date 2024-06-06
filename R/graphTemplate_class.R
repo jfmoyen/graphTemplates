@@ -1,7 +1,7 @@
 ######## Class definition ###########
 
 new_graphTemplate <- function(name=NULL,fullName=NULL,meta=NULL,Rdialect=NULL,
-                              dataTransform=NULL,dataFilter=NULL,
+                              dataTransform=NULL,hook=NULL,dataFilter=NULL,
                               axesDefinition=NULL,axesName=NULL,log=log,limits=NULL,
                               template=NULL){
   #' Class constructor for graphTemplate
@@ -12,6 +12,7 @@ new_graphTemplate <- function(name=NULL,fullName=NULL,meta=NULL,Rdialect=NULL,
              meta=meta,
              Rdialect=Rdialect,
              dataTransform=dataTransform,
+             hook=hook,
              dataFilter=dataFilter,
              axesDefinition = axesDefinition,
              axesName = axesName,
@@ -32,7 +33,9 @@ validate_graphTemplate <- function(self){
 
 
 graphTemplate <- function(name=NULL,fullName=NULL,meta=NULL,Rdialect=NULL,
-                          dataTransform=function(z){return(z)},dataFilter=NULL,
+                          dataTransform=function(z){return(z)},
+                          hook=function(self,wrdata,lbl){return(list(self=self,wrdata=wrdata,lbl=lbl))},
+                          dataFilter=NULL,
                           axesDefinition=NULL,axesName=NULL,log=NULL,limits=NULL,template=NULL,
                           diagramType="unknown"){
   #' A class that stores all the information allowing to reproduce a graph
@@ -70,7 +73,7 @@ graphTemplate <- function(name=NULL,fullName=NULL,meta=NULL,Rdialect=NULL,
   #' @export
 
   gt<-new_graphTemplate(name,fullName,meta,Rdialect,
-                        dataTransform,dataFilter,axesDefinition,axesName,log,limits,
+                        dataTransform,hook,dataFilter,axesDefinition,axesName,log,limits,
                         template)
 
   class(gt)<- c(diagramType,"graphTemplate")

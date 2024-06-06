@@ -104,5 +104,9 @@ sapply(templ_list,
          } )
 
 ### TESTING ZONE
-tt<-parseJsonTemplate("Frost")
+tt<-parseJsonTemplate("Frost_fig1")
 plotFigaro(tt,WR,labels)
+
+tt<-parseJsonTemplate("Frost_fig1",transform_options=c(FeOonly=T))
+plotFigaro(tt,WR,labels)
+

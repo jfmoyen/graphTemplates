@@ -173,7 +173,14 @@ make_single_template <- function(tpl_raw,
   if(is.null(tpl_raw$log)){gt$log<-""}else{gt$log<-tpl_raw$log}
 
   # Construct the data transform function
-  gt <- add_datatransform(gt, tpl_raw$dataTransform, tpl_raw$dataTransformParams, transform_options )
+  if(!is.null(tpl_raw$dataTransform)){
+    gt$dataTransform <- make_function(tpl_raw$dataTransform,c(tpl_raw$dataTransformParams, transform_options ))
+  }
+
+  # Add the hook function
+  if(!is.null(tpl_raw$hook)){
+    gt$hook <- make_function(tpl_raw$hook,c(tpl_raw$dataTransformParams, transform_options ),fullArgs=T)
+  }
 
   return(gt)
 }
@@ -298,43 +305,49 @@ process_template_options<-function(tpl_objects,
   return(template_nice)
 }
 
-#### Append data transformation function ####
+#### Add a function in the template ####
 
-add_datatransform <- function(tpl,
-                              dataTransform=tpl$dataTransform,
-                              dataTransformParams=tpl$dataTransformParams,
-                              transform_options=NULL){
-  #' Internal function to build and add the data transform function
+make_function <- function(fnName,params=NULL,fullArgs=F){
+  #' Internal function to build a function
   #'
-  #' @param tpl a graphTemplate
-  #' @param dataTransform In string form, the name of the data transform function
-  #' @param dataTransformParams Parameters to pass to the dataTransform function
-  #' @param transform_options optional options for the data transform function
-  #' @returns a graphtemplate with data transform function
+  #' @param fnName In string form, the name of function
+  #' @param params Parameters to pass to the fnName function
+  #' @param fullArgs If true, the function generated will take self (a template),
+  #' wrdata and lbl as arguments. Otherwose it will take only wrdata.
+  #' @returns a function
   #'
   #' @export
 
-  if(!is.null(dataTransform)){
-    #Build the function
-    trfFunction<-try(get(dataTransform),silent=T)
-    if(class(trfFunction)=="try-error"){
-      stop(cat("Function",dataTransform,"is required but has not been found\n"))
-    }
-    trfParams <- dataTransformParams
+  # Early exit if the argument is NULL
+  if(is.null(fnName)){return(NULL)}
 
-    # So we have a function that returns a function that executes a function
-    # (holy Molly...)
-    fun <- function(trfParams,transform_options){
-      function(wrdata) {
-        args <- c(list(wrdata),trfParams,transform_options)
+  #Build the function
+  trfFunction<-try(get(fnName),silent=T)
+  if(class(trfFunction)=="try-error"){
+    stop(cat("Function",fnName,"is required but has not been found\n"))
+  }
+
+  # So we have a function that returns a function that executes a function
+  # (holy Molly...)
+  if(fullArgs){
+    fun <- function(params){
+      function(self,wrdata,lbl) {
+        args <- c(list(self,wrdata,lbl),params)
         do.call(trfFunction,args=args )
       }
     }
-
-    # Include it in the object (at least we execute one...)
-    tpl$dataTransform <- fun(trfParams,transform_options)
+  }else{
+    fun <- function(params){
+      function(wrdata) {
+        args <- c(list(wrdata),params)
+        do.call(trfFunction,args=args )
+      }
+    }
   }
 
-  return(tpl)
+
+  # Include it in the object (at least we execute one...)
+  return( fun(params) )
+
 }
 

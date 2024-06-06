@@ -162,6 +162,16 @@ For example:
 will use elements lines1 to lines6 for classification (but not lines7 and subsequent)
 }
 
+\section{Hooks}{
+In some cases, the template needs to be modified based on what is found in the data;
+for instance, different constants will be used depending on the way Fe is expressed.
+This is, hopefully, a rare case. To allow this, the system allows to define a "hook".
+A hook is an arbitrary function f(self,wrdata,lbl) where self is the template, wrdata and lbl are the WR and labels. It returns a list with the same components. Meanwhile, the user can modify the template in the required way, for instance add or remove a line based on some value in the data (or even in the labels).
+
+Hooks are executed at plotting time to allow data-dependent changes. If the template needs to be modified before (for instance, assing ternary axes, etc) it is easier to directly manipulate the template itself.
+}
+
+
 \section{Plates}{
 Plates are defined as a collection of individual plot, stored in the plateSlot component.
 Each plot is itself described in a separate json file, which can therefore be reused from somewhere else,
