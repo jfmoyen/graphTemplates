@@ -4,17 +4,17 @@
 \alias{ternaryCoordinates}
 \title{Calculate ternary coordinates based on three variables, A, B and C}
 \usage{
-ternaryCoordinates(A, B, C, rotation = 0, size = 1)
+ternaryCoordinates(A, B, C, rotation = 0, scale = 1)
 }
 \arguments{
 \item{A, B, C}{numeric vectors the values}
 
 \item{rotation}{rotation angle, degrees}
 
-\item{size}{size of the triangle}
+\item{scale}{size of the triangle}
 }
 \value{
-a five-colum data.frame : X, Y, and the A, B and C coordinates (as supplied).
+a five-column data.frame : X, Y, and the A, B and C coordinates (as supplied).
 }
 \description{
 Calculate ternary coordinates based on three variables, A, B and C

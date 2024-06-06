@@ -7,7 +7,7 @@
     "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
     "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
     "templateHistory": "Converted from original GCDkit function",
-    
+
     "RDialect": "base",
     "optionSwitches": {"showText":  "Default option to show diagram text"},
     "optionDefaults": {"showText": true},
@@ -19,17 +19,7 @@
         "B": "Rb/30",
         "C": "Ta*3"
     },
-    "suppressAxes":true,
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.05,
-            1.03
-        ]
-    },
+
     "template": {
         "lines1": {
             "plotFun": "lines",

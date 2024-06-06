@@ -54,11 +54,14 @@ plotDiagram.json <- function(diagram,select.samples=TRUE,new=TRUE,main=NULL,widt
   }
 
   # The plot proper
-  tt <- parse_template_fromjson(diagram,
+  tt <- parseJsonTemplate(diagram,
                                 template_options = c(showText = options("gcd.plot.text") ),
                                 style_options = c(pltcol1=plt.col[1],
                                                   pltcol2=plt.col[2],
                                                   pltcol3=plt.col[3]))
+ if(any(class(tt)=="ternary")){
+   tt <- addTernaryOrnaments(tt)
+ }
 
   pp<-plotFigaro(tt,WR,lbl=get("labels",".GlobalEnv"))
 

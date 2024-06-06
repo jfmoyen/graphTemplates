@@ -7,7 +7,7 @@
     "templateAuthor": "J.-F. Moyen <jfmoyen@gmail.com>, Oscar Laurent <oscarlaurent86@gmail.com>",
     "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
     "templateHistory": "Converted from original GCDkit function",
-    
+
     "RDialect": "base",
     "optionSwitches": {"showText":  "Default option to show diagram text"},
     "optionDefaults": {"showText": true},
@@ -16,28 +16,18 @@
 					  "coldarkgray":"darkgray",
 					  "linesolid":"solid",
 					  "arrowwidth":1},
-	
+
     "diagramType": "ternary",
 	"ternaryRotation":0,
 	"ternaryScale":1,
-	
+
     "dataTransform": null,
     "axesDefinition": {
         "A": "Al2O3/(FeOt+MgO)",
         "B": "CaO",
         "C": "K2O/Na2O"
     },
-    "suppressAxes":true,
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.05,
-            1.03
-        ]
-    },
+
     "template": {
         "lines2": {
             "plotFun": "lines",
@@ -179,7 +169,7 @@
             "font": 3,
             "switch": "showText"
         }
-        
+
     }
 }
 

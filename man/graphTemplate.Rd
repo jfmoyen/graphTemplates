@@ -17,6 +17,7 @@ new_graphTemplate(
   meta = NULL,
   Rdialect = NULL,
   dataTransform = NULL,
+  hook = NULL,
   dataFilter = NULL,
   axesDefinition = NULL,
   axesName = NULL,
@@ -34,6 +35,10 @@ graphTemplate(
   Rdialect = NULL,
   dataTransform = function(z) {
      return(z)
+ },
+  hook = function(self, wrdata, lbl) {
+     return(list(self = self, wrdata = wrdata, lbl
+    = lbl))
  },
   dataFilter = NULL,
   axesDefinition = NULL,

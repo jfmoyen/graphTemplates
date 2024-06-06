@@ -7,37 +7,27 @@
     "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
     "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
     "templateHistory": "Converted from original GCDkit function",
-    
+
     "RDialect": "GCDkit",
     "optionSwitches": {"showText":  "Default option to show diagram text"},
     "optionDefaults": {"showText": true},
-	
+
     "styleDefaults": {"pltcol2": "gray8",
 					  "linedashed":"dashed"},
 
     "diagramType": "ternary",
 	"ternaryRotation":0,
 	"ternaryScale":1,
-    
+
     "dataTransform": "millications",
 	"dataTransformParams": {"print":false, "save":false},
-	
+
     "axesDefinition": {
         "A": "Na2O",
         "B": "Al2O3",
         "C": "K2O"
     },
-    "suppressAxes":true,
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.08,
-            1.03
-        ]
-    },
+
     "template": {
         "clssf": {
             "plotFun": "NULL",

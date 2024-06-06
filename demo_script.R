@@ -30,7 +30,9 @@ plotFigaro(ttr,WR,labels)
 # low-level functions: options
 
 ## Template options
+
 tt <- parseJsonTemplate("AFM")
+tt <- addTernaryOrnaments(tt)
 plotFigaro(tt,WR,labels)
 
 tt <- parseJsonTemplate("test2",template_options=c(plotthis=T))
@@ -72,10 +74,18 @@ plotFigaro(tt,WR,labels)
 tt<-parseJsonTemplate("optionsDemo",transform_options=c(doubleBB=T))
 plotFigaro(tt,WR,labels)
 
+# Rotating triangles
+tt <- parseJsonTemplate("Cabanis")
+tt <- addTernaryOrnaments(tt)
+tt <- rotateTernaryTemplate(tt,rotation=30)
+plotFigaro(tt,WR,labels)
+# It's not guaranteed to be nice...
+
 ### High level function using GCDkit emulation
-# plotDiagram_json is the GCDkit connector, it is not a package function,
+# plotDiagram.json is the GCDkit connector, it is not a package function,
 # must me loaded manually...
 plotDiagram.json("DebonBA")
+plotDiagram.json("AFM")
 
 ############
 # Adding points
@@ -102,6 +112,24 @@ sapply(templ_list,
          plotFigaro(tt,WR,labels)
          cat(thediag,"OK\n")
          } )
+
+### Test ternary diagrams only
+sapply(templ_list,
+       function(thediag){
+         cat("loading",thediag,"...")
+         tt <- parseJsonTemplate(thediag)
+         if(class(tt)=="ternary"){
+           cat("plotting\n")
+           tt <- addTernaryOrnaments(tt)
+           tt <- rotateTernaryTemplate(tt,rotation=30)
+           plotFigaro(tt,WR,labels)
+           cat(thediag,"OK\n")
+         }else{
+           cat("skipping\n")
+         }
+
+       } )
+
 
 ### TESTING ZONE
 tt<-parseJsonTemplate("Frost_fig1")

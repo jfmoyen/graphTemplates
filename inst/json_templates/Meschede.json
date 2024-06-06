@@ -7,7 +7,7 @@
     "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
     "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
     "templateHistory": "Converted from original GCDkit function",
-    
+
     "RDialect": "base",
     "optionSwitches": {"showText":  "Default option to show diagram text"},
     "optionDefaults": {"showText": true},
@@ -18,24 +18,14 @@
     "diagramType": "ternary",
 	"ternaryRotation":0,
 	"ternaryScale":1,
-	
+
     "dataTransform": null,
     "axesDefinition": {
         "A": "Zr/4",
         "B": "2*Nb",
         "C": "Y"
     },
-    "suppressAxes":true,
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.08,
-            1.03
-        ]
-    },
+
     "template": {
         "lines2": {
             "plotFun": "lines",

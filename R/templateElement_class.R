@@ -238,4 +238,92 @@ styleTemplateElement.text <- function(self,options){
   return(self)
 }
 
+#### Generic
+rotateTemplateElement <- function(self,rotation,scale) {
+  #' Rotate individual template elements
+  #'
+  #' This method can be used to rotate a template element (when rotating
+  #' a ternary plot probably)
+  #'
+  #' @details
+  #' methods are implemented for
+  #' \itemize{
+  #' \item{} anything that has X and Y fields
+  #' \item{text}  (srt is also modified)
+  #' \item{arrows}  (x0, x1, y0 and y1 are modified)
+  #' \item{abline}  (converted into lines)
+  #'}
+  #'
+  #' @param self a template element
+  #' @param rotation Angle, in degree
+  #' @param scale Scale factor
+  #'
+  #' @export
+  UseMethod("rotateTemplateElement")
+}
+
+#### Implementation
+rotateTemplateElement.templateElement <- function(self,rotation=0,scale=1){
+    #' @rdname rotateTemplateElement
+    #' @export
+  rr <- rotateCoordinates(self$x,self$y,rotation=rotation,scale=scale)
+
+  self$x <- rr[,"Xr"]
+  self$y <- rr[,"Yr"]
+
+  return(self)
+}
+
+rotateTemplateElement.text <- function(self,rotation=0,scale=1){
+  #' @rdname rotateTemplateElement
+  #' @export
+
+  self <- NextMethod()
+
+  if(!is.null(self$srt)){
+    self$srt <- self$srt + rotation
+  }
+
+  return(self)
+}
+
+rotateTemplateElement.arrows <- function(self,rotation=0,scale=1){
+  #' @rdname rotateTemplateElement
+  #' @export
+
+  rr0 <- rotateCoordinates(self$x0,self$y0,rotation,scale)
+
+  self$x0 <- rr0[,"Xr"]
+  self$y0 <- rr0[,"Yr"]
+
+  rr1 <- rotateCoordinates(self$x1,self$y1,rotation,scale)
+
+  self$x1 <- rr1[,"Xr"]
+  self$y1 <- rr1[,"Yr"]
+
+  return(self)
+}
+
+rotateTemplateElement.abline <- function(self,rotation=0,scale=1){
+  #' @rdname rotateTemplateElement
+  #' @export
+
+if(!is.null(self$v)){
+  # A Vertical line
+  self$x <- c(self$v,self$v)
+  self$y <- ternaryBoundingBox(rotation,scale)$Y
+  }
+
+  if(!is.null(self$h)){
+    # An horizontal line
+    self$y <- c(self$h,self$h)
+    self$x <- ternaryBoundingBox(rotation,scale)$X
+  }
+
+  class(self)[1] <- "lines"
+  self <- rotateTemplateElement(self)
+
+  return(self)
+}
+
 

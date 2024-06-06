@@ -7,11 +7,11 @@
     "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
     "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
     "templateHistory": "Converted from original GCDkit function",
-    
+
 	"diagramType": "ternary",
 	"ternaryRotation":0,
 	"ternaryScale":1,
-	
+
     "RDialect": "GCDkit",
     "optionSwitches": {"showText":  "Default option to show diagram text"},
     "optionDefaults": {"showText": true},
@@ -19,25 +19,15 @@
     "styleDefaults": {"pltcol2": "gray8",
 					  "linedashed": "dashed",
 					  "polyColGreen":"#00FF0055",
-					  "polyColRed":"#FF000055"},	
-					  
+					  "polyColRed":"#FF000055"},
+
     "dataTransform": "CIPW",
     "axesDefinition": {
         "A": "Or+Ab",
         "B": "2*Q",
         "C": "4*An"
     },
-    "suppressAxes":true,
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.10,
-            1.03
-        ]
-    },
+
     "template": {
         "clssf": {
             "plotFun": "NULL",

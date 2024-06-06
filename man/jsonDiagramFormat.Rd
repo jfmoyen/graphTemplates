@@ -49,7 +49,7 @@ automatically remove them without further ado.}
 \item{"log": }{If present (and other than ""), defines which axes use a log scale using base R convention : "x", "y" or "xy"}
 }
 A clever ternary plotter should be able to plot the ternary axes without asking, so they should NOT
-be in the template (it does not matter a lot if they are though, there will be two lines...)
+be in the template (it does not matter a lot if they are though, there will be two lines...). Likewise, for ternary plots, the limits should be calculated.
 }
 }
 

@@ -20,5 +20,4 @@ Calculate Fe nbr for Frost plot
 \details{
 Frost's Fe nbr is said to use FeO. It is however unclear whether this
 should be FeO strictly, or FeOt (all iron as FeO).
-NB in this case we should change the template depending on the option!!
 }

@@ -18,24 +18,14 @@
     "diagramType": "ternary",
 	"ternaryRotation":0,
 	"ternaryScale":1,
-	
+
     "dataTransform": null,
     "axesDefinition": {
         "A": "K2O+Na2O",
         "B": "FeOt",
         "C": "MgO"
     },
-    "suppressAxes":true,
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.05,
-            1.03
-        ]
-    },
+
     "template": {
         "clssf": {
             "plotFun": "NULL",

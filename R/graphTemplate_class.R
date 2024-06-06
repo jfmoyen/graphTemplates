@@ -212,11 +212,11 @@ print.plate <- function(self,..){
 #' @param rotation Angle to rotate
 #' @export
 #' @rdname addTernaryAxes.graphTemplate
-addTernaryAxes <- function(self,scale,rotation) {
-  UseMethod("addTernaryAxes")
+addTernaryOrnaments <- function(self,scale,rotation) {
+  UseMethod("addTernaryOrnaments")
 }
 
-addTernaryAxes.graphTemplate <- function(self,scale,rotation){
+addTernaryOrnaments.graphTemplate <- function(self,scale,rotation){
   #' Add axes to a ternary template
   #'
   #' @details
@@ -234,18 +234,108 @@ addTernaryAxes.graphTemplate <- function(self,scale,rotation){
   stop(msg)
 }
 
-addTernaryAxes.ternary <- function(self,scale=1,rotation=0){
+addTernaryOrnaments.ternary <- function(self,
+                                        axes = T,
+                                        apicesNames = T,
+                                        ticks = F,
+                                        grid = F,
+                                        padding=c(0.03,0.03,0.03,0.05) ){
   #' @export
   #' @rdname addTernaryAxes.graphTemplate
-  pseudoAxes=list(type="lines",x=c(0,1,0.5,0),y=c(0,0,sqrt(3)/2,0),col="black")
 
-  # Include in template
-  self$template <- c(self$template,pseudoAxes=list(pseudoAxes))
+  if(axes){
+      # The (pseudo)axes
+      pseudoAxes=list(type="lines",x=c(0,1,0.5,0),y=c(0,0,sqrt(3)/2,0),col="black")
+      class(pseudoAxes) <- c("lines","templateElement",class(pseudoAxes))
+
+      self$template <- c(pseudoAxes=list(pseudoAxes),self$template)
+  }
+
+  if(apicesNames){
+      # Custom axes names
+      alab <- makeName(self,"A")
+      blab <- makeName(self,"B")
+      clab <- makeName(self,"C")
+
+      A=list(type="text",x=0,y=-padding[4],text=alab,adj=c(0.5,0))
+      B=list(type="text",x=0.5,y=sqrt(3)/2+padding[2],text=blab,adj=c(0.5,0.5))
+      C=list(type="text",x=1,y=-padding[4],text=clab,adj=c(0.5,0))
+
+      class(A) <- c("text","templateElement",class(A))
+      class(B) <- c("text","templateElement",class(B))
+      class(C) <- c("text","templateElement",class(C))
+
+      # Include in template
+      self$template <- c(self$template,A=list(A),B=list(B),C=list(C))
+  }
+
+  # Ticks
+
+  # Grid
+
+  # Rotate the template in position
+  self <- rotateTernaryTemplate(self,
+                                rotation=self$ternaryRotation,scale=self$ternaryScale,
+                                padding=padding,setup=T)
+
+
+  return(self)
+}
+
+
+#### Generic
+#' Rotate a ternary template
+#'
+#' Add ternary information (axes) to a template
+#'
+#' @param self a template
+#' @param scale scaling factor
+#' @param rotation Angle to rotate
+#' @export
+#' @rdname addTernaryAxes.graphTemplate
+rotateTernaryTemplate <- function(self,rotation,scale,padding,setup=F) {
+  UseMethod("rotateTernaryTemplate")
+}
+
+rotateTernaryTemplate.graphTemplate <- function(self,rotation,scale,padding,setup=F){
+  #' Add axes to a ternary template
+  #'
+  #' @details
+  #' This method is used to add ternary (pseudo) axes to a graphTemplate. The plotter
+  #' should remove the true axes (and ensure a square aspect ratio). The function
+  #' eventually will be able to rotate a ternary graph by an arbitrary amount.
+  #'
+  #' @param self a graphTemplate
+  #' @param scale The scale of the triangle: normally from 0 to 1 but in some contexts
+  #' the traingle could be defined as 0-100 (%). Probably deprecated.
+  #' @param rotation in degrees, angle to rotate the graph (in progress).
+  #' @export
+
+  msg <- paste("Can only add ternary axes on a ternary template!\n")
+  stop(msg)
+}
+
+rotateTernaryTemplate.ternary <- function(self,rotation=0,scale=1,padding=c(0.03,0.03,0.03,0.05),setup=F){
+  #' @export
+  #' @rdname addTernaryAxes.graphTemplate
+
+  if(!setup){
+    self$ternaryRotation <- self$ternaryRotation + rotation
+    self$scale <- scale
+  }
+
+  # Update bounding box
+  self$limits <- ternaryBoundingBox(rotation=rotation,scale=scale,padding=padding)
+
+  # Rotate the graphical elements
+  tpl<-lapply(self$template,
+         function(z){
+            rotateTemplateElement(z,rotation=rotation,scale=scale)
+         })
+
+  self$template <- tpl
 
   return(self)
 
 }
-
-#TODO Ticks scaling rotation
-# rotate template ?
 

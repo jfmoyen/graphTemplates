@@ -159,6 +159,10 @@ make_single_template <- function(tpl_raw,
     gt$suppressAxes <- TRUE
   }
 
+  # A ternary diagram needs rotation info !
+  if(is.null(tpl_raw$ternaryRotation)){gt$ternaryRotation<-0}else{gt$ternaryRotation<-tpl_raw$ternaryRotation}
+  if(is.null(tpl_raw$ternaryScale)){gt$ternaryScale<-1}else{gt$ternaryScale<-tpl_raw$ternaryScale}
+
   # Metadata etc
   meta <- intersect(meta,names(tpl_raw))
 
@@ -288,7 +292,7 @@ process_template_options<-function(tpl_objects,
   }else{
     template_nice<-lapply(tpl_objects,
                           function(z){
-                            class(z)<-c("templateElement",class(z))
+                            class(z)<-c(z$plotFun,"templateElement",class(z))
                             zz<-styleTemplateElement(z,style_options)
                             zzz<-showTemplateElement(zz,switching_options)
                             return(zzz)

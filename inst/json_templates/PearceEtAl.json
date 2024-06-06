@@ -7,35 +7,25 @@
     "templateAuthor": "V. Janoušek <vojtech.janousek@geology.cz>",
     "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
     "templateHistory": "Converted from original GCDkit function",
-    
+
     "RDialect": "base",
     "optionSwitches": {"showText":  "Default option to show diagram text"},
     "optionDefaults": {"showText": true},
-    
+
 	"styleDefaults": {"pltcol2": "gray8",
 						"linedashed":"dashed"},
 
     "diagramType": "ternary",
 	"ternaryRotation":0,
 	"ternaryScale":1,
-	
+
     "dataTransform": null,
     "axesDefinition": {
         "A": "MgO",
         "B": "FeOt",
         "C": "Al2O3"
     },
-    "suppressAxes": true,
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.08,
-            1.03
-        ]
-    },
+
     "template": {
         "lines2": {
             "plotFun": "lines",

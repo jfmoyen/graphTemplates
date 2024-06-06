@@ -11,7 +11,7 @@
     "RDialect": "base",
     "optionSwitches": {"showText":  "Default option to show diagram text"},
     "optionDefaults": {"showText": true},
-	
+
     "styleDefaults": {"pltcol2": "gray8",
 					  "linedashed":"dashed",
 					   "linedotted":"dotted"},
@@ -19,23 +19,14 @@
     "diagramType": "ternary",
 	"ternaryRotation":0,
 	"ternaryScale":1,
-	
+
     "dataTransform": "OhtaAraiParams",
     "axesDefinition": {
         "A": "F",
         "B": "M",
         "C": "W"
     },
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.05,
-            1.03
-        ]
-    },
+
     "template": {
         "GCDkit": {
             "plotFun": "NULL",

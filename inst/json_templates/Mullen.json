@@ -11,14 +11,14 @@
     "RDialect": "base",
     "optionSwitches": {"showText":  "Default option to show diagram text"},
     "optionDefaults": {"showText": true},
-	
+
     "styleDefaults": {"pltcol2": "gray8",
 					  "linedashed":"dashed"},
 
     "diagramType": "ternary",
 	"ternaryRotation":0,
 	"ternaryScale":1,
-	
+
     "dataTransform": null,
     "dataFilter": "SiO2<54&SiO2>45",
     "axesDefinition": {
@@ -26,17 +26,7 @@
         "B": "TiO2",
         "C": "P2O5*10"
     },
-    "suppressAxes":true,
-    "limits": {
-        "X": [
-            -0.03,
-            1.03
-        ],
-        "Y": [
-            -0.08,
-            1.03
-        ]
-    },
+
     "template": {
         "lines2": {
             "plotFun": "lines",

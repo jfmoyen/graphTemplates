@@ -154,24 +154,6 @@ plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
   x.data <- cc$plottingCoords[,"x.data"]
   y.data <- cc$plottingCoords[,"y.data"]
 
-  ## Axes preparation
-  # Custom axes names
-  alab <- makeName(self,"A")
-  blab <- makeName(self,"B")
-  clab <- makeName(self,"C")
-
-  # Labels
-  # TODO scale and rotation !
-  A=list(type="text",x=0,y=-0.03,text=GCDkit::annotate(alab),adj=0.5)
-  B=list(type="text",x=0.5,y=sqrt(3)/2+.03,text=GCDkit::annotate(blab),adj=0.5)
-  C=list(type="text",x=1,y=-0.03,text=GCDkit::annotate(clab),adj=0.5)
-
-  # Include in template
-  self$template <- c(self$template,A=list(A),B=list(B),C=list(C))
-
-  # Draw pseudo axes
-  self <- addTernaryAxes(self)
-
   ## Build the figaro "style sheet"
   sheet<-list(demo=list(fun="plot",
                         call=list(xlim = self$limits$X,
@@ -357,7 +339,8 @@ pointCoordinates.ternary <- function(self,wrdata,lbl){
   b.data <- GCDkit::calcCore(self$axesDefinition$B,where="newdata",redo=F)$results
   c.data <- GCDkit::calcCore(self$axesDefinition$C,where="newdata",redo=F)$results
 
-  return(list(plottingCoords=ternaryCoordinates(a.data,b.data,c.data),
+  return(list(plottingCoords=ternaryCoordinates(a.data,b.data,c.data,
+                                                self$ternaryRotation,self$ternaryScale),
               lbl=lbl))
 }
 
@@ -385,11 +368,23 @@ makeName.graphTemplate <- function(self,W){
   #' @export
   #' @rdname makeName
 
-  if(!is.null(self$axesName[[W]])){
-    wlab <- GCDkit::annotate(self$axesName[[W]])
+  if (requireNamespace("GCDkit", quietly = TRUE)) {
+    #If GCDkit is available, we can use nice versions...
+      if(!is.null(self$axesName[[W]])){
+        wlab <- GCDkit::annotate(self$axesName[[W]])
+      }else{
+        wlab <- GCDkit::annotate(self$axesDefinition[[W]])
+      }
   }else{
-    wlab <- GCDkit::annotate(self$axesDefinition[[W]])
+    #Without GCDkit, use plain labels
+    if(!is.null(self$axesName[[W]])){
+      wlab <- self$axesName[[W]]
+    }else{
+      wlab <- self$axesDefinition[[W]]
+    }
   }
+
+  return(wlab)
 
 }
 
