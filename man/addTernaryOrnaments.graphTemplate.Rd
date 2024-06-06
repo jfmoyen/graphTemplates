@@ -4,21 +4,32 @@
 \alias{addTernaryOrnaments.graphTemplate}
 \title{Add axes to a ternary template}
 \usage{
-\method{addTernaryOrnaments}{graphTemplate}(self, scale, rotation)
+\method{addTernaryOrnaments}{graphTemplate}(self, ...)
 }
 \arguments{
 \item{self}{a graphTemplate}
 
-\item{scale}{The scale of the triangle: normally from 0 to 1 but in some contexts
-the traingle could be defined as 0-100 (\%). Probably deprecated.}
+\item{...}{to ternary method}
 
-\item{rotation}{in degrees, angle to rotate the graph (in progress).}
+\item{axes, ticks, grid}{: should we add the relevant elements?}
+
+\item{interval.gr, lwd.gr, lty.gr, col.gr}{spacing between grid lines, and their graphical properties}
+
+\item{length.ti, interval.ti, lwd.ti, lty.ti, col.ti}{spacing between ticks, length, and their graphical properties}
+
+\item{lwd.ax, lty.ax, col.ax}{graphical properties of the pseudoaxes}
+
+\item{padding}{Extra space to add around the plot, to allow depicting the apices labels (left, top, right, bottom)}
+}
+\value{
+updated version of self
 }
 \description{
 Add axes to a ternary template
 }
 \details{
-This method is used to add ternary (pseudo) axes to a graphTemplate. The plotter
-should remove the true axes (and ensure a square aspect ratio). The function
-eventually will be able to rotate a ternary graph by an arbitrary amount.
+This method is used to add various elements to a ternary template, in particular
+ternary (pseudo) axes. The plotting function
+should remove the true axes (and ensure a square aspect ratio).
+Elements will honour the template rotation.
 }

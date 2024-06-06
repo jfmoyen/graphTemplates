@@ -9,10 +9,15 @@
 \arguments{
 \item{self}{a graphTemplate}
 
-\item{rotation}{in degrees, angle to rotate the graph (in progress).}
+\item{rotation}{in degrees, angle to rotate the graph.}
 
 \item{scale}{The scale of the triangle: normally from 0 to 1 but in some contexts
-the traingle could be defined as 0-100 (\%). Probably deprecated.}
+the triangle could be defined as 0-100 (\%). Probably deprecated.}
+
+\item{padding}{Extra space to add on the sides, c(left,top,right,bottom)}
+
+\item{setup}{If T, use during setup. Just rotate. If F, use when rotating an
+existing plot. This will update self$ternaryRotation.}
 }
 \description{
 Add axes to a ternary template

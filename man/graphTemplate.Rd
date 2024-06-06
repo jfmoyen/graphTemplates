@@ -60,8 +60,8 @@ graphTemplate(
 \method{print}{plate}(self, ..)
 }
 \arguments{
-\item{All}{the elements of the list, as given above, correspond to parameters of the
-class constructor.}
+\item{name, fullName, meta, Rdialect, dataTransform, hook, dataFilter, axesDefinition, axesName, log, limits, template, diagramType}{the elements of the list, as given in details,
+correspond to parameters of the class constructor.}
 }
 \description{
 Class constructor for graphTemplate
@@ -83,6 +83,8 @@ is not loaded...
 usually as simple as function(x){return(x)}, but more elaborate functions can be used. The
 json parser is able to interpret, to a degree, what is found in its dataTransform field and combine it
 with user-supplied arguments).
+\item hook a function ran during plotting, that allows to change some template elements.
+See example in Frost_fig1.json
 \item dataFilter. Some graphs plot only data obeying certain conditions, such as
 SiO2 < 54 \%. This should be supplied as a string (fit for filtering by the plotter).
 \item axesDefinition the axes, expressed in terms of the (col)names of the data
@@ -90,11 +92,19 @@ SiO2 < 54 \%. This should be supplied as a string (fit for filtering by the plot
 attempt (using GCDkit::annotate) to prettify them. ggplot is not as clever (but it is
 easy to modify an axis name).
 \item log. "", "x", "y" or "xy" in usual R convention.
+\item suppressAxes, a boolean allowing to suppress axes drawing
 \item limits, a list with X and Y components, two vectors of two elements...
 \item template the template itself, a collection of elements of type templateElement
 }
 In addition, a graphTemplate has a subclass, defined by diagramType: binary or ternary.
 This will be interpreted by the plotter.
+
+A ternary template also includes ternaryScale (deprecated?) and ternaryRotation (degrees),
+indicating by how much the template will be scaled and/or rotated before plotting.
+
+A plate template is simpler - it contains metadata and options, and then nbslots, nrow, ncol, and
+a list plateSlots containing individual graph templates.
+
 In fact, since a graphTemplate is a list, it can contain any other element. However,
 the creator function takes only these arguments, and only them will be used for plotting...
 Additionally, a graphTemplate can be of subclass binary or ternary.

@@ -202,6 +202,7 @@ make_plate_template <- function(tpl_raw,path,
   #'
   #' @param tpl_raw a list, that will be converted to a graphTemplate.
   #' Probably loaded from json, using \link{load_json_file}
+  #' @param path search path for the plate components
   #' @param plateMeta the names of the fields from the json file that should be kept
   #'  as metadata for the plate
   #' @param template_options Named vector. They contain the switches to activate, or desactivate,

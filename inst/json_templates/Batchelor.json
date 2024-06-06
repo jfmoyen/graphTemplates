@@ -31,7 +31,7 @@
         "X": "R1 = 4Si - 11(Na + K) - 2(Fe + Ti) ",
         "Y": "R2 = 6Ca + 2Mg + Al "
     },
-    "limits": {
+"limits": {
         "X": [
             -1000,
             4100
@@ -189,7 +189,7 @@
             "switch": "showText"
         },
         "points1": {
-            "plotFun": "points",
+		"plotFun": "points",
             "x": [
                 6658.0113,
                 359.926,

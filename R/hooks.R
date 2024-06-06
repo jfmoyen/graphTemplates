@@ -1,6 +1,6 @@
 ### Ad-hoc hooks to execute during plotting and alter graph templates
 
-test_hook <- function(self,wrdata,lbl){
+my_test_hook <- function(self,wrdata,lbl){
   #' Just testing!
   #'
   #' @param self The template
@@ -39,3 +39,23 @@ FrostFeHook <- function(self,wrdata,lbl,FeOonly=F){
 
   return(list(self=self,wrdata=wrdata,lbl=lbl))
 }
+
+projBiotHook <- function(self,wrdata,lbl){
+  #' Hook function to tweak Moyen et al. proj from biotite
+  #'
+  #' @param self The template
+  #' @param wrdata WR data
+  #' @param lbl labels
+  #'
+  #' @returns modified template, wrdata, lbl
+  #' @export
+
+  self$limits$X <- c(-2.03,1.4)
+  self$limits$Y <- c(-1.03,0.03)
+
+  self$template$B$adj <- c(0,0)
+  self$template$C$adj <- c(0.5,1)
+
+  return(list(self=self,wrdata=wrdata,lbl=lbl))
+
+  }

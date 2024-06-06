@@ -65,7 +65,7 @@ FrostASI<-function(wrdata,originalDef=F,zeroP=T){
     )
   }
 
-    milli <- millications(wrdata,print=F)
+    milli <- GCDkit::millications(wrdata,print=F)
 
     p<-milli[,"P2O5"]
     if(zeroP){
@@ -80,3 +80,4 @@ FrostASI<-function(wrdata,originalDef=F,zeroP=T){
 
   return(cbind(wrdata,ASI))
 }
+

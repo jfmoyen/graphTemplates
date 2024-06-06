@@ -7,27 +7,45 @@
 \alias{rotateTernaryTemplate.ternary}
 \title{addTernary}
 \usage{
-addTernaryOrnaments(self, scale, rotation)
+addTernaryOrnaments(self, ...)
 
 \method{addTernaryOrnaments}{ternary}(
   self,
   axes = T,
+  lwd.ax = 1,
+  lty.ax = "solid",
+  col.ax = "black",
   apicesNames = T,
   ticks = F,
+  length.ti = 0.03,
+  interval.ti = 10,
+  lwd.ti = 1,
+  lty.ti = "solid",
+  col.ti = "black",
   grid = F,
+  interval.gr = 10,
+  lwd.gr = 0.5,
+  lty.gr = "dotted",
+  col.gr = "grey",
   padding = c(0.03, 0.03, 0.03, 0.05)
 )
 
 rotateTernaryTemplate(self, rotation, scale, padding, setup = F)
 
-\method{rotateTernaryTemplate}{ternary}(self, rotation = 0, scale = 1, padding, setup = F)
+\method{rotateTernaryTemplate}{ternary}(
+  self,
+  rotation = 0,
+  scale = 1,
+  padding = c(0.03, 0.03, 0.03, 0.05),
+  setup = F
+)
 }
 \arguments{
 \item{self}{a template}
 
-\item{scale}{scaling factor}
-
 \item{rotation}{Angle to rotate}
+
+\item{scale}{scaling factor}
 }
 \description{
 Add ternary information (axes) to a template

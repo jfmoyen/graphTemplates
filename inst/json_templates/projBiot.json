@@ -1,0 +1,192 @@
+{
+    "name": "projBiot",
+    "fullName": "Projection from Bt for granites, Moyen et al (2017)",
+    "details": "",
+    "reference": "Moyen, J. F., et al. (2017). Collision vs. subduction-related magmatism: two contrasting ways of granite formation and implications for crustal growth. Lithos 277: 154-177",
+
+    "url": "https://doi.org/10.1016/j.lithos.2016.09.018",
+    "templateAuthor": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateConversion": "J.-F. Moyen <jfmoyen@gmail.com>",
+    "templateHistory": "Original template by the author",
+
+    "RDialect": "GCDkit",
+    "optionSwitches": {"showText":  "Default option to show diagram text",
+					   "idealMins": "Plot ideal minerals"},
+    "optionDefaults": {"showText": true,
+						"idealMins":false},
+
+    "styleDefaults": {"colgrey": "grey",
+						"colblack":"black",
+						"pltcol3":"darkblue",
+					  "linesolid":"solid",
+					   "linedashed":"dashed"},
+
+	"hook":"projBiotHook",
+	
+    "diagramType": "ternary",
+	"ternaryRotation":-90,
+	"ternaryScale":1,
+
+    "dataTransform": "projbiocoords",
+    "axesDefinition": {
+        "A": "ms1",
+        "B": "fsp",
+        "C": "CaAl"
+    },
+"axesName": {
+        "A": "3 Al+2(Na+K)",
+        "B": "Al+(Na+K)",
+        "C": "Ca+Al"
+},
+
+    "template": {
+        "GCDkit": {
+            "plotFun": "NULL",
+            "plot.type": "ternary",
+            "plot.position": 312.2,
+            "plot.name": "Moyen et al 2017 granite from Bt"
+        },
+		"hline":{
+			"plotFun": "lines",
+            "x": [
+                0.5,0.5
+            ],
+            "y": [
+                -3,2
+            ],
+            "lwd": 1,
+			"lty":"linesolid",
+            "col": "colblack"
+		},
+		"fspline":{
+			"plotFun": "lines",
+            "x": [
+                -0.24402,0.5
+            ],
+            "y": [
+                -3,0.8660254
+            ],
+            "lwd": 1,
+			"lty":"linedashed",
+            "col": "colgrey"
+		},
+	"impoints":{
+			"plotFun": "points",
+			"x":[0.500,
+				0.500,
+				1.000,
+				1.100,
+				1.100,
+				1.000,
+				2.000,
+				1.100,
+				1.100],
+			"y":[ 0.866,
+				-0.866,
+				-1.732,
+				-0.173,
+				0.866,
+				0.433,
+				-1.732,
+				0.866,
+				-0.173
+				],   
+			"col": "pltcol3",
+            "pch": 20,
+            "bg": "gray",
+            "switch":"idealMins"
+			},
+			"imnames":{
+			"plotFun": "text",
+			"x":[0.560,
+				0.560,
+				1.060,
+				1.160,
+				1.160,
+				1.060,
+				2.060,
+				1.160,
+				1.160
+				],
+				"y":[ 0.866,
+				-0.866,
+				-1.732,
+				-0.173,
+				0.866,
+				0.433,
+				-1.732,
+				0.866,
+				-0.173
+				],   
+				"text":[ "fsp",
+				"an50",
+				"cz",
+				"Ep",
+				"cpx",
+				"grs-Gt",
+				"MgHbl",
+				"Edn",
+				"Pgs"
+				],
+			"col": "pltcol3",
+			"adj": 0.5,
+			"cex":0.6,	
+            "switch":"idealMins"
+			},
+			"impointsneg":{
+			"plotFun": "points",
+			"x":[-1.000,
+				-0.500,
+				-0.500,
+				-0.833,
+				-1.063,
+				-0.929,
+				-1.500
+				],
+			"y":[ -1.732,
+				-0.866,
+				-0.866,
+				-1.443,
+				-1.840,
+				-1.608,
+				-2.598
+				],   
+			"col": "pltcol3",
+            "pch": 1,
+			"cex": 0.8,
+            "bg": "gray",
+            "switch":"idealMins"
+			},
+			"imnamesneg":{
+			"plotFun": "text",
+			"x":[-0.940,
+				-0.440,
+				-0.440,
+				-0.773,
+				-1.003,
+				-0.869,
+				-1.440
+				],
+				"y":[ -1.732,
+				-0.866,
+				-0.866,
+				-1.443,
+				-1.840,
+				-1.608,
+				-2.598
+				],    
+				"text":[ "- sill",
+					"- opx",
+					"- olv",
+					"- Gt",
+					"- NaCrd",
+					"- Crd",
+					"- ms"],
+			"col": "pltcol3",
+			"adj": 0.5,
+			"cex":0.6,	
+            "switch":"idealMins"
+			}
+    }
+}
+

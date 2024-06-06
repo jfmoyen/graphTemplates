@@ -4,7 +4,7 @@
 \alias{rotateCoordinates}
 \title{Calculate coordinates following a rotation}
 \usage{
-rotateCoordinates(X, Y, rotation, scale)
+rotateCoordinates(X, Y, rotation = 0, scale = 1)
 }
 \arguments{
 \item{X, Y}{Original coordinates}

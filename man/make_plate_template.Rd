@@ -20,6 +20,8 @@ make_plate_template(
 \item{tpl_raw}{a list, that will be converted to a graphTemplate.
 Probably loaded from json, using \link{load_json_file}}
 
+\item{path}{search path for the plate components}
+
 \item{plateMeta}{the names of the fields from the json file that should be kept
 as metadata for the plate}
 

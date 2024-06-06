@@ -31,10 +31,6 @@ plotFigaro(ttr,WR,labels)
 
 ## Template options
 
-tt <- parseJsonTemplate("AFM")
-tt <- addTernaryOrnaments(tt)
-plotFigaro(tt,WR,labels)
-
 tt <- parseJsonTemplate("test2",template_options=c(plotthis=T))
 plotFigaro(tt,WR,labels)
 
@@ -74,7 +70,25 @@ plotFigaro(tt,WR,labels)
 tt<-parseJsonTemplate("optionsDemo",transform_options=c(doubleBB=T))
 plotFigaro(tt,WR,labels)
 
-# Rotating triangles
+## Niceties with ternary diagrams
+tt <- parseJsonTemplate("AFM")
+tt <- addTernaryOrnaments(tt)
+plotFigaro(tt,WR,labels)
+
+tt <- parseJsonTemplate("AFM")
+tt <- addTernaryOrnaments(tt,grid=T)
+plotFigaro(tt,WR,labels)
+
+# Changing my mind...
+tt <- addTernaryOrnaments(tt,axes=F,apicesNames=F,grid=T,grinterval=5,grcol="red",grlty="solid")
+plotFigaro(tt,WR,labels)
+
+# Ticks
+tt <- parseJsonTemplate("AFM")
+tt <- addTernaryOrnaments(tt,ticks=T)
+plotFigaro(tt,WR,labels)
+
+## Rotating triangles
 tt <- parseJsonTemplate("Cabanis")
 tt <- addTernaryOrnaments(tt)
 tt <- rotateTernaryTemplate(tt,rotation=30)
@@ -120,7 +134,7 @@ sapply(templ_list,
          tt <- parseJsonTemplate(thediag)
          if(class(tt)=="ternary"){
            cat("plotting\n")
-           tt <- addTernaryOrnaments(tt)
+           tt <- addTernaryOrnaments(tt,grid=T)
            tt <- rotateTernaryTemplate(tt,rotation=30)
            plotFigaro(tt,WR,labels)
            cat(thediag,"OK\n")
@@ -138,3 +152,8 @@ plotFigaro(tt,WR,labels)
 tt<-parseJsonTemplate("Frost_fig1",transform_options=c(FeOonly=T))
 plotFigaro(tt,WR,labels)
 
+tt<-parseJsonTemplate("projBiot",template_options=c(idealMins=T))
+tt <- addTernaryOrnaments(tt)
+plotFigaro(tt,WR,labels)
+
+##NB plotDiagram("projbioplot",idealmins=T,new=T)

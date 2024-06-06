@@ -10,13 +10,13 @@
 \usage{
 rotateTemplateElement(self, rotation, scale)
 
-\method{rotateTemplateElement}{templateElement}(self, rotation, scale)
+\method{rotateTemplateElement}{templateElement}(self, rotation = 0, scale = 1)
 
-\method{rotateTemplateElement}{text}(self, rotation, scale)
+\method{rotateTemplateElement}{text}(self, rotation = 0, scale = 1)
 
-\method{rotateTemplateElement}{arrows}(self, rotation, scale)
+\method{rotateTemplateElement}{arrows}(self, rotation = 0, scale = 1)
 
-\method{rotateTemplateElement}{abline}(self, rotation, scale)
+\method{rotateTemplateElement}{abline}(self, rotation = 0, scale = 1)
 }
 \arguments{
 \item{self}{a template element}
