@@ -81,3 +81,47 @@ FrostASI<-function(wrdata,originalDef=F,zeroP=T){
   return(cbind(wrdata,ASI))
 }
 
+
+projbiocoords<-function(where=WR,add=FALSE){
+  #' Calculate coordinates projected from biotite
+  #' @export
+  #' @param where A matrix with whole-rock composition, probably coming from GCDkit
+  #' @param add Boolean. If true, put in global variable results.
+  #' @returns a matrix with column ASI.
+  #' @details
+  #' Coordinates in granite tetrahedron, used bor projection from Biotite
+  #' (Moyen et al. 2017)
+  #'
+
+  # This is a pure GCDkit function ! It should fail if GCDkit is not here
+  if (!requireNamespace("GCDkit", quietly = TRUE)) {
+    stop(
+      "Package \"GCDkit\" must be installed to use this function.",
+      call. = FALSE
+    )
+  }
+
+  ee<-GCDkit::millications(where,print=FALSE)
+  plane<-matrix(c(3,0,2,0,
+                  1,0,1,0,
+                  1,1,0,0),
+                byrow=F,nrow=4)
+  rownames(plane)<-c("Al","Ca","NaK","FM")
+  colnames(plane)<-c("ms1","fsp","CaAl")
+  bio<-c(1,0,1,3)
+  names(bio)<-c("Al","Ca","NaK","FM")
+  aa<-cbind(plane,bio)
+
+  #Extract and calculate
+  ox<-cbind(ee[,"Al2O3"],ee[,"CaO"],ee[,"Na2O"]+ee[,"K2O"],ee[,"FeOt"]+ee[,"MgO"])
+  colnames(ox)<-c("ms1","fsp","CaAl","bio")
+  ox.p<-t(apply(ox,MARGIN=1,FUN=function(z){
+    return(solve(aa)%*%z)
+  }))
+  colnames(ox.p)<-c("ms1","fsp","CaAl","bio")
+  results<<-ox.p
+
+  if(add)GCDkit::addResults()
+  return(results)
+}
+
