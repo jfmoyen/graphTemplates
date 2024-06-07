@@ -11,19 +11,19 @@ accessVar(atacazo)
 # low-level functions: simple usage
 
 tt <- parseJsonTemplate("Cabanis",template_options=c(showText=F))
-tt <- addTernaryAxes(tt)
+tt <- addTernaryOrnaments(tt)
 plotFigaro(tt,WR,labels)
 
 
 ttr <- parseJsonTemplate("AFM.json")
-ttr <- addTernaryAxes(ttr)
+ttr <- addTernaryOrnaments(ttr)
 plotFigaro(ttr,WR,labels)
 
 tt <- parseJsonTemplate("PearceNbThYb") # Note that the .json suffic can be omited...
 plotFigaro(tt,WR,labels)
 
 ttr <- parseJsonTemplate("Mullen")
-ttr <- addTernaryAxes(ttr)
+ttr <- addTernaryOrnaments(ttr)
 plotFigaro(ttr,WR,labels)
 
 ###########
@@ -116,8 +116,11 @@ plotDiagram.json("DebonPQ")
 addLine(c(0,100),c(-100,100))
 
 ######## Test all diagrams
-templ_dir <- system.file("json_templates",package="graphTemplates")
+templ_dir <- system.file("templates",package="graphTemplates")
 templ_list <- list.files(templ_dir,recursive=T,include.dirs = F)
+idx <- endsWith(templ_list,".json")
+templ_list <- templ_list[idx]
+
 sapply(templ_list,
        function(thediag){
          cat("loading",thediag,"...")

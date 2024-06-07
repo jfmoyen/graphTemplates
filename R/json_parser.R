@@ -73,7 +73,7 @@ load_json_file<-function(json,path=NULL){
 
   ## If no path is defined, look for the template in template dir & sub-dir
   if(is.null(path)){
-    toc <- list.dirs(system.file("json_templates",package="graphTemplates"))
+    toc <- list.dirs(system.file("templates",package="graphTemplates"))
     for(i in (1:length(toc) )){
       ii <- paste(toc[i],json,sep="/")
       if(file.exists(ii)){ thejson <- ii; break() }

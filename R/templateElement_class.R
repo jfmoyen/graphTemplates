@@ -178,7 +178,7 @@ styleTemplateElement.templateElement <- function(self,options){
   ######### LINEWIDTH ############
   # If no default have been supplied, add them
   if(!("lwdDefault" %in% names(options))){
-    options["ltyDefault"] <- 1
+    options["lwdDefault"] <- 1
   }
 
   if(any(names(self) == "lwd")){
