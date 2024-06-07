@@ -60,7 +60,7 @@ plotFigaro(tt,WR,labels)
 
 tt <- parseJsonTemplate("Cabanis",template_options=c(showText=F),
                               style_options=c(arrowwidth=3))
-tt <- addTernaryAxes(tt)
+tt <- addTernaryOrnaments(tt)
 plotFigaro(tt,WR,labels)
 
 ## Transformation options
@@ -80,7 +80,7 @@ tt <- addTernaryOrnaments(tt,grid=T)
 plotFigaro(tt,WR,labels)
 
 # Changing my mind...
-tt <- addTernaryOrnaments(tt,axes=F,apicesNames=F,grid=T,grinterval=5,grcol="red",grlty="solid")
+tt <- addTernaryOrnaments(tt,axes=F,apicesNames=F,grid=T,interval.gr=5,col.gr="red",lty.gr="solid")
 plotFigaro(tt,WR,labels)
 
 # Ticks
@@ -98,6 +98,9 @@ plotFigaro(tt,WR,labels)
 ### High level function using GCDkit emulation
 # plotDiagram.json is the GCDkit connector, it is not a package function,
 # must me loaded manually...
+connectorFile <- paste0(system.file("extra",package="graphTemplates"),"/GCDkit_connector.R")
+source(connectorFile)
+
 plotDiagram.json("DebonBA")
 plotDiagram.json("AFM")
 
@@ -158,5 +161,3 @@ plotFigaro(tt,WR,labels)
 tt<-parseJsonTemplate("projBiot",template_options=c(idealMins=T))
 tt <- addTernaryOrnaments(tt)
 plotFigaro(tt,WR,labels)
-
-##NB plotDiagram("projbioplot",idealmins=T,new=T)
