@@ -214,30 +214,17 @@ print.plate <- function(self,..){
 }
 
 #### Generic
-#' addTernary
-#'
-#' Add ternary information (axes) to a template
-#'
-#' @param self a template
-#' @param scale scaling factor
-#' @param rotation Angle to rotate
-#' @export
-#' @rdname addTernaryAxes.graphTemplate
 addTernaryOrnaments <- function(self,...) {
-  UseMethod("addTernaryOrnaments")
-}
-
-addTernaryOrnaments.graphTemplate <- function(self,...){
   #' Add axes to a ternary template
   #'
   #' @details
-    #' This method is used to add various elements to a ternary template, in particular
-    #' ternary (pseudo) axes. The plotting function
-    #' should remove the true axes (and ensure a square aspect ratio).
-    #' Elements will honour the template rotation.
-    #'
+  #' This method is used to add various elements to a ternary template, in particular
+  #' ternary (pseudo) axes, names of the apices, ticks and grid. The plotting function
+  #' should remove the true axes (and ensure a square aspect ratio).
+  #' Elements will honour the template rotation.
+  #'
   #' @param self a graphTemplate
-  #' @param axes,ticks,grid : should we add the relevant elements?
+  #' @param axes,ticks,grid,apicesNames : should we add the relevant elements?
   #' @param interval.gr,lwd.gr,lty.gr,col.gr spacing between grid lines, and their graphical properties
   #' @param length.ti,interval.ti,lwd.ti,lty.ti,col.ti spacing between ticks, length, and their graphical properties
   #' @param lwd.ax,lty.ax,col.ax graphical properties of the pseudoaxes
@@ -247,6 +234,13 @@ addTernaryOrnaments.graphTemplate <- function(self,...){
   #' @returns updated version of self
   #'
   #' @export
+
+  UseMethod("addTernaryOrnaments")
+}
+
+addTernaryOrnaments.graphTemplate <- function(self,...){
+  #' @export
+  #' @rdname addTernaryOrnaments
 
   msg <- paste("Can only add ternary axes on a ternary template!\n")
   stop(msg)
@@ -262,7 +256,7 @@ addTernaryOrnaments.ternary <- function(self,
                                         interval.gr=10,lwd.gr=0.5,lty.gr="dotted",col.gr="grey",
                                         padding=c(0.03,0.03,0.03,0.05) ){
   #' @export
-  #' @rdname addTernaryAxes.graphTemplate
+  #' @rdname addTernaryOrnaments
 
   # Ticks
   if(ticks){
@@ -335,26 +329,31 @@ addTernaryOrnaments.ternary <- function(self,
 
 
 #### Generic
-#' Rotate a ternary template
-#'
-#' Add ternary information (axes) to a template
-#'
-#' @param self a template
-#' @param scale scaling factor
-#' @param rotation Angle to rotate
-#' @export
-#' @rdname addTernaryAxes.graphTemplate
+
 rotateTernaryTemplate <- function(self,rotation,scale,padding,setup=F) {
+  #' @export
+  #' @rdname rotateTernaryTemplate.graphTemplate
+  #'
   UseMethod("rotateTernaryTemplate")
 }
 
 rotateTernaryTemplate.graphTemplate <- function(self,rotation,scale,padding,setup=F){
-  #' Add axes to a ternary template
+  #' Add axes and other graphical elements to a ternary template
   #'
   #' @details
-  #' This method is used to add ternary (pseudo) axes to a graphTemplate. The plotter
-  #' should remove the true axes (and ensure a square aspect ratio). The function
-  #' eventually will be able to rotate a ternary graph by an arbitrary amount.
+  #' This method allows to rotate a template by a certain angle (in degrees). It will
+  #' rotate the template elements itself; if using pointCoordinates method, the
+  #' points will also end up in the right place. This works in plotFigaro
+  #' and plotgg.
+  #' If the user wants to do things manually (in ggplot), the rotation for data has to be implemented manually;
+  #' points should be then plotted with something like
+  #' transformedData <- tpl$dataTransform(WR)
+  #' plottingCoords <- ternaryCoordinates(transformedData$a.data,
+  #'                               transformedData$b.data,
+  #'                                transformedData$c.data,
+  #'                             tpl$ternaryRotation,tpl$ternaryScale)
+  #'
+  #' ..geom_points(data=plottingCoords,aes(x.data,y.data))
   #'
   #' @param self a graphTemplate
   #' @param scale The scale of the triangle: normally from 0 to 1 but in some contexts
@@ -371,7 +370,7 @@ rotateTernaryTemplate.graphTemplate <- function(self,rotation,scale,padding,setu
 
 rotateTernaryTemplate.ternary <- function(self,rotation=0,scale=1,padding=c(0.03,0.03,0.03,0.05),setup=F){
   #' @export
-  #' @rdname addTernaryAxes.graphTemplate
+  #' @rdname rotateTernaryTemplate.graphTemplate
 
   if(!setup){
     self$ternaryRotation <- self$ternaryRotation + rotation

@@ -11,7 +11,7 @@ plotFigaro <- function(self,wrdata,lbl,new,...) {
 
 ### This is to avoid check() notes when using global variables
 # or unquoted arguments in dplyr/ggplot
-utils::globalVariables(c("demo","sheet","x.data","y.data","plate","plate.data","scr.old"))
+utils::globalVariables(c("WR","labels","demo","sheet","x.data","y.data","plate","plate.data","scr.old"))
 
 ##NB There is deliberately no import from GCDkit to avoid creating a dependency !
 

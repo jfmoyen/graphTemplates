@@ -11,6 +11,8 @@ human readable format (for certain values of “human”). These templates
 are primarily meant to be used with GCDkit (<http://gcdkit.org>),
 although the aim is to also supply parsers to use them in ggplot.
 
+See more examples in `/extra/demo_script`
+
 ## Installation
 
 The easiest way to install graphTemplates is directly from github:
@@ -30,9 +32,21 @@ However, the github version is more likely to be up to date.
 
 ## Example
 
-### Using GCDkit/Figaro
+### Loading and preparing a template
 
-Once installed, templates can be used in GCDkit with
+``` r
+library(tidyverse)
+#> -- Attaching core tidyverse packages ------------------------ tidyverse 2.0.0 --
+#> v dplyr     1.1.4     v readr     2.1.5
+#> v forcats   1.0.0     v stringr   1.5.1
+#> v ggplot2   3.5.1     v tibble    3.2.1
+#> v lubridate 1.9.3     v tidyr     1.3.1
+#> v purrr     1.0.2     
+#> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+#> x dplyr::filter() masks stats::filter()
+#> x dplyr::lag()    masks stats::lag()
+#> i Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+```
 
 ``` r
 library(GCDkit)
@@ -41,10 +55,9 @@ library(GCDkit)
 #> Entering the normal mode...
 #> 
 #> Initializing the EarthChem interface....
-#> R proxy: 172.16.8.254:8080 
+#> R proxy:  
 #> System proxy:
 #> Le chargement a nécessité le package : XML
-#> ... cannot connect to the web service, check your Internet connection! ***
 #> Windows version: Windows 10 x64 (build 22631)
 #> R version: x86_64-w64-mingw324.1.3
 #> 
@@ -65,13 +78,26 @@ library(GCDkit)
 #> Ready 2 Go - Enjoy!
 #> 
 #> Attachement du package : 'GCDkit'
+#> 
+#> L'objet suivant est masqué depuis 'package:ggplot2':
+#> 
+#>     annotate
+#> 
 #> L'objet suivant est masqué depuis 'package:graphics':
 #> 
 #>     plot.default
 ```
 
 ``` r
-library(jsonGraphTemplates)
+library(graphTemplates)
+#> Reading template helpers..
+#> sourcing R_template_functions/dataTransform.R ...ok
+#> sourcing R_template_functions/GCDkit_additions.R ...ok
+#> sourcing R_template_functions/hooks.R ...ok
+#> ..done
+```
+
+``` r
 
  data("atacazo")
  accessVar("atacazo")
@@ -117,16 +143,109 @@ library(jsonGraphTemplates)
 #> [1] "atacazo"
 ```
 
-``` r
+A template is loaded as follows:
 
-plotDiagram_json("TASMiddlemostVolc.json")
+``` r
+tt <- parseJsonTemplate("TAS.json")
 ```
 
-<img src="man/figures/example_graph.png" width="100%"/>
+Options can be used at template loading:
+
+``` r
+ttr <- parseJsonTemplate("Cabanis",template_options=c(showText=F))
+```
+
+Templates can be manipulated to a point after creation. This is in
+particular needed for ternary plots, to create the triangle etc:
+
+``` r
+ttr <- addTernaryOrnaments(ttr)
+```
+
+### Using GCDkit/Figaro
+
+In a GCDkit context, a template can then be plotted using Figaro:
+
+``` r
+plotFigaro(tt,WR,labels)
+```
+
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+or even
+
+``` r
+plotFigaro(ttr)
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
 ### Using ggplot
 
-to be added
+In ggplot, a similar function is provided:
+
+``` r
+plotgg(tt)
+#> WARNING: graphical elements of type NULL are not implemented yet. Dropping.
+#> WARNING: graphical elements of type NULL are not implemented yet. Dropping.
+```
+
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+
+``` r
+plotgg(ttr)
+#> WARNING: graphical elements of type NULL are not implemented yet. Dropping.
+```
+
+<img src="man/figures/README-unnamed-chunk-8-2.png" width="100%" />
+
+It is however more flexible to use a lower level interface:
+
+``` r
+tt<-parseJsonTemplate("TAS")
+ttg<-makeggTemplate(tt)
+#> WARNING: graphical elements of type NULL are not implemented yet. Dropping.
+#> WARNING: graphical elements of type NULL are not implemented yet. Dropping.
+```
+
+``` r
+ggplot()+ttg # a blank plot
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+
+``` r
+
+ggplot()+ttg + theme_gcdkit() # A blank plot with a nicer theme
+```
+
+<img src="man/figures/README-unnamed-chunk-9-2.png" width="100%" />
+
+``` r
+
+ggplot()+
+  ttg+
+  theme_gcdkit()+
+  geom_point(data=atacazo,aes(x=SiO2,y=Na2O+K2O)) # Some data
+```
+
+<img src="man/figures/README-unnamed-chunk-9-3.png" width="100%" />
+
+Of course in this case the user must take care of his own aesthetics…
+
+### GCDkit emulation
+
+Lastly, file extra/GCDkit_connector supplies an emulation of
+`GCDkit::plotDiagram()` :
+
+``` r
+ # source /extra/GCDkit_connector.R
+
+
+# plotDiagram.json("TASMiddlemostVolc.json")
+```
+
+<img src="man/figures/example_graph.png" width="100%"/>
 
 ## Templates
 

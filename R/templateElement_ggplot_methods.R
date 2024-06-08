@@ -65,7 +65,7 @@ gglayerTemplateElement.arrows <- function(self){
                              xend=self$x1,yend=self$y1,
                              color=self$col,linetype=self$lty,
                              size=self$lwd*getOption("lwd_size_magic_nbr"),
-                             arrow=arrow(angle=self$angle,length=unit(self$length,"inches"),ends=ends))
+                             arrow=ggplot2::arrow(angle=self$angle,length=ggplot2::unit(self$length,"inches"),ends=ends))
   return(gg_el)
 }
 
@@ -178,7 +178,7 @@ gglayerTemplateElement.curve <- function(self){
 
   # As far as I know, not found in any diagram...
 
-  gg_el <- ggplot2::annotate(geom="function",fun = as.expression(equation),
+  gg_el <- ggplot2::annotate(geom="function",fun = as.expression(self$equation),
                              colour=self$col,linetype=self$lty,
                              size=self$lwd*getOption("lwd_size_magic_nbr"))
 

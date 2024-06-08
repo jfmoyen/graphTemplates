@@ -41,25 +41,25 @@ makeggTemplate.binary<- function(self,...){
   ylog <- self$log=="y"||self$log=="xy"
 
   # Default
-  scale_x <- scale_x_continuous(expand=c(0,0))
-  scale_y <- scale_y_continuous(expand=c(0,0))
+  scale_x <- ggplot2::scale_x_continuous(expand=c(0,0))
+  scale_y <- ggplot2::scale_y_continuous(expand=c(0,0))
 
   if(xlog){
-    scale_x <- scale_x_log10(expand=c(0,0))
+    scale_x <- ggplot2::scale_x_log10(expand=c(0,0))
   }
 
   if(ylog){
-    scale_y <- scale_y_log10(expand=c(0,0))
+    scale_y <- ggplot2::scale_y_log10(expand=c(0,0))
   }
 
   tpl <- list(
-    map(self$template,gglayerTemplateElement),
+    purrr::map(self$template,gglayerTemplateElement),
     scale_x,
     scale_y,
-    xlab(makeName(self,"X")),
-    ylab(makeName(self,"Y")),
-    coord_cartesian(xlim=self$limits$X,ylim=self$limits$Y),
-    ggtitle(self$fullName)
+    ggplot2::xlab(makeName(self,"X")),
+    ggplot2::ylab(makeName(self,"Y")),
+    ggplot2::coord_cartesian(xlim=self$limits$X,ylim=self$limits$Y),
+    ggplot2::ggtitle(self$fullName)
   )
 
   return(tpl)
@@ -70,32 +70,14 @@ makeggTemplate.ternary<- function(self,...){
   #' @export
   #' @rdname makeggTemplate
 
-  # Axis preparation
-  ## X and Y scale (log or natural)
-
-  xlog <- self$log=="x"||self$log=="xy"
-  ylog <- self$log=="y"||self$log=="xy"
-
-  # Default
-  scale_x <- scale_x_continuous(expand=c(0,0))
-  scale_y <- scale_y_continuous(expand=c(0,0))
-
-  if(xlog){
-    scale_x <- scale_x_log10(expand=c(0,0))
-  }
-
-  if(ylog){
-    scale_y <- scale_y_log10(expand=c(0,0))
-  }
-
   tpl <- list(
-    map(self$template,gglayerTemplateElement),
-    scale_x,
-    scale_y,
-    xlab(makeName(self,"X")),
-    ylab(makeName(self,"Y")),
-    coord_fixed(xlim=self$limits$X,ylim=self$limits$Y,clip="off"),
-    ggtitle(self$fullName)
+    purrr::map(self$template,gglayerTemplateElement),
+    ggplot2::scale_x_continuous(expand=c(0,0)),
+    ggplot2::scale_y_continuous(expand=c(0,0)),
+    ggplot2::xlab(makeName(self,"X")),
+    ggplot2::ylab(makeName(self,"Y")),
+    ggplot2::coord_fixed(xlim=self$limits$X,ylim=self$limits$Y,clip="off"),
+    ggplot2::ggtitle(self$fullName)
   )
 
   return(tpl)
@@ -141,6 +123,7 @@ plotgg.graphTemplate<- function(self,wrdata,lbl,new,...){
 plotgg.binary<- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new,...) {
   #' @export
   #' @rdname plotgg
+  #' @importFrom grDevices palette
   #'
 
   # This is a pure ggplot2 function ! It should fail if ggplot2 is not here
@@ -162,7 +145,7 @@ plotgg.binary<- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new,...) {
   # Correct colours
   ee$lbl[,"Colour"] <- sapply(ee$lbl[,"Colour"],
          function(z){
-           if(is.numeric(z)){palette()[z]}else{z}
+           if(is.numeric(z)){grDevices::palette()[z]}else{z}
            })
 
   # Merge all in a tibble
@@ -182,16 +165,16 @@ plotgg.binary<- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new,...) {
   tpl <- makeggTemplate(self)
 
   # Build the plot
-  plt <- ggplot2::ggplot(WRD,aes(x=!!xx,y=!!yy))+
-    geom_point(aes(colour=Colour,
+  plt <- ggplot2::ggplot(WRD,ggplot2::aes(x=!!xx,y=!!yy))+
+    ggplot2::geom_point(ggplot2::aes(colour=Colour,
                    fill=Colour,
                    shape=Symbol,
                    size=Size*getOption("point_size_magic_nbr")))+
-    scale_shape_identity()+
-    scale_color_identity()+
-    scale_fill_identity()+
-    scale_linetype_identity()+
-    scale_size_identity()+
+    ggplot2::scale_shape_identity()+
+    ggplot2::scale_color_identity()+
+    ggplot2::scale_fill_identity()+
+    ggplot2::scale_linetype_identity()+
+    ggplot2::scale_size_identity()+
     tpl+
     theme_gcdkit()
 
@@ -250,11 +233,11 @@ plotgg.ternary<- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new,...) {
     cc <- rlang::parse_expr(self$axesDefinition$C)
 
     # A, B and C if data-transformed
-    WRD %>% mutate(A = !!aa, B = !!bb, C = !!cc) %>%
+    WRD %>% dplyr::mutate(A = !!aa, B = !!bb, C = !!cc) %>%
       {.} -> WRD
 
     # Append the plotting coordinates
-    WRD %>% bind_cols(ternaryCoordinates(WRD$A, WRD$B, WRD$C,
+    WRD %>% dplyr::bind_cols(ternaryCoordinates(WRD$A, WRD$B, WRD$C,
                                      rotation = self$ternaryRotation, scale = self$ternaryScale)
     ) %>%
       {.} -> WRD
@@ -269,25 +252,25 @@ plotgg.ternary<- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new,...) {
     tpl <- makeggTemplate(self)
 
     # Build the plot
-    plt <- ggplot2::ggplot(WRD,aes(x.data,y=y.data))+
-      geom_point(aes(colour=Colour,
+    plt <- ggplot2::ggplot(WRD,ggplot2::aes(x.data,y=y.data))+
+      ggplot2::geom_point(ggplot2::aes(colour=Colour,
                      fill=Colour,
                      shape=Symbol,
                      size=Size*getOption("point_size_magic_nbr")))+
-      scale_shape_identity()+
-      scale_color_identity()+
-      scale_fill_identity()+
-      scale_linetype_identity()+
-      scale_size_identity()+
+      ggplot2::scale_shape_identity()+
+      ggplot2::scale_color_identity()+
+      ggplot2::scale_fill_identity()+
+      ggplot2::scale_linetype_identity()+
+      ggplot2::scale_size_identity()+
       tpl+
       theme_gcdkit()+
-      theme(axis.line = element_blank(), ##Remove the real axes
-            panel.border = element_blank(),
-            axis.ticks = element_blank(),
-            axis.title = element_blank(),
-            axis.text.x = element_blank(),
-            axis.text.y = element_blank(),
-            plot.title = element_text(hjust = 0, vjust = 6))
+      ggplot2::theme(axis.line = ggplot2::element_blank(), ##Remove the real axes
+            panel.border = ggplot2::element_blank(),
+            axis.ticks = ggplot2::element_blank(),
+            axis.title = ggplot2::element_blank(),
+            axis.text.x = ggplot2::element_blank(),
+            axis.text.y = ggplot2::element_blank(),
+            plot.title = ggplot2::element_text(hjust = 0, vjust = 6))
 
      print(plt)
 

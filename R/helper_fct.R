@@ -20,24 +20,24 @@ isColor <- function(x) {
 
 
 #### ggplot theme to emulate GCDkit ####
-theme_gcdkit <- function () {
+theme_gcdkit <- function() {
   #' A ggplot theme that resembles GCDkit's
-  #' @details
-    #' Works only in ggplot, obviously. If ggplot is not loaded, it does nothing...
-    #'
+  #' @details nice and clean
+  #' @export
+
 
   ggplot2::theme_bw(base_size=12, base_family="Avenir") %+replace%
     ggplot2::theme(
-      panel.background  = element_blank(),
-      plot.background = element_blank(),
-      legend.background = element_rect(fill="transparent", colour=NA),
-      legend.key = element_rect(fill="transparent", colour=NA),
-      panel.grid = element_blank(),
-      axis.title.x = element_text(size=14, face="bold", colour = "black"),
-      axis.title.y = element_text(size=14, face="bold", colour = "black",angle=90),
-      axis.text.x = element_text(size=12, colour = "black"),
-      axis.text.y = element_text(size=12, colour = "black",angle=90),
-      axis.ticks.length = unit(.25, "cm")
+      panel.background  = ggplot2::element_blank(),
+      plot.background = ggplot2::element_blank(),
+      legend.background = ggplot2::element_rect(fill="transparent", colour=NA),
+      legend.key = ggplot2::element_rect(fill="transparent", colour=NA),
+      panel.grid = ggplot2::element_blank(),
+      axis.title.x = ggplot2::element_text(size=14, face="bold", colour = "black"),
+      axis.title.y = ggplot2::element_text(size=14, face="bold", colour = "black",angle=90),
+      axis.text.x = ggplot2::element_text(size=12, colour = "black"),
+      axis.text.y = ggplot2::element_text(size=12, colour = "black",angle=90),
+      axis.ticks.length = ggplot2::unit(.25, "cm")
     )
 }
 
@@ -70,7 +70,7 @@ TibbleToGCDkit <- function(WRD,nameCol=names(WRD)[1]){
     #' rest in labels, as per GCDkit convention
     #'
   #' @param WRD a tibble with all the info
-  #' @param column containing the sample names (ID), the first one by default
+  #' @param nameCol containing the sample names (ID), the first one by default
   #'
   #' @returns a list with two components, WR and labels
   #' @export

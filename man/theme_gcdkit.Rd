@@ -10,5 +10,5 @@ theme_gcdkit()
 A ggplot theme that resembles GCDkit's
 }
 \details{
-Works only in ggplot, obviously. If ggplot is not loaded, it does nothing...
+nice and clean
 }

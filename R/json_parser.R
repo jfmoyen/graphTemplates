@@ -163,8 +163,8 @@ make_single_template <- function(tpl_raw,
   if(is.null(tpl_raw$ternaryRotation)){gt$ternaryRotation<-0}else{gt$ternaryRotation<-tpl_raw$ternaryRotation}
   if(is.null(tpl_raw$ternaryScale)){gt$ternaryScale<-1}else{gt$ternaryScale<-tpl_raw$ternaryScale}
 
-  # Rotate/scale the template if needed
-  if(class(gt)[1]=="ternary"&gt$ternaryRotation!=0){
+  # Rotate/scale the template (this will lso set the scale)
+  if(class(gt)[1]=="ternary"){
     gt <- rotateTernaryTemplate(gt,
                                 rotation=gt$ternaryRotation,
                                 scale=gt$ternaryScale,

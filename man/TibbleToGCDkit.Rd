@@ -9,7 +9,7 @@ TibbleToGCDkit(WRD, nameCol = names(WRD)[1])
 \arguments{
 \item{WRD}{a tibble with all the info}
 
-\item{column}{containing the sample names (ID), the first one by default}
+\item{nameCol}{containing the sample names (ID), the first one by default}
 }
 \value{
 a list with two components, WR and labels

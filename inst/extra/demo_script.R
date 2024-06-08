@@ -186,6 +186,46 @@ ggplot()+
   theme_gcdkit()+ttg+
   geom_point(data=blatna,aes(x=SiO2,y=Na2O+K2O,colour = MgO),colour="lightgrey")
 
+# It is a it more work with ternary diagrams, though
+tpl<-parseJsonTemplate("AFM")
+tpl <- addTernaryOrnaments(tpl,ticks=T)
+
+plottingDS <- tpl$dataTransform(WR)
+plottingCoords <- ternaryCoordinates(plottingDS[,"K2O"]+plottingDS[,"Na2O"],
+                                     plottingDS[,"FeOt"],plottingDS[,"MgO"])
+
+tplg<-makeggTemplate(tpl)
+ggplot()+
+  geom_point(data=plottingCoords,aes(x=x.data,y=y.data))+
+  tplg
+
+# If you want to rotate the template...
+tplR <- rotateTernaryTemplate(tpl,30)
+
+plottingCoordsR <- ternaryCoordinates(plottingDS[,"K2O"]+plottingDS[,"Na2O"],
+                                     plottingDS[,"FeOt"],plottingDS[,"MgO"],
+                                     rotation=tplR$ternaryRotation)
+
+tplRg<-makeggTemplate(tplR)
+ggplot()+
+  geom_point(data=plottingCoordsR,aes(x=x.data,y=y.data))+
+  tplRg
+
+# You need this trick for diagrams with built-in rotation:
+tpl<-parseJsonTemplate("projBiot")
+tpl <- addTernaryOrnaments(tpl,ticks=T)
+
+plottingDS <- tpl$dataTransform(WR)
+plottingCoords <- ternaryCoordinates(plottingDS[,"ms1"],
+                                     plottingDS[,"fsp"],plottingDS[,"CaAl"],
+                                     rotation=tpl$ternaryRotation)
+
+tplg<-makeggTemplate(tpl)
+ggplot()+
+  geom_point(data=plottingCoords,aes(x=x.data,y=y.data))+
+  tplg+
+  coord_fixed(xlim=c(-2,1))
+
 ####### UTILITIES ########
 ######## Test all diagrams
 data("blatna")
