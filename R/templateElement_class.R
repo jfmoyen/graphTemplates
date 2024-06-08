@@ -2,13 +2,12 @@
 
 ######## Class definition ###########
 
-new_templateElement <- function(te){
+new_templateElement <- function(te,cls){
   #' Constructor for templateElement class
   #' @rdname templateElement
 
-  structure(te,class="templateElement")
+  structure(te,class=c(cls,"templateElement",class(te)))
 }
-
 
 validate_templateElement <- function(te){
   #' Validator for templateElement class
@@ -17,8 +16,7 @@ validate_templateElement <- function(te){
   invisible(te)
 }
 
-
-templateElement <- function(te){
+templateElement <- function(te,cls=te$plotFun){
 #' a class that stores template elements
 #'
 #' @description
@@ -35,8 +33,12 @@ templateElement <- function(te){
 #' ggplot graphical primitives (ggproto).
 #'
 #' @param te An input list to convert to a template element
+#' @param cls the class of the template element. Will be guessed from plotFun, if the
+#' slot is present.
 #' @export
-  te<-new_templateElement(te)
+
+ # if(is.null(cls)){cls<-""}
+  te<-new_templateElement(te,cls)
 
   te <- validate_templateElement(te)
 

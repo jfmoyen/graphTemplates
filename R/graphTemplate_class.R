@@ -292,10 +292,12 @@ addTernaryOrnaments.ternary <- function(self,
 
   # The (pseudo)axes
   if(axes){
-      pseudoAxes=list(type="lines",
-                      x=c(0,1,0.5,0),
-                      y=c(0,0,sqrt(3)/2,0),lty=lty.ax,lwd=lwd.ax,col=col.ax)
-      class(pseudoAxes) <- c("lines","templateElement",class(pseudoAxes))
+
+    pseudoAxes<-templateElement(
+            list(plotFun="lines",
+                    x=c(0,1,0.5,0),
+                    y=c(0,0,sqrt(3)/2,0),
+                    lty=lty.ax,lwd=lwd.ax,col=col.ax))
 
       pseudoAxes<-rotateTemplateElement(pseudoAxes,rotation=self$ternaryRotation,
                                scale=self$ternaryScale)
@@ -309,13 +311,13 @@ addTernaryOrnaments.ternary <- function(self,
       blab <- makeName(self,"B")
       clab <- makeName(self,"C")
 
-      A=list(type="text",x=0,y=-padding[4],text=alab,adj=c(0.5,0),col=col.ax)
-      B=list(type="text",x=0.5,y=sqrt(3)/2+padding[2],text=blab,adj=c(0.5,0.5),col=col.ax)
-      C=list(type="text",x=1,y=-padding[4],text=clab,adj=c(0.5,0),col=col.ax)
+      A<-templateElement(list(plotFun="text",
+                              x=0,y=-padding[4],text=alab,adj=c(0.5,0),col=col.ax))
 
-      class(A) <- c("text","templateElement",class(A))
-      class(B) <- c("text","templateElement",class(B))
-      class(C) <- c("text","templateElement",class(C))
+      B<-templateElement(list(plotFun="text",
+                               x=0.5,y=sqrt(3)/2+padding[2],text=blab,adj=c(0.5,0.5),col=col.ax))
+      C<-templateElement(list(plotFun="text",
+                              x=1,y=-padding[4],text=clab,adj=c(0.5,0),col=col.ax))
 
       A<-rotateTemplateElement(A,rotation=self$ternaryRotation,
                             scale=self$ternaryScale)
@@ -327,12 +329,6 @@ addTernaryOrnaments.ternary <- function(self,
       # Include in template
       self$template <- c(self$template,A=list(A),B=list(B),C=list(C))
   }
-
-  # Rotate the template in position
-  # self <- rotateTernaryTemplate(self,
-  #                               rotation=self$ternaryRotation,scale=self$ternaryScale,
-  #                               padding=padding,setup=T)
-
 
   return(self)
 }
@@ -369,8 +365,8 @@ rotateTernaryTemplate.graphTemplate <- function(self,rotation,scale,padding,setu
   #' existing plot. This will update self$ternaryRotation.
   #' @export
 
-  msg <- paste("Can only rotate ternary template!\n")
-  stop(msg)
+  cat("Can only rotate ternary template! Nothing happened\n")
+  return(self)
 }
 
 rotateTernaryTemplate.ternary <- function(self,rotation=0,scale=1,padding=c(0.03,0.03,0.03,0.05),setup=F){

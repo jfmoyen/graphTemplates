@@ -6,14 +6,17 @@
 \alias{templateElement}
 \title{Constructor for templateElement class}
 \usage{
-new_templateElement(te)
+new_templateElement(te, cls)
 
 validate_templateElement(te)
 
-templateElement(te)
+templateElement(te, cls = te$plotFun)
 }
 \arguments{
 \item{te}{An input list to convert to a template element}
+
+\item{cls}{the class of the template element. Will be guessed from plotFun, if the
+slot is present.}
 }
 \description{
 A (graphical) element of a template

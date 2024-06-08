@@ -208,15 +208,14 @@ make_line<-function(ptFrom,ptTo,col,lty,lwd){
   #'
   #' @export
 
-  ee <- list(
+  ee <- templateElement(list(
     plotFun = "lines",
     x = c(ptFrom["x.data"],ptTo["x.data"]),
     y = c(ptFrom["y.data"],ptTo["y.data"]),
     col = col,
     lty=lty,
     lwd=lwd
-  )
-  class(ee)<- c("lines","templateElement",class(ee))
+  ))
 
   return(ee)
 }

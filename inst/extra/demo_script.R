@@ -188,6 +188,9 @@ ggplot()+
 
 ####### UTILITIES ########
 ######## Test all diagrams
+data("blatna")
+accessVar(blatna) #blatna has a complete element list, better for testing...
+
 templ_dir <- system.file("templates",package="graphTemplates")
 templ_list <- list.files(templ_dir,recursive=T,include.dirs = F)
 idx <- endsWith(templ_list,".json")
@@ -219,6 +222,7 @@ sapply(templ_list,
 
        } )
 
+##gg test
 sapply(templ_list,
        function(thediag){
          cat("loading",thediag,"...")
