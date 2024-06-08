@@ -18,8 +18,8 @@
     "diagramType": "binary",
     "dataTransform": null,
     "axesDefinition": {
-        "X": "A/CNK",
-        "Y": "A/NK"
+        "X": "`A/CNK`",
+        "Y": "`A/NK`"
     },
     "limits": {
         "X": [

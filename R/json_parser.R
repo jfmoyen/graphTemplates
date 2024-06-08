@@ -163,6 +163,12 @@ make_single_template <- function(tpl_raw,
   if(is.null(tpl_raw$ternaryRotation)){gt$ternaryRotation<-0}else{gt$ternaryRotation<-tpl_raw$ternaryRotation}
   if(is.null(tpl_raw$ternaryScale)){gt$ternaryScale<-1}else{gt$ternaryScale<-tpl_raw$ternaryScale}
 
+  # Rotate/scale the template if needed
+  gt <- rotateTernaryTemplate(gt,
+                                rotation=gt$ternaryRotation,
+                                scale=gt$ternaryScale,
+                                setup=T)
+
   # Metadata etc
   meta <- intersect(meta,names(tpl_raw))
 
@@ -304,7 +310,9 @@ process_template_options<-function(tpl_objects,
 
   # In the case of an empty template, return one dummy element to make Figaro happy
   if(length(template_nice)==0){
-    template_nice <- list(nothing=list(plotFun=""))
+    nothing=list(plotFun="")
+    class(nothing)<-c("nothing","templateElement",class(nothing))
+    template_nice <- list(nothing=nothing)
   }
 
   return(template_nice)

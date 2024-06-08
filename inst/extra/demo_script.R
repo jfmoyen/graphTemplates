@@ -1,5 +1,5 @@
 
-### SETUP ###
+### PLAIN GCDKIT ###
 
 library(GCDkit)
 library(graphTemplates)
@@ -118,6 +118,75 @@ addData(tt,WRata,"black",3)
 plotDiagram.json("DebonPQ")
 addLine(c(0,100),c(-100,100))
 
+### GGPLOT ###
+
+library(tidyverse) # We use also some function from dplyr, magrittr etc.
+library(GCDkit) # It is wise to load GCDkit last, as it masks some functions
+# from other packages, such as annotate - and it is not always well behaved
+# and does not explicitely call GCDkit::annotate, so bad things may happen
+# if GCDkit is masked...
+library(graphTemplates)
+
+data("atacazo")
+accessVar(atacazo)
+
+### High level interface emulating GCDkit behaviour
+
+tt<-parseJsonTemplate("Frost_fig1")
+plotgg(tt)
+
+tt<-parseJsonTemplate("Frost_fig1",transform_options=c(FeOonly=T))
+plotgg(tt)
+
+tt<-parseJsonTemplate("projBiot",template_options=c(idealMins=T))
+tt <- addTernaryOrnaments(tt)
+plotgg(tt)
+
+### However, using the low-level interface gives immensely more flexibility !
+## Adding points
+data(atacazo)
+data(blatna)
+
+########################
+##CAREFUL avoid using GCDkit::accessVar, it ruins ggplot !
+ddd <- tibble(SiO2 = runif(50),Na2O = runif(50), K2O = runif(50), MgO = runif(50))
+ggplot()+
+  geom_point(data=ddd,mapping=aes(x=SiO2,y=Na2O+K2O,colour = MgO))
+# Ok
+accessVar("atacazo")
+ddd <- tibble(SiO2 = runif(50),Na2O = runif(50), K2O = runif(50), MgO = runif(50))
+ggplot()+
+  geom_point(data=ddd,mapping=aes(x=SiO2,y=Na2O+K2O,colour = MgO))
+# fails !
+############################
+
+tt<-parseJsonTemplate("TAS")
+ttg<-makeggTemplate(tt)
+ggplot()+ttg # a blank plot
+
+ggplot()+ttg + theme_gcdkit()
+
+ggplot()+
+  ttg+
+  theme_gcdkit()+
+  geom_point(data=atacazo,aes(x=SiO2,y=Na2O+K2O))
+# Of course you need to do your aesthetics yourself in this case...
+
+# But it's worth the effort !
+ggplot()+
+  geom_point(data=atacazo,mapping=aes(x=SiO2,y=Na2O+K2O,colour = MgO,shape=Symbol))+
+  ttg+theme_gcdkit()+scale_shape_identity()
+
+ggplot()+
+  geom_point(data=atacazo,mapping=aes(x=SiO2,y=Na2O+K2O,colour = MgO,shape=Symbol))+
+  ttg+theme_gcdkit()+scale_shape_identity()+facet_wrap(vars(Volcano))
+
+ggplot()+
+  geom_point(data=atacazo,mapping=aes(x=SiO2,y=Na2O+K2O,colour = MgO))+
+  theme_gcdkit()+ttg+
+  geom_point(data=blatna,aes(x=SiO2,y=Na2O+K2O,colour = MgO),colour="lightgrey")
+
+####### UTILITIES ########
 ######## Test all diagrams
 templ_dir <- system.file("templates",package="graphTemplates")
 templ_list <- list.files(templ_dir,recursive=T,include.dirs = F)
@@ -150,10 +219,38 @@ sapply(templ_list,
 
        } )
 
+sapply(templ_list,
+       function(thediag){
+         cat("loading",thediag,"...")
+         tt <- parseJsonTemplate(thediag)
+         if(class(tt)=="binary"){
+           cat("plotting\n==================================\n")
+           plotgg(tt)
+           cat(thediag,"OK\n")
+         }else{
+           cat("skipping\n")
+         }
+
+       } )
+
+sapply(templ_list,
+       function(thediag){
+         cat("loading",thediag,"...")
+         tt <- parseJsonTemplate(thediag)
+         if(class(tt)=="ternary"){
+           cat("plotting\n==================================\n")
+          tt<-addTernaryOrnaments(tt)
+            plotgg(tt)
+           cat(thediag,"OK\n")
+         }else{
+           cat("skipping\n")
+         }
+
+       } )
 
 ### TESTING ZONE
-tt<-parseJsonTemplate("Frost_fig1")
-plotFigaro(tt,WR,labels)
+tt1<-parseJsonTemplate("Frost_fig1")
+plotFigaro(tt1,WR,labels)
 
 tt<-parseJsonTemplate("Frost_fig1",transform_options=c(FeOonly=T))
 plotFigaro(tt,WR,labels)
@@ -161,3 +258,8 @@ plotFigaro(tt,WR,labels)
 tt<-parseJsonTemplate("projBiot",template_options=c(idealMins=T))
 tt <- addTernaryOrnaments(tt)
 plotFigaro(tt,WR,labels)
+
+### ggplot
+tt<-parseJsonTemplate("projBiot")
+tt<-addTernaryOrnaments(tt)
+plotgg(tt)

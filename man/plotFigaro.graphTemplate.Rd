@@ -12,11 +12,11 @@ plotFigaro(self, wrdata, lbl, new, ...)
 
 \method{plotFigaro}{graphTemplate}(self, wrdata, lbl, new = F, ...)
 
-\method{plotFigaro}{binary}(self, wrdata, lbl, new = F, ...)
+\method{plotFigaro}{binary}(self, wrdata = WR, lbl = get("labels", .GlobalEnv), new = F, ...)
 
-\method{plotFigaro}{ternary}(self, wrdata, lbl, new = F, ...)
+\method{plotFigaro}{ternary}(self, wrdata = WR, lbl = get("labels", .GlobalEnv), new = F, ...)
 
-\method{plotFigaro}{plate}(self, wrdata, lbl, new = F, ...)
+\method{plotFigaro}{plate}(self, wrdata = WR, lbl = get("labels", .GlobalEnv), new = F, ...)
 }
 \arguments{
 \item{self}{a graphTemplate object}

@@ -23,7 +23,7 @@
     "dataTransform": "FrostASI",
     "axesDefinition": {
         "X": "ASI",
-        "Y": "A/NK"
+        "Y": "`A/NK`"
     },
 	"suppressAxes":true,
     "limits": {

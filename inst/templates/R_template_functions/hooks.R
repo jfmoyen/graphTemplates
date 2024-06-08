@@ -51,10 +51,15 @@ projBiotHook <- function(self,wrdata,lbl){
   #' @export
 
   self$limits$X <- c(-2.03,1.4)
-  self$limits$Y <- c(-1.03,0.03)
+  self$limits$Y <- c(-1.03,1.03)
 
-  self$template$B$adj <- c(0,0)
-  self$template$C$adj <- c(0.5,1)
+  if(!is.null(self$template$B)){
+    self$template$B$adj <- c(0,0)
+  }
+
+  if(!is.null(self$template$C)){
+      self$template$C$adj <- c(0.5,1)
+  }
 
   return(list(self=self,wrdata=wrdata,lbl=lbl))
 

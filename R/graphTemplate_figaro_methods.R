@@ -48,7 +48,14 @@ plotFigaro.graphTemplate <- function(self,wrdata,lbl,new=F,...){
   #'
   #' @export
 
+  cat("No plotting methods for ",class(self)[1],"implemented yet. Quitting." )
 
+   return()
+}
+
+plotFigaro.binary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new=F,...){
+  #' @export
+  #' @rdname plotFigaro.graphTemplate
 
   # This is a pure GCDkit function ! It should fail if GCDkit is not here
   if (!requireNamespace("GCDkit", quietly = TRUE)) {
@@ -57,14 +64,6 @@ plotFigaro.graphTemplate <- function(self,wrdata,lbl,new=F,...){
       call. = FALSE
     )
   }
-   return(self)
-}
-
-plotFigaro.binary <- function(self,wrdata,lbl,new=F,...){
-  #' @export
-  #' @rdname plotFigaro.graphTemplate
-
-  self <- NextMethod()
 
   # Execute hook function
   ee <- self$hook(self,wrdata,lbl)
@@ -136,11 +135,17 @@ plotFigaro.binary <- function(self,wrdata,lbl,new=F,...){
 
 } ##end
 
-plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
+plotFigaro.ternary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new=F,...){
   #' @export
   #' @rdname plotFigaro.graphTemplate
 
-  self <- NextMethod()
+  # This is a pure GCDkit function ! It should fail if GCDkit is not here
+  if (!requireNamespace("GCDkit", quietly = TRUE)) {
+    stop(
+      "Package \"GCDkit\" must be installed to use this function.",
+      call. = FALSE
+    )
+  }
 
   # Execute hook function
   ee <- self$hook(self,wrdata,lbl)
@@ -192,12 +197,18 @@ plotFigaro.ternary <- function(self,wrdata,lbl,new=F,...){
 
 }
 
-plotFigaro.plate <- function(self,wrdata,lbl,new=F,...){
+plotFigaro.plate <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new=F,...){
   #' @export
   #' @rdname plotFigaro.graphTemplate
   #' @importFrom graphics mtext screen par
 
-  self <- NextMethod()
+  # This is a pure GCDkit function ! It should fail if GCDkit is not here
+  if (!requireNamespace("GCDkit", quietly = TRUE)) {
+    stop(
+      "Package \"GCDkit\" must be installed to use this function.",
+      call. = FALSE
+    )
+  }
 
   ## Create the plate itself
   plate <- GCDkit::.plateSetup(self$nbslots, self$nrow, self$ncol,
@@ -311,8 +322,13 @@ pointCoordinates.binary <- function(self,wrdata,lbl){
     lbl <- lbl[selected,,drop=F]
   }
 
-  x.data <- GCDkit::calcCore(self$axesDefinition$X,where="newdata",redo=F)$results
-  y.data <- GCDkit::calcCore(self$axesDefinition$Y,where="newdata",redo=F)$results
+  # Remove back ticks
+  axX <- gsub(pattern = "`", replacement = "", self$axesDefinition$X)
+  axY <- gsub(pattern = "`", replacement = "", self$axesDefinition$Y)
+
+  # go
+  x.data <- GCDkit::calcCore(axX,where="newdata",redo=F)$results
+  y.data <- GCDkit::calcCore(axY,where="newdata",redo=F)$results
 
   return(list(plottingCoords=cbind(x.data,y.data),
               lbl=lbl))
@@ -335,9 +351,15 @@ pointCoordinates.ternary <- function(self,wrdata,lbl){
     lbl <- lbl[selected,,drop=F]
   }
 
-  a.data <- GCDkit::calcCore(self$axesDefinition$A,where="newdata",redo=F)$results
-  b.data <- GCDkit::calcCore(self$axesDefinition$B,where="newdata",redo=F)$results
-  c.data <- GCDkit::calcCore(self$axesDefinition$C,where="newdata",redo=F)$results
+  # Remove back ticks
+  axA <- gsub(pattern = "`", replacement = "", self$axesDefinition$A)
+  axB <- gsub(pattern = "`", replacement = "", self$axesDefinition$B)
+  axC <- gsub(pattern = "`", replacement = "", self$axesDefinition$C)
+
+  # go
+  a.data <- GCDkit::calcCore(axA,where="newdata",redo=F)$results
+  b.data <- GCDkit::calcCore(axB,where="newdata",redo=F)$results
+  c.data <- GCDkit::calcCore(axC,where="newdata",redo=F)$results
 
   return(list(plottingCoords=ternaryCoordinates(a.data,b.data,c.data,
                                                 self$ternaryRotation,self$ternaryScale),

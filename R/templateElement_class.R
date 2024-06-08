@@ -198,6 +198,8 @@ styleTemplateElement.templateElement <- function(self,options){
     # Default
     self$lwd <- options["lwdDefault"]}
 
+  self$lwd <- as.numeric(self$lwd)
+
   return(self)
 }
 
