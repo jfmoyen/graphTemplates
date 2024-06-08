@@ -3,7 +3,7 @@
 
 #### Generic
 
-makeggTemplate <- function(self,...){
+graph_template <- function(self,...){
   #' Build an empty graph template
   #'
   #' @details
@@ -17,12 +17,12 @@ makeggTemplate <- function(self,...){
   #'
   #' @export
 
-  UseMethod("makeggTemplate")
+  UseMethod("graph_template")
 }
 
-makeggTemplate.graphTemplate<- function(self,...){
+graph_template.graphTemplate<- function(self,...){
   #' @export
-  #' @rdname makeggTemplate
+  #' @rdname graph_template
 
   cat("No plotting methods for ",class(self)[1],"implemented yet. Quitting." )
 
@@ -30,9 +30,9 @@ makeggTemplate.graphTemplate<- function(self,...){
 }
 
 
-makeggTemplate.binary<- function(self,...){
+graph_template.binary<- function(self,...){
   #' @export
-  #' @rdname makeggTemplate
+  #' @rdname graph_template
 
   # Axis preparation
   ## X and Y scale (log or natural)
@@ -66,9 +66,9 @@ makeggTemplate.binary<- function(self,...){
   return()
 }
 
-makeggTemplate.ternary<- function(self,...){
+graph_template.ternary<- function(self,...){
   #' @export
-  #' @rdname makeggTemplate
+  #' @rdname graph_template
 
   tpl <- list(
     purrr::map(self$template,gglayerTemplateElement),
@@ -94,7 +94,7 @@ plotgg <- function(self,wrdata,lbl,new,...){
   #' The function that does the real job... this function converts the template
   #' into ggplot objects and add points on it, obeying GCDkit-style conventions
   #' (Symbol, Colour etc). If you are not coming from a GCDkit context and/or
-  #' want more granularity, it is better to use \link{makeggTemplate} and do the rest
+  #' want more granularity, it is better to use \link{graph_template} and do the rest
   #' by hand.
   #'
   #' Symbols, colours, and size are taken from variables Symbol, Colour and Size in
@@ -139,33 +139,21 @@ plotgg.binary<- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new,...) {
 
   self <- ee$self
 
-  # Data transformation
-  wrdata <- self$dataTransform(ee$wrdata)
-
   # Correct colours
   ee$lbl[,"Colour"] <- sapply(ee$lbl[,"Colour"],
          function(z){
            if(is.numeric(z)){grDevices::palette()[z]}else{z}
            })
 
-  # Merge all in a tibble
-  WRD <- GCDkitToTibble(wrdata,ee$lbl)
-
-  # String to expression, for ggplot data-masking
-  xx <- rlang::parse_expr(self$axesDefinition$X)
-  yy <- rlang::parse_expr(self$axesDefinition$Y)
-
-  # filter data
-  if(!is.null(self$dataFilter)){
-    df <- rlang::parse_expr(self$dataFilter)
-    WRD <- dplyr::filter(WRD,!!df)
-  }
+  # Point coordinates
+  pc <- pointCoordinates(self,ee$wrdata,ee$lbl,mode="ggplot")
+  plottingDS <- dplyr::bind_cols(pc$plottingCoords,pc$lbl)
 
   # Get template
-  tpl <- makeggTemplate(self)
+  tpl <- graph_template(self)
 
   # Build the plot
-  plt <- ggplot2::ggplot(WRD,ggplot2::aes(x=!!xx,y=!!yy))+
+  plt <- ggplot2::ggplot(plottingDS,ggplot2::aes(x.data,y=y.data))+
     ggplot2::geom_point(ggplot2::aes(colour=Colour,
                    fill=Colour,
                    shape=Symbol,
@@ -214,45 +202,21 @@ plotgg.ternary<- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),new,...) {
 
   self <- ee$self
 
-  # Data transformation
-  wrdata <- self$dataTransform(ee$wrdata)
-
   # Correct colours
   ee$lbl[,"Colour"] <- sapply(ee$lbl[,"Colour"],
                               function(z){
                                 if(is.numeric(z)){palette()[z]}else{z}
                               })
 
-  # Merge all in a tibble
-  WRD <- GCDkitToTibble(wrdata,ee$lbl)
-
-  # Ternary coordinates
-  # String to expression, for ggplot data-masking
-    aa <- rlang::parse_expr(self$axesDefinition$A)
-    bb <- rlang::parse_expr(self$axesDefinition$B)
-    cc <- rlang::parse_expr(self$axesDefinition$C)
-
-    # A, B and C if data-transformed
-    WRD %>% dplyr::mutate(A = !!aa, B = !!bb, C = !!cc) %>%
-      {.} -> WRD
-
-    # Append the plotting coordinates
-    WRD %>% dplyr::bind_cols(ternaryCoordinates(WRD$A, WRD$B, WRD$C,
-                                     rotation = self$ternaryRotation, scale = self$ternaryScale)
-    ) %>%
-      {.} -> WRD
-
-    # filter data
-    if(!is.null(self$dataFilter)){
-      df <- rlang::parse_expr(self$dataFilter)
-      WRD <- dplyr::filter(WRD,!!df)
-    }
+  # Point coordinates
+  pc <- pointCoordinates(self,ee$wrdata,ee$lbl,mode="ggplot")
+  plottingDS <- dplyr::bind_cols(pc$plottingCoords,pc$lbl)
 
     # Get template
-    tpl <- makeggTemplate(self)
+    tpl <- graph_template(self)
 
     # Build the plot
-    plt <- ggplot2::ggplot(WRD,ggplot2::aes(x.data,y=y.data))+
+    plt <- ggplot2::ggplot(plottingDS,ggplot2::aes(x.data,y=y.data))+
       ggplot2::geom_point(ggplot2::aes(colour=Colour,
                      fill=Colour,
                      shape=Symbol,

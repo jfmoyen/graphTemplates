@@ -30,6 +30,9 @@ install.packages("graphTemplates_0.1.zip",repo=NULL
 
 However, the github version is more likely to be up to date.
 
+***NB: GCDkit requires R \<= 4.1, so if you use a newer version, GCDkit
+will fail. What the package will do in this case is uncertain.***
+
 ## Example
 
 ### Loading and preparing a template
@@ -203,7 +206,7 @@ It is however more flexible to use a lower level interface:
 
 ``` r
 tt<-parseJsonTemplate("TAS")
-ttg<-makeggTemplate(tt)
+ttg<-graph_template(tt)
 #> WARNING: graphical elements of type NULL are not implemented yet. Dropping.
 #> WARNING: graphical elements of type NULL are not implemented yet. Dropping.
 ```

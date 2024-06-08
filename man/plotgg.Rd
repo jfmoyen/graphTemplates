@@ -32,7 +32,7 @@ Plot a template in ggplot2 context
 The function that does the real job... this function converts the template
 into ggplot objects and add points on it, obeying GCDkit-style conventions
 (Symbol, Colour etc). If you are not coming from a GCDkit context and/or
-want more granularity, it is better to use \link{makeggTemplate} and do the rest
+want more granularity, it is better to use \link{graph_template} and do the rest
 by hand.
 
 Symbols, colours, and size are taken from variables Symbol, Colour and Size in

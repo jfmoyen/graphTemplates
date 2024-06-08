@@ -54,9 +54,13 @@ GCDkitToTibble <- function(gcdWR=WR,gcdlabels=get("labels",.GlobalEnv)){
   #' @returns a tibble with all the data
   #' @export
 
+  if("ID_x" %in% c(colnames(gcdWR),colnames(gcdlabels)) ){
+    cat("Danger! A column called ID_x is present in the data! try to rename it..\n")
+  }
+
   sampleNames <- rownames(gcdWR)
   DS <- tibble::as_tibble(gcdWR) %>%
-    dplyr::mutate(ID=sampleNames, .before=1 ) %>%
+    dplyr::mutate(ID_x=sampleNames, .before=1 ) %>%
     dplyr::bind_cols(gcdlabels)
 
   return(DS)

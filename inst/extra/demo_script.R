@@ -161,7 +161,7 @@ ggplot()+
 ############################
 
 tt<-parseJsonTemplate("TAS")
-ttg<-makeggTemplate(tt)
+ttg<-graph_template(tt)
 ggplot()+ttg # a blank plot
 
 ggplot()+ttg + theme_gcdkit()
@@ -190,39 +190,26 @@ ggplot()+
 tpl<-parseJsonTemplate("AFM")
 tpl <- addTernaryOrnaments(tpl,ticks=T)
 
-plottingDS <- tpl$dataTransform(WR)
-plottingCoords <- ternaryCoordinates(plottingDS[,"K2O"]+plottingDS[,"Na2O"],
-                                     plottingDS[,"FeOt"],plottingDS[,"MgO"])
-
-tplg<-makeggTemplate(tpl)
+tplg<-graph_template(tpl)
 ggplot()+
-  geom_point(data=plottingCoords,aes(x=x.data,y=y.data))+
+  geom_point(data=pointCoordinates(tpl)$plottingCoords,aes(x=x.data,y=y.data))+
   tplg
 
 # If you want to rotate the template...
 tplR <- rotateTernaryTemplate(tpl,30)
 
-plottingCoordsR <- ternaryCoordinates(plottingDS[,"K2O"]+plottingDS[,"Na2O"],
-                                     plottingDS[,"FeOt"],plottingDS[,"MgO"],
-                                     rotation=tplR$ternaryRotation)
-
-tplRg<-makeggTemplate(tplR)
+tplRg<-graph_template(tplR)
 ggplot()+
-  geom_point(data=plottingCoordsR,aes(x=x.data,y=y.data))+
+  geom_point(data=pointCoordinates(tplR)$plottingCoords,aes(x=x.data,y=y.data))+
   tplRg
 
-# You need this trick for diagrams with built-in rotation:
+# It works for diagrams with built-in rotation:
 tpl<-parseJsonTemplate("projBiot")
 tpl <- addTernaryOrnaments(tpl,ticks=T)
 
-plottingDS <- tpl$dataTransform(WR)
-plottingCoords <- ternaryCoordinates(plottingDS[,"ms1"],
-                                     plottingDS[,"fsp"],plottingDS[,"CaAl"],
-                                     rotation=tpl$ternaryRotation)
-
-tplg<-makeggTemplate(tpl)
+tplg<-graph_template(tpl)
 ggplot()+
-  geom_point(data=plottingCoords,aes(x=x.data,y=y.data))+
+  geom_point(data=pointCoordinates(tpl)$plottingCoords,aes(x=x.data,y=y.data))+
   tplg+
   coord_fixed(xlim=c(-2,1))
 
