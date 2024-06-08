@@ -50,9 +50,20 @@ pointCoordinates.binary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),
   #' @export
   #' @rdname pointCoordinates.graphTemplate
 
-  newdata <- cbind(self$dataTransform(wrdata),wrdata)
-  wr_nm <- unique(colnames(newdata))
-  newdata <- newdata[,wr_nm]
+  # The difficulty is that if there is not data transform,
+  # self$dataTransform will return its input - in which case we musn't duplicate...
+
+  transformed <- self$dataTransform(wrdata)
+
+  nn <-colnames(transformed)
+  on <- colnames(WR)
+
+  replaced <- intersect(on,nn)
+  added<-setdiff(nn,on)
+  preserved <- setdiff(on,nn)
+
+  newdata <- cbind(transformed[,added,drop=F],transformed[,replaced,drop=F],wrdata[,preserved,drop=F])
+  wr_nm <- colnames(newdata)
 
   if(mode == "GCDkit"){
     # Filter, if needed
@@ -120,10 +131,18 @@ pointCoordinates.ternary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv)
   #' @export
   #' @rdname pointCoordinates.graphTemplate
 
+  # See above re. datatransform
+  transformed <- self$dataTransform(wrdata)
 
-  newdata <- cbind(self$dataTransform(wrdata),wrdata)
-  wr_nm <- unique(colnames(newdata))
-  newdata <- newdata[,wr_nm]
+  nn <-colnames(transformed)
+  on <- colnames(WR)
+
+  replaced <- intersect(on,nn)
+  added<-setdiff(nn,on)
+  preserved <- setdiff(on,nn)
+
+  newdata <- cbind(transformed[,added,drop=F],transformed[,replaced,drop=F],wrdata[,preserved,drop=F])
+  wr_nm <- colnames(newdata)
 
   if(mode == "GCDkit"){
   # Filter, if needed
