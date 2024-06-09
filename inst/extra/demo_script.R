@@ -261,6 +261,7 @@ sapply(templ_list,
          }else{
            cat("skipping\n")
          }
+         readline(prompt="Press [enter] to continue")
 
        } )
 

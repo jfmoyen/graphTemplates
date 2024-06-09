@@ -35,7 +35,7 @@ gglayerTemplateElement.lines <- function(self){
 
   gg_el <- ggplot2::annotate(geom="path",x=self$x, y=self$y,
                              colour=self$col,linetype=self$lty,
-                             size=self$lwd*getOption("lwd_size_magic_nbr") )
+                             linewidth=self$lwd*getOption("lwd_size_magic_nbr") )
   return(gg_el)
 }
 
@@ -64,7 +64,7 @@ gglayerTemplateElement.arrows <- function(self){
                              x=self$x0,y=self$y0,
                              xend=self$x1,yend=self$y1,
                              color=self$col,linetype=self$lty,
-                             size=self$lwd*getOption("lwd_size_magic_nbr"),
+                             linewidth=self$lwd*getOption("lwd_size_magic_nbr"),
                              arrow=ggplot2::arrow(angle=self$angle,length=ggplot2::unit(self$length,"inches"),ends=ends))
   return(gg_el)
 }
@@ -135,21 +135,25 @@ gglayerTemplateElement.abline <- function(self){
       gg_el <- ggplot2::annotate("segment",
                           x = self$v, xend = self$v, y = -Inf, yend = Inf,
                           linetype=self$lty,
-                          size=self$lwd*getOption("lwd_size_magic_nbr"),colour=self$col)
+                          linewidth=self$lwd*getOption("lwd_size_magic_nbr"),colour=self$col)
                   }
 
   if(!is.null(self$h)){
     gg_el <- ggplot2::annotate("segment",
                                y = self$h, yend = self$h, x = -Inf, xend = Inf,
                                linetype=self$lty,
-                               size=self$lwd*getOption("lwd_size_magic_nbr"),colour=self$col)
+                               linewidth=self$lwd*getOption("lwd_size_magic_nbr"),colour=self$col)
       }
 # Oblique ablines...
   if(!is.null(self$a)){
-    cat("Oblique ablines not supported for now\n")
-    # gg_el <- geom_abline(ggplot2::aes(intercept = self$a,slope=self$b),
-    #                      linetype=self$lty,size=self$lwd*getOption("lwd_size_magic_nbr"),colour=self$col)
-    gg_el <- NULL
+
+    cat("Oblique ablines not fully supported, expect trouble in log scale...\n")
+
+    func <- function(x){return(self$a+self$b * x)}
+
+    gg_el <- ggplot2::geom_function(fun = func,
+                               colour=self$col,linetype=self$lty,
+                               linewidth=self$lwd*getOption("lwd_size_magic_nbr"))
     }
 
   return(gg_el)
@@ -180,7 +184,7 @@ gglayerTemplateElement.curve <- function(self){
 
   gg_el <- ggplot2::annotate(geom="function",fun = as.expression(self$equation),
                              colour=self$col,linetype=self$lty,
-                             size=self$lwd*getOption("lwd_size_magic_nbr"))
+                             linewidth=self$lwd*getOption("lwd_size_magic_nbr"))
 
   return(gg_el)
 }

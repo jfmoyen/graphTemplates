@@ -20,7 +20,7 @@
   cat("..done\n")
 
   # Size conversions
-  pointsize = par("ps") # the default R pointsize
+  pointsize = par("ps") # the default R pointsize # par() opens a new device..
   .pt <- 2.845276 # 1 point
 
   # in ggplot the sizes are given in mm, with the conversion factor in .pt
