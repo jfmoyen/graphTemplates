@@ -1,13 +1,13 @@
 
 #### Generic
-pointCoordinates <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),mode="GCDkit") {
+pointCoordinates <- function(self,dataTbl=NULL,wrdata=WR,lbl=get("labels",.GlobalEnv),mode="GCDkit") {
   #' @export
   #' @rdname pointCoordinates.graphTemplate
   UseMethod("pointCoordinates")
 }
 
 
-pointCoordinates.graphTemplate <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),mode="GCDkit"){
+pointCoordinates.graphTemplate <- function(self,dataTbl=NULL,wrdata=WR,lbl=get("labels",.GlobalEnv),mode="GCDkit"){
   #' Calculate the plotting coordinates of data points in a graphTemplate
   #'
   #' @details Graph templates include the definitons of axes and, if appropriate,
@@ -31,14 +31,16 @@ pointCoordinates.graphTemplate <- function(self,wrdata=WR,lbl=get("labels",.Glob
   #' add points to an existing graph...
   #'
   #' @param self A graphTemplate
+  #' @param dataTbl A tibble containing data to plot (both WR and labels)
   #' @param wrdata a MATRIX containing WR analyses, as per GCDkit's convention.
   #' Probably WR (a global variable) in GCDkit context.
   #' @param lbl a data.frame containing labels, as per GCDkit's convention.
   #' Probably labels (a global variable) in GCDkit context.
   #' @param mode Either "GCDkit" or "ggplot". How to calculate the new coordinates -
   #' in GCDkit context use calcCore, in ggplot use mutate.
-  #' @returns A list with two components, plottingCoords (two-columns data.frame, x and y)
-  #' and lbl (labels, filtered from the input data).
+  #' @returns A list with three components: plottingCoords (two-columns data.frame, x and y)
+  #' and lbl (labels, filtered from the input data) are always present. tbl (a tibble, containing
+  #' both) is NULL if mode="GCDkit" and contains both previous tables, merged, if mode="ggplot"
   #' @export
 
   msg <- paste("Sorry, cannot work on graph of type",class(self)[1],"\n",sep=" ")
@@ -46,9 +48,16 @@ pointCoordinates.graphTemplate <- function(self,wrdata=WR,lbl=get("labels",.Glob
 
 }
 
-pointCoordinates.binary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),mode="GCDkit"){
+pointCoordinates.binary <- function(self,dataTbl=NULL,wrdata=WR,lbl=get("labels",.GlobalEnv),mode="GCDkit"){
   #' @export
   #' @rdname pointCoordinates.graphTemplate
+
+  # If a tibble is supplied, convert it
+  if(!is.null(dataTbl)){
+    ee <- TibbleToGCDkit(dataTbl)
+    wrdata <- ee$WR
+    lbl <- ee$labels
+  }
 
   # The difficulty is that if there is not data transform,
   # self$dataTransform will return its input - in which case we musn't duplicate...
@@ -87,9 +96,10 @@ pointCoordinates.binary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),
 
       # Results
       plottingCoords<- cbind(x.data,y.data,newdata)
+      tbl <- NULL
   }
 
-  if(mode == "ggplot"){
+  if(mode == "ggplot" | !is.null(dataTbl) ){
 
     # Merge all in a tibble, preserving info
     lbl_nm <- colnames(lbl)
@@ -121,15 +131,25 @@ pointCoordinates.binary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),
     plottingCoords<- cbind(x.data,y.data,WRD[,wr_nm])
     row.names(plottingCoords) <- WRD$ID_x
 
+    tbl <- tibble(cbind(ID_x=WRD$ID_x,plottingCoords,lbl))
+
     }
 
   return(list(plottingCoords=plottingCoords,
-              lbl=lbl))
+              lbl=lbl,
+              tbl=tbl))
 }
 
-pointCoordinates.ternary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv),mode="GCDkit"){
+pointCoordinates.ternary <- function(self,dataTbl=NULL,wrdata=WR,lbl=get("labels",.GlobalEnv),mode="GCDkit"){
   #' @export
   #' @rdname pointCoordinates.graphTemplate
+
+  # If a tibble is supplied, convert it
+  if(!is.null(dataTbl)){
+    ee <- TibbleToGCDkit(dataTbl)
+    wrdata <- ee$WR
+    lbl <- ee$labels
+  }
 
   # See above re. datatransform
   transformed <- self$dataTransform(wrdata)
@@ -168,14 +188,14 @@ pointCoordinates.ternary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv)
   # Results
   plottingCoords<- cbind(ternaryCoordinates(a.data,b.data,c.data,
                                       self$ternaryRotation,self$ternaryScale),newdata)
+  tbl <- NULL
   }
 
-  if(mode == "ggplot"){
+  if(mode == "ggplot" | !is.null(dataTbl) ){
 
-    # Merge all in a tibble, preserving info
-    lbl_nm <- colnames(lbl)
-
-    WRD <- GCDkitToTibble(newdata,lbl)
+      # Merge all in a tibble, preserving info
+      lbl_nm <- colnames(lbl)
+      WRD <- GCDkitToTibble(newdata,lbl)
 
     # String to expression, for ggplot data-masking
     aa <- rlang::parse_expr(self$axesDefinition$A)
@@ -196,17 +216,21 @@ pointCoordinates.ternary <- function(self,wrdata=WR,lbl=get("labels",.GlobalEnv)
     res <- ternaryCoordinates(WRD$A, WRD$B, WRD$C,
                       rotation = self$ternaryRotation, scale = self$ternaryScale)
 
-    # Split back
-    lbl <- data.frame(WRD[,lbl_nm])
-    row.names(lbl) <- WRD$ID_x
 
-    # Results
-    plottingCoords<- cbind(res,WRD[,wr_nm])
-    row.names(plottingCoords) <- WRD$ID_x
+      # Split back
+      lbl <- data.frame(WRD[,lbl_nm])
+      row.names(lbl) <- WRD$ID_x
+
+      # Results
+      plottingCoords<- cbind(res,WRD[,wr_nm])
+      row.names(plottingCoords) <- WRD$ID_x
+
+    tbl <- tibble(cbind(plottingCoords,lbl))
   }
 
   return(list(plottingCoords=plottingCoords,
-                lbl=lbl))
+                lbl=lbl,
+                tbl=tbl))
 }
 
 

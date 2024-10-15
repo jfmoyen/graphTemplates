@@ -9,6 +9,7 @@
 \usage{
 pointCoordinates(
   self,
+  dataTbl = NULL,
   wrdata = WR,
   lbl = get("labels", .GlobalEnv),
   mode = "GCDkit"
@@ -16,6 +17,7 @@ pointCoordinates(
 
 \method{pointCoordinates}{graphTemplate}(
   self,
+  dataTbl = NULL,
   wrdata = WR,
   lbl = get("labels", .GlobalEnv),
   mode = "GCDkit"
@@ -23,6 +25,7 @@ pointCoordinates(
 
 \method{pointCoordinates}{binary}(
   self,
+  dataTbl = NULL,
   wrdata = WR,
   lbl = get("labels", .GlobalEnv),
   mode = "GCDkit"
@@ -30,6 +33,7 @@ pointCoordinates(
 
 \method{pointCoordinates}{ternary}(
   self,
+  dataTbl = NULL,
   wrdata = WR,
   lbl = get("labels", .GlobalEnv),
   mode = "GCDkit"
@@ -37,6 +41,8 @@ pointCoordinates(
 }
 \arguments{
 \item{self}{A graphTemplate}
+
+\item{dataTbl}{A tibble containing data to plot (both WR and labels)}
 
 \item{wrdata}{a MATRIX containing WR analyses, as per GCDkit's convention.
 Probably WR (a global variable) in GCDkit context.}
@@ -48,8 +54,9 @@ Probably labels (a global variable) in GCDkit context.}
 in GCDkit context use calcCore, in ggplot use mutate.}
 }
 \value{
-A list with two components, plottingCoords (two-columns data.frame, x and y)
-and lbl (labels, filtered from the input data).
+A list with three components: plottingCoords (two-columns data.frame, x and y)
+and lbl (labels, filtered from the input data) are always present. tbl (a tibble, containing
+both) is NULL if mode="GCDkit" and contains both previous tables, merged, if mode="ggplot"
 }
 \description{
 Calculate the plotting coordinates of data points in a graphTemplate
